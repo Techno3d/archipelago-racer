@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bee114r5u6eq8"]
+
+[ext_resource type="Script" uid="uid://c1yqejbyu705u" path="res://src/car.gd" id="1_7822p"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_f3sb7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fj7yv"]
+albedo_color = Color(0.73, 0.124100015, 0.124100015, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f3sb7"]
+
+[node name="Car" type="CharacterBody3D" unique_id=1374223432]
+script = ExtResource("1_7822p")
+
+[node name="CarMesh" type="MeshInstance3D" parent="." unique_id=34701392]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_f3sb7")
+surface_material_override/0 = SubResource("StandardMaterial3D_fj7yv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1264593247]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.072509766, 0)
+shape = SubResource("CapsuleShape3D_f3sb7")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1198229420]
+transform = Transform3D(1, 0, 0, 0, 0.7071067, 0.7071067, 0, -0.7071067, 0.7071067, 0, 2.7221599, 1.5105367)
