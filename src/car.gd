@@ -1,14 +1,14 @@
 extends CharacterBody3D
 
 var SPEED = 0.0
-var accel = 50.0
-var friction = 1.0
-var top_speed = 200
+var accel = 20.0
+var friction = 15.0
+var top_speed = 40
 
-var turn_speed = 0.5
+var turn_speed = 1
 var current_turn = 0.0
 var turn_friction = 4.0  
-var max_turn = 1.0
+var max_turn = 1.5
 
 @export var accel_curve: Curve
 @onready var car_model: CarModel = $CarMesh
@@ -21,18 +21,10 @@ func _physics_process(delta: float) -> void:
 	print("SPEED: ", SPEED, " | velocity: ", velocity)
 	car_model.speed = SPEED
 
-	var tb: TerraBrush = $"../TerraBrush"
-	
-	# Let's assume we have a variable called "_terraBrush" that is a TerraBrush Node.
-	# Let's validate that we are on the ground
-
+	var tb: TerraBrush = get_node_or_null("../TerraBrush")
 	
 	if tb:
 		interact_terrain(tb)
-	
-	
-	#print("SPEED: ", SPEED, " | velocity: ", velocity)
-
 	
 	
 	var throttle = Input.get_axis("reverse", "accel");
@@ -56,7 +48,7 @@ func _physics_process(delta: float) -> void:
 	velocity.z = -transform.basis.z.z * SPEED
 		
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity += get_gravity() * delta * 2
 
 	move_and_slide()
 
