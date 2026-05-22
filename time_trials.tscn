@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cjlsytwctm5wl"]
+
+[ext_resource type="Script" uid="uid://cvxg7ivqpqoug" path="res://time_trials.gd" id="1_0avnc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ir4xs"]
+size = Vector3(25.340942, 0.14331055, 24.08133)
+
+[node name="CSGTorus3D" type="CSGTorus3D" unique_id=1796047761]
+transform = Transform3D(-4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, 0, 1, 0, 0, 0)
+inner_radius = 11.900038
+outer_radius = 12.606793
+script = ExtResource("1_0avnc")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1032454017]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1785918601]
+shape = SubResource("BoxShape3D_ir4xs")

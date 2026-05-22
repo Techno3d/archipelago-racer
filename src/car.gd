@@ -18,7 +18,7 @@ func _ready() -> void:
 		Archipelago.conn.deathlink.connect(respawn)
 
 func _physics_process(delta: float) -> void:
-	print("SPEED: ", SPEED, " | velocity: ", velocity)
+	#print("SPEED: ", SPEED, " | velocity: ", velocity)
 	car_model.speed = SPEED
 
 	var tb: TerraBrush = get_node_or_null("../TerraBrush")
@@ -55,13 +55,13 @@ func _physics_process(delta: float) -> void:
 # handles interaction points and respawning
 func interact_terrain(tb: TerraBrush):
 	if is_on_floor() and get_last_slide_collision() != null:
-			print("1")
+			
 			# Get the current collision
 			var collision = get_last_slide_collision()
 
 			# Let's make sure the collider is the collider of the Terrain
 			if collision.get_collider() == tb.getTerrainCollider():
-				print("2")
+
 				# The variable playerX and playerZ are the variables for the global position of the player
 				var result = tb.getPositionInformation(global_position.x, global_position.z)
 				tb.addInteractionPoint(global_position.x,global_position.z)
@@ -69,15 +69,10 @@ func interact_terrain(tb: TerraBrush):
 				if result != null:
 					# The texture at position 0 is the most present one
 					var _mainTexture = result.get_textures()[0].get_name() if result.get_textures().size() > 0 else ""
-					print("res:", result.get_waterDeepness(), result.get_waterFactor())
 
 					if result.get_waterDeepness() > 1.2:
 						respawn()
 						print("respawning!")
-
-					
-				else:
-					print("???")
 
 			
 
