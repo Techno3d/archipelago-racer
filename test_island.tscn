@@ -5,7 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://bee114r5u6eq8" path="res://car.tscn" id="3_hatoi"]
 
 [sub_resource type="WaterResource" id="WaterResource_r3fl7"]
+waterFactor = 10.0
 waterColor = Color(0, 0.84666395, 0.8471314, 1)
+waterMetallic = 0.113
 waterEdgeColor = Color(0.44705883, 1, 1, 1)
 
 [sub_resource type="ZoneResource" id="ZoneResource_jka67"]
@@ -27,3 +29,5 @@ metadata/_edit_lock_ = false
 
 [node name="Car" parent="." unique_id=1374223432 instance=ExtResource("3_hatoi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.13606, 24.797775, 40.605694)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1933314826]
