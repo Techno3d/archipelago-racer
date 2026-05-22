@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bnugrskrsckcx"]
+
+[ext_resource type="Image" uid="uid://d04udhi7b43l6" path="res://terrain/Heightmap_0_0.res" id="1_7lk1g"]
+[ext_resource type="Image" uid="uid://cp140jo75quts" path="res://terrain/Water_0_0.res" id="2_xn7lg"]
+[ext_resource type="PackedScene" uid="uid://bee114r5u6eq8" path="res://car.tscn" id="3_hatoi"]
+
+[sub_resource type="WaterResource" id="WaterResource_r3fl7"]
+waterColor = Color(0, 0.84666395, 0.8471314, 1)
+waterEdgeColor = Color(0.44705883, 1, 1, 1)
+
+[sub_resource type="ZoneResource" id="ZoneResource_jka67"]
+heightMapImage = ExtResource("1_7lk1g")
+waterImage = ExtResource("2_xn7lg")
+
+[sub_resource type="ZonesResource" id="ZonesResource_i5arm"]
+zones = Array[ZoneResource]([SubResource("ZoneResource_jka67")])
+
+[node name="Node3D" type="Node3D" unique_id=1243696031]
+
+[node name="TerraBrush" type="TerraBrush" parent="." unique_id=864053143]
+dataPath = "res://terrain"
+zonesSize = 512
+waterDefinition = SubResource("WaterResource_r3fl7")
+terrainZones = SubResource("ZonesResource_i5arm")
+physics_interpolation_mode = 2
+metadata/_edit_lock_ = false
+
+[node name="Car" parent="." unique_id=1374223432 instance=ExtResource("3_hatoi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.13606, 24.797775, 40.605694)
