@@ -1,3 +1,42 @@
 [gd_scene format=3 uid="uid://dwo4xgfivd76o"]
 
+[ext_resource type="Script" uid="uid://c1yqejbyu705u" path="res://src/car.gd" id="1_f3sb7"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_f3sb7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fj7yv"]
+albedo_color = Color(0.73, 0.124100015, 0.124100015, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f3sb7"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gv5m4"]
+size = Vector2(20, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f3sb7"]
+size = Vector3(18.97107, 1, 19.4682)
+
 [node name="Node3D" type="Node3D" unique_id=1929699023]
+
+[node name="Car" type="CharacterBody3D" parent="." unique_id=886195356]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 4.530578, 0)
+script = ExtResource("1_f3sb7")
+
+[node name="CarMesh" type="MeshInstance3D" parent="Car" unique_id=845618577]
+mesh = SubResource("CapsuleMesh_f3sb7")
+surface_material_override/0 = SubResource("StandardMaterial3D_fj7yv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Car" unique_id=414166272]
+shape = SubResource("CapsuleShape3D_f3sb7")
+
+[node name="Camera3D" type="Camera3D" parent="Car" unique_id=1993750175]
+transform = Transform3D(-1, -7.5710346e-08, 4.3711385e-08, 8.444391e-08, -0.7071069, 0.7071067, -2.2626676e-08, 0.7071067, 0.7071069, 0, 2.7221599, 1.5105367)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1780995577]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29749393, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=2092091094]
+mesh = SubResource("PlaneMesh_gv5m4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1415829257]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15362549, -0.30636454, -0.17904663)
+shape = SubResource("BoxShape3D_f3sb7")
