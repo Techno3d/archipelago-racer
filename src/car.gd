@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 
 	var turn_input = Input.get_axis("left", "right")
 	current_turn = move_toward(current_turn, turn_input * max_turn, turn_friction * delta)
-	car_model.steer = current_turn
+	car_model.steer = turn_input * max_turn
 
 	var speed_factor = clamp(SPEED / top_speed, -0.5, 1.0)
 	rotate_y(-current_turn * turn_speed * speed_factor * delta)

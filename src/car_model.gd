@@ -2,9 +2,11 @@ class_name CarModel
 extends MeshInstance3D
 
 var speed: float = 0
-var steer: float = PI
-@onready var rears = $'Scene Collection/Car/WheelCollection/FRWheel'
-@onready var forewards = $'Scene Collection/Car/WheelCollection/FLWheel'
+var steer: float = 0
+var rotationx = 0
+@onready var rears = $'RearWheel'
+@onready var fl = $'FLWheel'
+@onready var fr = $'FRWheel'
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,5 +16,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	rears.rotate_x(speed * delta)
-	forewards.rotate_x(speed * delta)
+	rotationx += fmod(speed * delta, TAU) 
+	fl.rotation = Vector3(rotationx,-steer*0.5,0)
+	fr.rotation = Vector3(rotationx,-steer*0.5,0)
+
 	

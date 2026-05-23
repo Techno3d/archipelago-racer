@@ -3,6 +3,3 @@
 [ext_resource type="PackedScene" uid="uid://blufxoq3jac2b" path="res://assets/models/Car.glb" id="1_f2nnp"]
 
 [node name="Car2" unique_id=1276940022 instance=ExtResource("1_f2nnp")]
-
-[node name="FRWheel" parent="Scene Collection/Car/WheelCollection" parent_id_path=PackedInt32Array(1305340873) index="0" unique_id=1490083871]
-transform = Transform3D(0.0007323781, -0.99999976, 4.3711378e-08, 0, -4.371139e-08, -1, 0.99999976, 0.0007323781, -3.2013264e-11, -0.73106307, 2.3841858e-07, -0.64724517)
