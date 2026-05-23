@@ -69,7 +69,7 @@ shadow_mesh = SubResource("ArrayMesh_ue3ow")
 [sub_resource type="BoxShape3D" id="BoxShape3D_tnhlw"]
 size = Vector3(0.6798706, 1.2158203, 0.11431885)
 
-[node name="overheadRound(Clone)" type="MeshInstance3D" unique_id=1972916246]
+[node name="CheckpointGate" type="MeshInstance3D" unique_id=1972916246]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, -0.01, -0.65)
 mesh = SubResource("ArrayMesh_r6hke")
 script = ExtResource("1_luqgl")

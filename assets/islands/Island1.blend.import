@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dhwt0ii4rd0n7"
-path="res://.godot/imported/Island1.blend-ccc8fb46935b5854754b5ad0d75c59a8.scn"
+valid=false
 
 [deps]
 
 source_file="res://assets/islands/Island1.blend"
-dest_files=["res://.godot/imported/Island1.blend-ccc8fb46935b5854754b5ad0d75c59a8.scn"]
 
 [params]
 

@@ -96,7 +96,7 @@ shadow_mesh = SubResource("ArrayMesh_5jscc")
 [sub_resource type="BoxShape3D" id="BoxShape3D_ir4xs"]
 size = Vector3(0.6798706, 1.2158203, 0.11431885)
 
-[node name="overheadLights(Clone)" type="MeshInstance3D" unique_id=1039711912]
+[node name="TimeTrialsStartGate" type="MeshInstance3D" unique_id=1039711912]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
 mesh = SubResource("ArrayMesh_anoqo")
 script = ExtResource("1_0avnc")
