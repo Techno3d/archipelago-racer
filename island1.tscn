@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://rjvj6wmqbegc"]
-
-[ext_resource type="PackedScene" uid="uid://bdastxb5mx67s" path="res://assets/MaybeTerrain.blend" id="1_746cl"]
-
-[node name="Island1" type="Node3D" unique_id=1037267762]
-
-[node name="MaybeTerrain" parent="." unique_id=1894112073 instance=ExtResource("1_746cl")]

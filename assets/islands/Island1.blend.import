@@ -3,17 +3,17 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bdastxb5mx67s"
-path="res://.godot/imported/MaybeTerrain.blend-06348a57c061330bcbed9e60174dd368.scn"
+uid="uid://dhwt0ii4rd0n7"
+path="res://.godot/imported/Island1.blend-ccc8fb46935b5854754b5ad0d75c59a8.scn"
 
 [deps]
 
-source_file="res://assets/MaybeTerrain.blend"
-dest_files=["res://.godot/imported/MaybeTerrain.blend-06348a57c061330bcbed9e60174dd368.scn"]
+source_file="res://assets/islands/Island1.blend"
+dest_files=["res://.godot/imported/Island1.blend-ccc8fb46935b5854754b5ad0d75c59a8.scn"]
 
 [params]
 
-nodes/root_type="MeshInstance3D"
+nodes/root_type=""
 nodes/root_name=""
 nodes/root_script=null
 nodes/apply_root_scale=true
