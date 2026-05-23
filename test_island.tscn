@@ -4,6 +4,7 @@
 [ext_resource type="Image" uid="uid://cp140jo75quts" path="res://terrain/Water_0_0.res" id="2_xn7lg"]
 [ext_resource type="PackedScene" uid="uid://bee114r5u6eq8" path="res://car.tscn" id="3_hatoi"]
 [ext_resource type="PackedScene" uid="uid://cjlsytwctm5wl" path="res://time_trials.tscn" id="4_xn7lg"]
+[ext_resource type="PackedScene" uid="uid://cit3atv4q613p" path="res://checkpoint.tscn" id="5_hatoi"]
 
 [sub_resource type="WaterResource" id="WaterResource_r3fl7"]
 waterFactor = 10.0
@@ -37,4 +38,9 @@ floor_block_on_wall = false
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1933314826]
 
 [node name="CSGTorus3D" parent="." unique_id=1796047761 instance=ExtResource("4_xn7lg")]
-transform = Transform3D(0.012010023, -0.18556996, -0.9825578, 0.99791235, 0.06458454, 0, 0.063458025, -0.9805063, 0.18595818, -102.20504, 26.808287, 29.32838)
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -118.91906, 24.471865, 29.32838)
+times = Array[float]([60.0, 45.0, 30.0, 15.0, 0.0])
+num_checkpoints = 1
+
+[node name="overheadRound(Clone)" parent="." unique_id=1972916246 instance=ExtResource("5_hatoi")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 97.50807, 25.775116, 30.477947)

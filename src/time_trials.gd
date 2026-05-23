@@ -1,4 +1,4 @@
-extends CSGTorus3D # CHANGE THIS TO MESH INSTANCE
+extends MeshInstance3D 
 
 
 @export var times: Array[float] = [60]
@@ -10,13 +10,14 @@ var started: bool = false
 @export var num_checkpoints = 0
 var checkpoints_passed = 0
  
-
 var best_time: float = -1
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Area3D.body_entered.connect(passed)
+	Globals.checkpoint_passed.connect(func(): 
+		checkpoints_passed+=1
+		)
 	pass # Replace with function body.
 
 func _process(delta: float) -> void:
@@ -30,7 +31,7 @@ func passed(body) -> void:
 		started = true
 		return
 	if checkpoints_passed != num_checkpoints: return
-	
+	checkpoints_passed = 0
 	if best_time == -1:
 		best_time = current_run_timer
 	elif current_run_timer < best_time:
