@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Archipelago="*uid://c0ovofocoscyg"
-TerrainRebuildCoordinator="*uid://brautlco0ivx3"
+TerrainRebuildCoordinator="uid://brautlco0ivx3"
 Globals="*uid://07oyqorcsggd"
 
 [display]

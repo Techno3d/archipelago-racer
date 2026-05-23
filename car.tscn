@@ -10,6 +10,8 @@ point_count = 2
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f3sb7"]
 
 [node name="Car" type="CharacterBody3D" unique_id=1374223432]
+wall_min_slide_angle = 0.0
+floor_stop_on_slope = false
 script = ExtResource("1_7822p")
 accel_curve = SubResource("Curve_uoj53")
 

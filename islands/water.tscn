@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bw0synsryh8ul"]
+
+[ext_resource type="Shader" uid="uid://cv76cnc5ughm4" path="res://islands/water.tres" id="1_r1g6q"]
+[ext_resource type="Script" uid="uid://j7ahkudgogca" path="res://islands/water.gd" id="2_t2w5k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5f5xi"]
+render_priority = 0
+shader = ExtResource("1_r1g6q")
+shader_parameter/ColorParameter = Color(0.235294, 1, 1, 0.352941)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1gnqd"]
+lightmap_size_hint = Vector2i(5002, 5002)
+material = SubResource("ShaderMaterial_5f5xi")
+size = Vector2(1000, 1000)
+subdivide_width = 200
+subdivide_depth = 200
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_u3btu"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" unique_id=689727303]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -4)
+mesh = SubResource("PlaneMesh_1gnqd")
+script = ExtResource("2_t2w5k")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1547285245]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=590459661]
+shape = SubResource("WorldBoundaryShape3D_u3btu")
