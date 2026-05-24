@@ -96,8 +96,20 @@ shadow_mesh = SubResource("ArrayMesh_5jscc")
 [sub_resource type="BoxShape3D" id="BoxShape3D_ir4xs"]
 size = Vector3(0.6798706, 1.2158203, 0.11431885)
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0avnc"]
+points = PackedVector3Array(-7.450581e-09, 0.1900196, 0.19, -0.14, 0.1900196, 0.19, -0.14, -0.00999999, -0.009980425, 0.019999996, 0.5298865, -0.009980425, 0.019576453, 0.66819996, 0.12977076, -0.0059888484, 0.023936778, 1.3877788e-17, -0.0017647115, 5.551115e-17, 0.1870591, -0.14, 0.58992565, 0.12998238, -0.14, -0.00999999, 0.19, -0.14, 0.58992565, -0.009980425, 0.012014874, 0.6360633, 0, -0.14, 0.54998827, 0.14996868, -0.07798962, 0.6360633, 0, -0.07832799, 0.64182013, 0.12666938, 0.019999996, 0.5298865, 0.12998238, -7.450581e-09, 0.54998827, 0.14996868)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ir4xs"]
+points = PackedVector3Array(0.020064592, 0.53, -0.009964772, 0.65990996, 0.7099824, 0.14996868, 0.63988453, 0.6899687, 0.16999999, 0.68, 0.53, -0.009964772, 0.65990996, 0.53, 0.14996868, 0.020064592, 0.6699726, -0.009964772, 0.031767234, 0.66819996, 0.12820089, 0.68, 0.6699726, -0.009964772, 0.050131217, 0.53819996, 0.1254207, 0.35991582, 0.5700274, 0.16999999, 0.35991582, 0.7099824, 0.08998042, 0.35991582, 0.6899687, 0.16999999, 0.34008417, 0.7099824, 0.14996868, 0.34008417, 0.53, 0.14996868, 0.63988453, 0.5700274, 0.16999999, 0.63988453, 0.7099824, 0.08998042, 0.68, 0.6699726, 0.08998042, 0.68, 0.53, 0.08998042, 0.65990996, 0.7099824, 0.10997651, 0.34008417, 0.7099824, 0.10997651)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vnwcy"]
+points = PackedVector3Array(1.0069999, 0.48404834, 0, 1.1399999, 0.19003916, 0.19, 1.0000136, 0.19003916, 0.19, 1.1399999, -0.00999999, -0.009980425, 1.1399999, 0.51, 0.14996868, 1.0069999, 0.015951654, 0, 1.1399999, 0.51, -0.009980425, 1.1399999, -0.00999999, 0.19, 1.0000136, 0.51, 0.14996868, 1.0027056, 2.7755576e-17, 0.18615422, 1.1399999, 0.3699726, 0.16997455, 1.0000136, 0.3699726, 0.16997455)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hspal"]
+points = PackedVector3Array(0.9999334, 0.5100156, -0.009984344, 1.0799394, 0.6699844, 0.12997064, 1.14, 0.5500117, 0.15, 0.680045, 0.5300137, 0.08997455, 0.680045, 0.6699844, -0.009984344, 1.0799394, 0.6699844, -0.009984344, 0.680045, 0.6699844, 0.08997455, 0.680045, 0.5300137, -0.009984344, 0.9999334, 0.5100156, 0.15, 1.14, 0.5100156, -0.009984344, 1.14, 0.58999217, -0.009984344, 1.14, 0.5100156, 0.15, 0.9999334, 0.5500117, 0.15, 0.87, 0.6540549, 0.118028566, 1.1199198, 0.62997264, -0.009984344)
+
 [node name="TimeTrialsStartGate" type="MeshInstance3D" unique_id=1039711912]
-transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+transform = Transform3D(18, 0, 0, 0, 18, 0, 0, 0, 18, 0, 0, 0)
 mesh = SubResource("ArrayMesh_anoqo")
 script = ExtResource("1_0avnc")
 
@@ -107,3 +119,17 @@ transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1785918601]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34597835, -0.47314453, 0.075042725)
 shape = SubResource("BoxShape3D_ir4xs")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=649436266]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=558941641]
+shape = SubResource("ConvexPolygonShape3D_0avnc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=1352511254]
+shape = SubResource("ConvexPolygonShape3D_ir4xs")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" unique_id=983879553]
+shape = SubResource("ConvexPolygonShape3D_vnwcy")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D" unique_id=155000267]
+shape = SubResource("ConvexPolygonShape3D_hspal")

@@ -11,12 +11,17 @@ var current_turn = 0.0
 var turn_friction = 4.0  
 var max_turn = 1.5
 
+var spawn_point: Transform3D
+
+
 @export var accel_curve: Curve
 @onready var car_model: CarModel = $CarMesh
 
 func _ready() -> void:
+	spawn_point = transform
 	if Archipelago.conn:
 		Archipelago.conn.deathlink.connect(respawn)
+	
 
 func _physics_process(delta: float) -> void:
 	#print("SPEED: ", SPEED, " | velocity: ", velocity)
@@ -51,4 +56,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func respawn():
-	print("put respawn code here")
+	Globals.goal.reset()
+	velocity = Vector3.ZERO
+	SPEED = 0
+	current_turn = 0
+	transform = spawn_point
+	

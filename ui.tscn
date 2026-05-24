@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bohy1uwlk3vcd"]
+
+[ext_resource type="Script" uid="uid://dbndaagoa2xr2" path="res://ui.gd" id="1_v2lfg"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1118733812]
+script = ExtResource("1_v2lfg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1114639332]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=605820503]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Debug Label" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=32410027]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="VBoxContainer" unique_id=1904783218]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 14.0

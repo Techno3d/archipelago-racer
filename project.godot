@@ -29,7 +29,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/extra_snaps/plugin.cfg", "res://addons/road-generator/plugin.cfg")
 
 [input]
 
