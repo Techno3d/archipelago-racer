@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bee114r5u6eq8"]
 
 [ext_resource type="Script" uid="uid://c1yqejbyu705u" path="res://src/car.gd" id="1_7822p"]
-[ext_resource type="PackedScene" uid="uid://blufxoq3jac2b" path="res://assets/models/Car.glb" id="2_uoj53"]
+[ext_resource type="PackedScene" uid="uid://c2dsu1hklobt5" path="res://assets/models/Car.glb" id="2_uoj53"]
 
 [sub_resource type="Curve" id="Curve_uoj53"]
 _data = [Vector2(0, 1), 0.0, 0.47506168, 0, 0, Vector2(0.9927272, 0), -3.2938392, 0.0, 0, 0]
