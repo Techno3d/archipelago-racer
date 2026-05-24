@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://dhwt0ii4rd0n7" path="res://assets/islands/Island1.blend" id="1_yndr3"]
 [ext_resource type="PackedScene" uid="uid://bee114r5u6eq8" path="res://car.tscn" id="2_gn4co"]
 [ext_resource type="PackedScene" uid="uid://cit3atv4q613p" path="res://checkpoint.tscn" id="3_ekbnt"]
-[ext_resource type="PackedScene" uid="uid://wjlr2tmi5nmk" path="res://assets/models/roadBump.glb" id="4_ekbnt"]
 [ext_resource type="PackedScene" uid="uid://bw0synsryh8ul" path="res://islands/water.tscn" id="5_3c1dq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yfoay"]
@@ -206,9 +205,6 @@ spot_angle = 66.09375
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1207843941]
 environment = SubResource("Environment_3c1dq")
-
-[node name="roadBump" parent="." unique_id=101095638 instance=ExtResource("4_ekbnt")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 162.78206, 130.89502, 73.57934)
 
 [node name="MeshInstance3D" parent="." unique_id=689727303 instance=ExtResource("5_3c1dq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38, 0)
