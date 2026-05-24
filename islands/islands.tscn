@@ -1,12 +1,27 @@
 [gd_scene format=3 uid="uid://bshwlp27ijlmx"]
 
-[ext_resource type="PackedScene" uid="uid://cg3jttdwx2vj" path="res://assets/islands/Islands.blend" id="1_dsdn8"]
 [ext_resource type="PackedScene" uid="uid://bee114r5u6eq8" path="res://car.tscn" id="2_a8idy"]
+[ext_resource type="PackedScene" uid="uid://bumpe34224r5n" path="res://assets/islands/Island1.glb" id="2_cbnt1"]
+[ext_resource type="PackedScene" uid="uid://224w70qrpxx0" path="res://assets/islands/Island2.glb" id="3_sq2ha"]
+[ext_resource type="PackedScene" uid="uid://b46for2683jdw" path="res://assets/islands/Island3.glb" id="4_sq2ha"]
+[ext_resource type="PackedScene" uid="uid://gy4dtk36qxos" path="res://assets/islands/Island4.glb" id="5_bpmhy"]
+[ext_resource type="PackedScene" uid="uid://drdorh3xpln4x" path="res://assets/islands/Island5.glb" id="6_t78j6"]
 
 [node name="Islands" type="Node3D" unique_id=374355441]
 
-[node name="Islands" parent="." unique_id=577124859 instance=ExtResource("1_dsdn8")]
-transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
-
 [node name="Car" parent="." unique_id=1374223432 instance=ExtResource("2_a8idy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -199.22412, 75.44083, -183.44409)
+
+[node name="Island1" parent="." unique_id=926539397 instance=ExtResource("2_cbnt1")]
+
+[node name="Island2" parent="." unique_id=1110722637 instance=ExtResource("3_sq2ha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -535.16235, 0, 725.1387)
+
+[node name="Island3" parent="." unique_id=1865592612 instance=ExtResource("4_sq2ha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 543.60974, 0, 675.9745)
+
+[node name="Island4" parent="." unique_id=1966912557 instance=ExtResource("5_bpmhy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -875.5941, 0, -41.790955)
+
+[node name="Island5" parent="." unique_id=290872588 instance=ExtResource("6_t78j6")]
+transform = Transform3D(0.5189374, 0, -0.8548124, 0, 1, 0, 0.8548124, 0, 0.5189374, 108.39548, 0, -1460.5275)
