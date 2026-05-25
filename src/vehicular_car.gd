@@ -5,7 +5,7 @@ var turn_speed = 1
 var current_turn = 0.0
 var turn_friction = 4.0  
 var turn_angle = 45
-var max_turn = 15
+var max_turn = 20
 
 @export var accel_curve: Curve
 @export var accel = 10.0
@@ -16,9 +16,7 @@ var max_turn = 15
 
 # Car Wheel Contact Points
 @onready var fl_contact: Marker3D = $FLContact
-@onready var fr_contact: Marker3D = $FRContact
 @onready var rl_contact: Marker3D = $RLContact
-@onready var rr_contact: Marker3D = $RRContact
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -36,8 +34,9 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		breaking = 0
 		turn_input = 0
 	var forward_dir: Vector3 = (global_transform.basis * Vector3(0,0,1)).normalized()
-	# var turn_quat = Quaternion.from_euler(Vector3(0, turn_angle*turn_input*accel_curve.sample(angular_velocity.length()/max_turn), 0) * global_transform.basis).normalized()
-	var wheel_dir = forward_dir.rotated(global_transform.basis*Vector3.UP, -turn_angle*turn_input*accel_curve.sample(angular_velocity.length()/max_turn))
+	var turn_quat = Quaternion.from_euler(Vector3(0, turn_angle*turn_input, 0) * global_transform.basis).normalized()
+	# var wheel_dir = forward_dir.rotated(global_transform.basis*Vector3.UP, -turn_angle*turn_input*accel_curve.sample(angular_velocity.length()/max_turn))
+	var wheel_dir = forward_dir * turn_quat
 	var perp_wheel_dir = wheel_dir.rotated(global_basis*Vector3.UP, -PI/2)
 	# # # Mass times accel * direction of wheel * where on accel curve. Power of engine/motor is limited, but it takes more power the faster you are to move
 	# # # as `P = F * v` I think. This also serves to clamp the speed
@@ -46,22 +45,26 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	var breaking_force = -forward_dir * breaking * accel/2. * mass * accel_curve.sample(clampf(linear_velocity.length()/(top_speed/2.), 0, 1)*-1) * 100
 
 	# cross friction must be higher than in line
-	var fraction_linear_cross = (perp_wheel_dir).dot(linear_velocity)
+	var fraction_linear_cross_front = (perp_wheel_dir).dot(linear_velocity)
+	var fraction_linear_cross_back = (global_basis*Vector3.RIGHT).dot(linear_velocity)
+	var fraction_linear_cross = (fraction_linear_cross_back+3*fraction_linear_cross_front)/4.
 	state.apply_central_force(perp_wheel_dir*fraction_linear_cross*-1*mass*0.9)
 
 
-	state.apply_torque((global_basis*steering_point.position*linear_velocity.length()/top_speed*2).cross(wheel_dir*mass*0.6))
+	state.apply_torque((global_basis*steering_point.position*linear_velocity.length()/top_speed*2).cross(wheel_dir*mass*0.6) * sign(linear_velocity.dot(wheel_dir)))
 
-	# state.apply_force(motor_force/8, fl_contact.global_position - global_position)
-	# state.apply_force(motor_force/8., fr_contact.global_position - global_position)
-	# state.apply_force(3*motor_force/8., rl_contact.global_position - global_position)
-	# state.apply_force(3*motor_force/8., rr_contact.global_position - global_position)
-	state.apply_central_force(motor_force)
-	# state.apply_force(breaking_force/8. * turn_quat, fl_contact.global_position - global_position)
-	# state.apply_force(breaking_force/8. * turn_quat, fr_contact.global_position - global_position)
-	# state.apply_force(2*breaking_force/8., rl_contact.global_position - global_position)
-	# state.apply_force(2*breaking_force/8., rr_contact.global_position - global_position)
-	state.apply_central_force(breaking_force)
+	# I originally split the motor force to do "power steering", where the front wheels rotate their force, but that gets jumpy
+	var turn_quat_lower = Quaternion.from_euler(Vector3(0, turn_input * TAU/180., 0) * global_transform.basis).normalized()
+	state.apply_force(motor_force/4. * turn_quat_lower, global_basis*fl_contact.position)
+	state.apply_force(motor_force/4. * turn_quat_lower, global_basis*(fl_contact.position*Vector3(-1,1,1)))
+	state.apply_force(motor_force/4., global_basis*rl_contact.position)
+	state.apply_force(motor_force/4., global_basis*(rl_contact.position*Vector3(-1,1,1)))
+	# state.apply_central_force(motor_force)
+	state.apply_force(breaking_force/4. * turn_quat_lower, global_basis*fl_contact.position)
+	state.apply_force(breaking_force/4. * turn_quat_lower, global_basis*(fl_contact.position*Vector3(-1,1,1)))
+	state.apply_force(breaking_force/4., global_basis*rl_contact.position)
+	state.apply_force(breaking_force/4., global_basis*(rl_contact.position*Vector3(-1,1,1)))
+	# state.apply_central_force(breaking_force)
 
 func _process(_delta: float) -> void:
 	car_model.speed = linear_velocity.length()

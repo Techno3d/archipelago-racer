@@ -5,7 +5,7 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wb3y8"]
 friction = 0.0
-rough = true
+bounce = 0.1
 
 [sub_resource type="Curve" id="Curve_wb3y8"]
 _limits = [0.0, 1.0, -1.0, 1.0]
@@ -17,6 +17,10 @@ size = Vector3(0.5215149, 2.3287811, 0.40161133)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u22bx"]
 size = Vector3(1, 0.060791016, 1.918396)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wb3y8"]
+height = 0.20019531
+radius = 0.24804688
 
 [node name="VehicularCar" type="RigidBody3D" unique_id=1804453601]
 collision_layer = 2
@@ -58,11 +62,21 @@ gizmo_extents = 0.0
 [node name="FLContact" type="Marker3D" parent="." unique_id=1447041193]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4320972, -0.09, 1.1740901)
 
-[node name="FRContact" type="Marker3D" parent="." unique_id=1735700707]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.432, -0.09, 1.1745632)
-
 [node name="RLContact" type="Marker3D" parent="." unique_id=1578781054]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7237556, -0.09, -0.43343675)
 
-[node name="RRContact" type="Marker3D" parent="." unique_id=581536025]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.724, -0.09, -0.43343675)
+[node name="FRWheel" type="CollisionShape3D" parent="." unique_id=1298357318]
+transform = Transform3D(0, -1.0000001, 0, 1.0000001, 0, 0, 0, 0, 1, -0.4379883, 0.16544008, 1.1695229)
+shape = SubResource("CylinderShape3D_wb3y8")
+
+[node name="FLWheel" type="CollisionShape3D" parent="." unique_id=288125264]
+transform = Transform3D(0, -1.0000001, 0, 1.0000001, 0, 0, 0, 0, 1, 0.4286553, 0.165, 1.17)
+shape = SubResource("CylinderShape3D_wb3y8")
+
+[node name="RRWheel" type="CollisionShape3D" parent="." unique_id=1514167066]
+transform = Transform3D(0, -1.0000001, 0, 1.0000001, 0, 0, 0, 0, 1, -0.7318568, 0.1676035, -0.43162608)
+shape = SubResource("CylinderShape3D_wb3y8")
+
+[node name="FRWheel2" type="CollisionShape3D" parent="." unique_id=884500889]
+transform = Transform3D(0, -1.0000001, 0, 1.0000001, 0, 0, 0, 0, 1, 0.7226553, 0.168, -0.432)
+shape = SubResource("CylinderShape3D_wb3y8")
