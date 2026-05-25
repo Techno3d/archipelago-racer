@@ -1,5 +1,5 @@
 class_name CarModel 
-extends MeshInstance3D
+extends Node3D
 
 var speed: float = 0
 var steer: float = 0
