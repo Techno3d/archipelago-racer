@@ -5,7 +5,7 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wb3y8"]
 friction = 0.0
-bounce = 0.1
+absorbent = true
 
 [sub_resource type="Curve" id="Curve_wb3y8"]
 _limits = [0.0, 1.0, -1.0, 1.0]
@@ -13,7 +13,7 @@ _data = [Vector2(-1, 0), 0.0, 0.0, 0, 0, Vector2(-0.37454545, 0.36370486), 1.749
 point_count = 4
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wb3y8"]
-size = Vector3(0.5215149, 2.3287811, 0.40161133)
+size = Vector3(0.5215149, 2, 0.40161133)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u22bx"]
 size = Vector3(1, 0.060791016, 1.918396)
@@ -30,7 +30,7 @@ physics_material_override = SubResource("PhysicsMaterial_wb3y8")
 gravity_scale = 3.0
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.09, 0)
-contact_monitor = true
+can_sleep = false
 max_contacts_reported = 10
 linear_damp = 1.0
 angular_damp = 1.0
@@ -40,8 +40,8 @@ accel_curve = SubResource("Curve_wb3y8")
 [node name="Car" parent="." unique_id=836562085 instance=ExtResource("1_guv52")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16610754, 0.21156323)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=291636889]
-transform = Transform3D(1, 0, 0, 0, 0.004031723, 0.9999919, 0, -0.9999919, 0.004031723, -0.0075531006, 0.27073795, 0.4418179)
+[node name="BodyCollider" type="CollisionShape3D" parent="." unique_id=291636889]
+transform = Transform3D(1, 0, 0, 0, 0.004031723, 0.9999919, 0, -0.9999919, 0.004031723, -0.0075531006, 0.27140072, 0.2774287)
 shape = SubResource("BoxShape3D_wb3y8")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=254348556]
