@@ -16,7 +16,7 @@ var best_time: float = -1
 func _ready() -> void:
 	$Area3D.body_entered.connect(passed)
 	Globals.checkpoint_passed.connect(func(id: int): 
-		if id - last_checkpoint < 2:
+		if id - last_checkpoint <= 2:
 			last_checkpoint = id
 		)
 	Globals.goal = self

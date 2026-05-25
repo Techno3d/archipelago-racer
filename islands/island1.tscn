@@ -4,12 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://bee114r5u6eq8" path="res://car.tscn" id="2_gn4co"]
 [ext_resource type="Script" uid="uid://itxo6qdck5nf" path="res://addons/road-generator/nodes/road_manager.gd" id="3_3c1dq"]
 [ext_resource type="PackedScene" uid="uid://cit3atv4q613p" path="res://checkpoint.tscn" id="3_ekbnt"]
-
 [ext_resource type="Material" uid="uid://dpashsuk5lr4x" path="res://addons/road-generator/resources/road_texture.material" id="4_1gnqd"]
 [ext_resource type="Script" uid="uid://54fgt4oael77" path="res://addons/road-generator/nodes/road_container.gd" id="4_5f5xi"]
 [ext_resource type="Script" uid="uid://b0lgxoowg1ede" path="res://addons/road-generator/nodes/road_point.gd" id="5_1gnqd"]
 [ext_resource type="PackedScene" uid="uid://bw0synsryh8ul" path="res://islands/water.tscn" id="5_3c1dq"]
 [ext_resource type="PackedScene" uid="uid://cjlsytwctm5wl" path="res://time_trials.tscn" id="7_1gnqd"]
+[ext_resource type="Script" uid="uid://chcnyto0lbcqr" path="res://src/hazard.gd" id="10_rpx1u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yfoay"]
 resource_name = "Ground"
@@ -182,6 +182,10 @@ glow_enabled = true
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.005
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mbdwp"]
+height = 39.1557
+radius = 87.09326
+
 [node name="Island1" type="Node3D" unique_id=1794474086]
 
 [node name="CanvasLayer" parent="." unique_id=1118733812 instance=ExtResource("1_pepq5")]
@@ -222,6 +226,7 @@ metadata/_custom_type_script = "uid://itxo6qdck5nf"
 
 [node name="RoadContainer" type="Node3D" parent="RoadManager" unique_id=783573127]
 script = ExtResource("4_5f5xi")
+material_resource = ExtResource("4_1gnqd")
 use_lowpoly_preview = true
 underside_thickness = 1.0
 edge_containers = Array[NodePath]([NodePath("../Road_001"), NodePath("")])
@@ -360,6 +365,7 @@ next_pt_init = NodePath("../RP_012")
 [node name="Road_001" type="Node3D" parent="RoadManager" unique_id=546642368]
 transform = Transform3D(0.99998957, 0, -0.004565592, 0, 1, 0, 0.004565592, 0, 0.99998957, -218.84164, 63.864334, 39.584934)
 script = ExtResource("4_5f5xi")
+material_resource = ExtResource("4_1gnqd")
 use_lowpoly_preview = true
 underside_thickness = 1.0
 draw_lanes_editor = true
@@ -561,3 +567,10 @@ id = 5
 [node name="CheckpointGate7" parent="." unique_id=311662623 instance=ExtResource("3_ekbnt")]
 transform = Transform3D(-17.282822, -0.96354926, 4.9371657, -2.8341568, 16.460945, -6.7085643, -4.1559105, -7.2186456, -15.956803, 65.756386, 127.25294, -244.24469)
 id = 2
+
+[node name="Area3D" type="Area3D" parent="." unique_id=403885424]
+script = ExtResource("10_rpx1u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1614870416]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.181717, 117.15745, 0)
+shape = SubResource("CylinderShape3D_mbdwp")
