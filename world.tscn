@@ -1,24 +1,18 @@
 [gd_scene format=3 uid="uid://dwo4xgfivd76o"]
 
-[ext_resource type="PackedScene" uid="uid://bee114r5u6eq8" path="res://car.tscn" id="1_f3sb7"]
-[ext_resource type="PackedScene" uid="uid://bumpe34224r5n" path="res://assets/islands/Island1.glb" id="1_fj7yv"]
+[ext_resource type="Shader" uid="uid://d0sov8dr03fln" path="res://debug.gdshader" id="1_fj7yv"]
+[ext_resource type="PackedScene" uid="uid://cghvtgke8ylu7" path="res://vehicular_car.tscn" id="2_fj7yv"]
+[ext_resource type="PackedScene" uid="uid://bumpe34224r5n" path="res://assets/islands/Island1.glb" id="3_tlwt5"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_f3sb7"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fj7yv"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tlwt5"]
-albedo_texture = SubResource("PlaceholderTexture2D_f3sb7")
-metallic = 1.0
-metallic_texture = SubResource("PlaceholderTexture2D_fj7yv")
-normal_enabled = true
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tlwt5"]
+render_priority = 0
+shader = ExtResource("1_fj7yv")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_gv5m4"]
-material = SubResource("StandardMaterial3D_tlwt5")
+material = SubResource("ShaderMaterial_tlwt5")
 size = Vector2(20, 20)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_f3sb7"]
-size = Vector3(18.97107, 1, 19.4682)
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_fj7yv"]
 
 [node name="Node3D" type="Node3D" unique_id=1929699023]
 
@@ -26,18 +20,21 @@ size = Vector3(18.97107, 1, 19.4682)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29749393, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=2092091094]
-transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0.026606083, -0.33084393, -0.00018501282)
 mesh = SubResource("PlaneMesh_gv5m4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1415829257]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -0.15362549, -0.30636454, -0.17904663)
-shape = SubResource("BoxShape3D_f3sb7")
-
-[node name="Island1" parent="StaticBody3D" unique_id=1359687715 instance=ExtResource("1_fj7yv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.49252, -3.2411966, -106.13443)
+shape = SubResource("WorldBoundaryShape3D_fj7yv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=92209685]
 transform = Transform3D(1, 0, 0, 0, -0.44768113, 0.8941933, 0, -0.8941933, -0.44768113, 0, 614.1875, -8.024273)
 
-[node name="Car" parent="." unique_id=1374223432 instance=ExtResource("1_f3sb7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5670319, 0)
+[node name="VehicularCar" parent="." unique_id=1804453601 instance=ExtResource("2_fj7yv")]
+transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 0.9999998, 0, 0, 0)
+disable_mode = 2
+can_sleep = false
+contact_monitor = false
+
+[node name="modified_Island1" parent="." unique_id=1965788076 instance=ExtResource("3_tlwt5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.187653, -13.573603, -170.62741)

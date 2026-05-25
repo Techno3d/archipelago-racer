@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://cghvtgke8ylu7"]
+
+[ext_resource type="PackedScene" uid="uid://c2dsu1hklobt5" path="res://assets/models/Car.glb" id="1_guv52"]
+[ext_resource type="Script" uid="uid://cbjqe74j8esp4" path="res://src/vehicular_car.gd" id="1_wb3y8"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wb3y8"]
+friction = 0.0
+rough = true
+
+[sub_resource type="Curve" id="Curve_wb3y8"]
+_limits = [0.0, 1.0, -1.0, 1.0]
+_data = [Vector2(-1, 0), 0.0, 0.0, 0, 0, Vector2(-0.37454545, 0.36370486), 1.7498116, 1.7498116, 0, 0, Vector2(-0.0036363602, 1), 0.4069326, 0.4069326, 0, 0, Vector2(1, 0), -2.3074443, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wb3y8"]
+size = Vector3(0.5215149, 2.3287811, 0.40161133)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u22bx"]
+size = Vector3(1, 0.060791016, 1.918396)
+
+[node name="VehicularCar" type="RigidBody3D" unique_id=1804453601]
+collision_layer = 2
+collision_mask = 3
+mass = 1000.0
+physics_material_override = SubResource("PhysicsMaterial_wb3y8")
+gravity_scale = 3.0
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.09, 0)
+contact_monitor = true
+max_contacts_reported = 10
+linear_damp = 1.0
+angular_damp = 1.0
+script = ExtResource("1_wb3y8")
+accel_curve = SubResource("Curve_wb3y8")
+
+[node name="Car" parent="." unique_id=836562085 instance=ExtResource("1_guv52")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16610754, 0.21156323)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=291636889]
+transform = Transform3D(1, 0, 0, 0, 0.004031723, 0.9999919, 0, -0.9999919, 0.004031723, -0.0075531006, 0.27073795, 0.4418179)
+shape = SubResource("BoxShape3D_wb3y8")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=254348556]
+transform = Transform3D(-1, 2.9900352e-08, -8.215054e-08, 1.7763568e-15, 0.9396927, 0.34202015, 8.742278e-08, 0.34202015, -0.9396927, 0, 2.3112502, -3.4629045)
+
+[node name="base" type="Area3D" parent="." unique_id=2054673149]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.039242923, 0.21156323)
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="base" unique_id=2083789856]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.061631978, 0.12075806)
+shape = SubResource("BoxShape3D_u22bx")
+
+[node name="SteeringPoint" type="Marker3D" parent="." unique_id=360187136]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.09, 1.1735632)
+gizmo_extents = 0.0
+
+[node name="FLContact" type="Marker3D" parent="." unique_id=1447041193]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4320972, -0.09, 1.1740901)
+
+[node name="FRContact" type="Marker3D" parent="." unique_id=1735700707]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.432, -0.09, 1.1745632)
+
+[node name="RLContact" type="Marker3D" parent="." unique_id=1578781054]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7237556, -0.09, -0.43343675)
+
+[node name="RRContact" type="Marker3D" parent="." unique_id=581536025]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.724, -0.09, -0.43343675)
