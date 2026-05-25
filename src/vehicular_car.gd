@@ -30,8 +30,10 @@ func _ready() -> void:
 func on_ground(_body: Node3D):
 	if wheel_base.has_overlapping_bodies():
 		linear_damp = 1
+		gravity_scale = 3.0
 	else:
 		linear_damp = air_damp
+		gravity_scale = 2.0
 		last_ground_up = (global_basis*Vector3.UP).normalized()
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
@@ -45,7 +47,6 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		# Air controls
 		var up_axis = (global_basis*Vector3.UP).normalized()
 		var air_factor = clampf(up_axis.dot(last_ground_up)-0.7, 0.05, 1)
-		print(air_factor)
 		var pitch_input = throttle-breaking
 		state.apply_torque((global_basis*Vector3.RIGHT).normalized()*air_factor*pitch_input*mass)
 		state.apply_torque(up_axis*air_factor*turn_input*mass)
