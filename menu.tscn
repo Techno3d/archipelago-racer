@@ -1,0 +1,194 @@
+[gd_scene format=3 uid="uid://c6pyp3tj658pq"]
+
+[ext_resource type="Script" uid="uid://6wljcqhmrfq2" path="res://menu.gd" id="1_mae5d"]
+[ext_resource type="Script" uid="uid://cyc8jkqjagswj" path="res://godot_ap/ui/connect_box.gd" id="1_ouk20"]
+[ext_resource type="Script" uid="uid://cety6nqnci3n6" path="res://godot_ap/ui/updown_lineedit.gd" id="2_mae5d"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ouk20"]
+font_size = 70
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4hy44"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ytr4m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l48gv"]
+font_size = 20
+font_color = Color(1, 0.443684, 0.375096, 1)
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Control" type="PanelContainer" unique_id=1241743331 node_paths=PackedStringArray("buttons")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mae5d")
+islands = Array[String](["res://islands/island1.tscn"])
+buttons = [NodePath("VBoxContainer/HFlowContainer/Button"), NodePath("VBoxContainer/HFlowContainer/Button2"), NodePath("VBoxContainer/HFlowContainer/Button3"), NodePath("VBoxContainer/HFlowContainer/Button4"), NodePath("VBoxContainer/HFlowContainer/Button5")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2066324999]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=676801447]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Island Racer"
+label_settings = SubResource("LabelSettings_ouk20")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="VBoxContainer" unique_id=11239947]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="HFlowContainer" type="GridContainer" parent="VBoxContainer" unique_id=1523871355]
+layout_mode = 2
+columns = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/HFlowContainer" unique_id=947687798]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Volcano Island"
+
+[node name="Button2" type="Button" parent="VBoxContainer/HFlowContainer" unique_id=1344331700]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Mountain Island"
+
+[node name="Button3" type="Button" parent="VBoxContainer/HFlowContainer" unique_id=957888900]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Desert Island"
+
+[node name="Button4" type="Button" parent="VBoxContainer/HFlowContainer" unique_id=421421485]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Lake Island"
+
+[node name="Button5" type="Button" parent="VBoxContainer/HFlowContainer" unique_id=983735328]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Forest Island"
+
+[node name="Control" type="Control" parent="VBoxContainer" unique_id=1817069337]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Box" type="PanelContainer" parent="VBoxContainer" unique_id=536155660]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Margins" type="MarginContainer" parent="VBoxContainer/Box" unique_id=2004718882]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBox" type="VBoxContainer" parent="VBoxContainer/Box/Margins" unique_id=1841474421]
+layout_mode = 2
+
+[node name="Content" type="GridContainer" parent="VBoxContainer/Box/Margins/VBox" unique_id=880154571]
+layout_mode = 2
+theme_override_constants/v_separation = 8
+columns = 2
+script = ExtResource("1_ouk20")
+
+[node name="Label" type="Label" parent="VBoxContainer/Box/Margins/VBox/Content" unique_id=1834142389]
+layout_mode = 2
+text = "IP:"
+horizontal_alignment = 2
+
+[node name="IP_Box" type="LineEdit" parent="VBoxContainer/Box/Margins/VBox/Content" unique_id=2091473798]
+custom_minimum_size = Vector2(200, 33)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Pwd_Box")
+focus_neighbor_bottom = NodePath("../Port_Box")
+focus_next = NodePath("../Port_Box")
+focus_previous = NodePath("../Pwd_Box")
+theme_override_font_sizes/font_size = 20
+script = ExtResource("2_mae5d")
+
+[node name="Label2" type="Label" parent="VBoxContainer/Box/Margins/VBox/Content" unique_id=2134383631]
+layout_mode = 2
+text = "Port:"
+horizontal_alignment = 2
+
+[node name="Port_Box" type="LineEdit" parent="VBoxContainer/Box/Margins/VBox/Content" unique_id=1866085720]
+custom_minimum_size = Vector2(200, 33)
+layout_mode = 2
+focus_neighbor_top = NodePath("../IP_Box")
+focus_neighbor_bottom = NodePath("../Slot_Box")
+focus_next = NodePath("../Slot_Box")
+focus_previous = NodePath("../IP_Box")
+theme_override_font_sizes/font_size = 20
+script = ExtResource("2_mae5d")
+
+[node name="Label3" type="Label" parent="VBoxContainer/Box/Margins/VBox/Content" unique_id=290356078]
+layout_mode = 2
+text = "Slot:"
+horizontal_alignment = 2
+
+[node name="Slot_Box" type="LineEdit" parent="VBoxContainer/Box/Margins/VBox/Content" unique_id=1355749442]
+custom_minimum_size = Vector2(200, 33)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Port_Box")
+focus_neighbor_bottom = NodePath("../Pwd_Box")
+focus_next = NodePath("../Pwd_Box")
+focus_previous = NodePath("../Port_Box")
+theme_override_font_sizes/font_size = 20
+script = ExtResource("2_mae5d")
+
+[node name="HBox" type="HBoxContainer" parent="VBoxContainer/Box/Margins/VBox/Content" unique_id=2080330012]
+layout_mode = 2
+
+[node name="ShowPwd" type="CheckBox" parent="VBoxContainer/Box/Margins/VBox/Content/HBox" unique_id=2012322311]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4hy44")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ytr4m")
+
+[node name="Label4" type="Label" parent="VBoxContainer/Box/Margins/VBox/Content/HBox" unique_id=1102191182]
+layout_mode = 2
+text = "Passwd:"
+horizontal_alignment = 2
+
+[node name="Pwd_Box" type="LineEdit" parent="VBoxContainer/Box/Margins/VBox/Content" unique_id=975004337]
+custom_minimum_size = Vector2(200, 33)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Slot_Box")
+focus_neighbor_bottom = NodePath("../IP_Box")
+focus_next = NodePath("../IP_Box")
+focus_previous = NodePath("../Slot_Box")
+theme_override_font_sizes/font_size = 20
+script = ExtResource("2_mae5d")
+
+[node name="_nil" type="Control" parent="VBoxContainer/Box/Margins/VBox/Content" unique_id=674997239]
+layout_mode = 2
+
+[node name="ErrorLabel" type="Label" parent="VBoxContainer/Box/Margins/VBox/Content" unique_id=2020773581]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_l48gv")
+
+[node name="ButtonRow" type="HBoxContainer" parent="VBoxContainer/Box/Margins/VBox" unique_id=827644677]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ConnectBtn" type="Button" parent="VBoxContainer/Box/Margins/VBox/ButtonRow" unique_id=433019877]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Connect"
+
+[node name="DisconnectBtn" type="Button" parent="VBoxContainer/Box/Margins/VBox/ButtonRow" unique_id=1875566219]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+text = "Disconnect"
+
+[connection signal="text_submitted" from="VBoxContainer/Box/Margins/VBox/Content/IP_Box" to="VBoxContainer/Box/Margins/VBox/Content" method="try_connection" unbinds=1]
+[connection signal="text_submitted" from="VBoxContainer/Box/Margins/VBox/Content/Port_Box" to="VBoxContainer/Box/Margins/VBox/Content" method="try_connection" unbinds=1]
+[connection signal="text_submitted" from="VBoxContainer/Box/Margins/VBox/Content/Slot_Box" to="VBoxContainer/Box/Margins/VBox/Content" method="try_connection" unbinds=1]
+[connection signal="text_submitted" from="VBoxContainer/Box/Margins/VBox/Content/Pwd_Box" to="VBoxContainer/Box/Margins/VBox/Content" method="try_connection" unbinds=1]
+[connection signal="pressed" from="VBoxContainer/Box/Margins/VBox/ButtonRow/ConnectBtn" to="VBoxContainer/Box/Margins/VBox/Content" method="try_connection"]
+[connection signal="pressed" from="VBoxContainer/Box/Margins/VBox/ButtonRow/DisconnectBtn" to="VBoxContainer/Box/Margins/VBox/Content" method="kill_connection"]
