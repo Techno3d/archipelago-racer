@@ -44,6 +44,8 @@ angular_damp = 1.0
 script = ExtResource("1_wb3y8")
 accel_curve = SubResource("Curve_wb3y8")
 turn_curve = SubResource("Curve_u22bx")
+accel = 5.0
+power_steering_factor = 4.0
 
 [node name="Car" parent="." unique_id=836562085 instance=ExtResource("1_guv52")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16610754, 0.21156323)
@@ -91,7 +93,6 @@ transform = Transform3D(0, -1.0000001, 0, 1.0000001, 0, 0, 0, 0, 1, 0, 0.8870231
 
 [node name="CamPivot" type="Node3D" parent="." unique_id=838918402]
 transform = Transform3D(1, 0, 0, 0, 0.93969256, -0.3420201, 0, 0.3420201, 0.93969256, 0, 0.88702315, -0.71530247)
-top_level = true
 
 [node name="Node3D" type="Node3D" parent="CamPivot" unique_id=246638851]
 transform = Transform3D(1, 0, 0, 0, 0.93969274, -0.34202015, 0, 0.34202015, 0.93969274, 0, 0, 0)

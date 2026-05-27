@@ -7,5 +7,5 @@ func _ready() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func body_entered(body: Node3D):
-	if body is PlayerCar:
-		(body as PlayerCar).respawn()
+	if body is VehicularCar:
+		(body as VehicularCar).respawn()

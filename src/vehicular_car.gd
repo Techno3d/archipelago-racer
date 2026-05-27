@@ -1,4 +1,5 @@
 extends RigidBody3D
+class_name VehicularCar
 
 
 var turn_speed = 1
@@ -7,6 +8,7 @@ var turn_friction = 4.0
 var turn_angle = 45
 var top_angular_speed = 20
 var last_ground_up: Vector3 = Vector3.UP
+var spawn_point: Transform3D
 
 @export var accel_curve: Curve
 @export var turn_curve: Curve
@@ -28,7 +30,9 @@ var last_ground_up: Vector3 = Vector3.UP
 func _ready() -> void:
 	wheel_base.body_entered.connect(on_ground)
 	wheel_base.body_exited.connect(on_ground)
-	pass # Replace with function body.
+	spawn_point = transform
+	if Archipelago.conn:
+		Archipelago.conn.deathlink.connect(respawn)
 
 func on_ground(_body: Node3D):
 	if wheel_base.has_overlapping_bodies():
@@ -71,7 +75,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	var fraction_linear_cross_front = (perp_wheel_dir).dot(linear_velocity)
 	var fraction_linear_cross_back = (global_basis*Vector3.RIGHT).dot(linear_velocity)
 	var fraction_linear_cross = (fraction_linear_cross_back+3*fraction_linear_cross_front)/4.
-	state.apply_central_force(perp_wheel_dir*fraction_linear_cross*-1*mass*0.9)
+	state.apply_central_force(perp_wheel_dir*fraction_linear_cross*-1*mass*1.2)
 
 
 	state.apply_torque((global_basis*steering_point.position*clampf(linear_velocity.length()/(top_speed/3), 0, 1)).cross(wheel_dir*mass*0.6) * sign(linear_velocity.dot(wheel_dir)))
@@ -82,31 +86,17 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	state.apply_force(motor_force/4. * turn_quat_lower, global_basis*(fl_contact.position*Vector3(-1,1,1)))
 	state.apply_force(motor_force/4., global_basis*rl_contact.position)
 	state.apply_force(motor_force/4., global_basis*(rl_contact.position*Vector3(-1,1,1)))
-	# state.apply_central_force(motor_force)
 	state.apply_force(breaking_force/4. * turn_quat_lower, global_basis*fl_contact.position)
 	state.apply_force(breaking_force/4. * turn_quat_lower, global_basis*(fl_contact.position*Vector3(-1,1,1)))
 	state.apply_force(breaking_force/4., global_basis*rl_contact.position)
 	state.apply_force(breaking_force/4., global_basis*(rl_contact.position*Vector3(-1,1,1)))
-	# state.apply_central_force(breaking_force)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	car_model.speed = linear_velocity.length()
-	var pivot_rate = clampf((angular_velocity.length_squared()+linear_velocity.length_squared())*delta, 0.5, 1000000)
-	if global_rotation.x > PI-0.1:
-		cam_pivot.global_rotation.x = -PI
-	elif global_rotation.x < -PI + 0.1:
-		cam_pivot.global_rotation.x = PI
-	var x_rot = move_toward(cam_pivot.global_rotation.x, global_rotation.x, pivot_rate*delta)
-	if global_rotation.y > PI-0.1:
-		cam_pivot.global_rotation.y = -PI
-	elif global_rotation.y < -PI + 0.1:
-		cam_pivot.global_rotation.y = PI
-	var y_rot = move_toward(cam_pivot.global_rotation.y, global_rotation.y, pivot_rate*delta)
-	if global_rotation.z > PI-0.1:
-		cam_pivot.global_rotation.z = -PI
-	elif global_rotation.z < -PI + 0.1:
-		cam_pivot.global_rotation.z = PI
-	var z_rot = move_toward(cam_pivot.global_rotation.z, global_rotation.z, pivot_rate*delta)
-	cam_pivot.global_rotation = Vector3(x_rot,y_rot,z_rot)
-	# cam_pivot.look_at(global_basis*(cam_pivot.position+20*Vector3.BACK))
-	cam_pivot.global_position = cam_point.global_position
+
+func respawn():
+	Globals.goal.reset()
+	transform = spawn_point
+	linear_velocity = Vector3.ZERO
+	angular_velocity = Vector3.ZERO
+	

@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://3h4rkhc5hjl2"]
 
 [ext_resource type="PackedScene" uid="uid://bohy1uwlk3vcd" path="res://ui.tscn" id="1_pepq5"]
-[ext_resource type="PackedScene" uid="uid://bee114r5u6eq8" path="res://car.tscn" id="2_gn4co"]
+[ext_resource type="PackedScene" uid="uid://cghvtgke8ylu7" path="res://vehicular_car.tscn" id="2_rpx1u"]
 [ext_resource type="Script" uid="uid://itxo6qdck5nf" path="res://addons/road-generator/nodes/road_manager.gd" id="3_3c1dq"]
 [ext_resource type="PackedScene" uid="uid://cit3atv4q613p" path="res://checkpoint.tscn" id="3_ekbnt"]
 [ext_resource type="Material" uid="uid://dpashsuk5lr4x" path="res://addons/road-generator/resources/road_texture.material" id="4_1gnqd"]
@@ -199,10 +199,13 @@ mesh = SubResource("ArrayMesh_3c1dq")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1480982077]
 shape = SubResource("ConcavePolygonShape3D_5f5xi")
 
-[node name="Car" parent="." unique_id=1374223432 instance=ExtResource("2_gn4co")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 166.48634, 134.9818, 66.087654)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=867310477]
+
+[node name="VehicularCar" parent="." unique_id=1804453601 instance=ExtResource("2_rpx1u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 166.48634, 134.9818, 66.087654)
+accel = 4.0
+top_speed = 10.0
+power_steering_factor = 8.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1506864496]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -29.6109, 143.645, 0)
@@ -222,6 +225,7 @@ script = ExtResource("3_3c1dq")
 material_underside = ExtResource("4_1gnqd")
 density = 8.0
 underside_thickness = 1.0
+collision_mask = 3
 metadata/_custom_type_script = "uid://itxo6qdck5nf"
 
 [node name="RoadContainer" type="Node3D" parent="RoadManager" unique_id=783573127]

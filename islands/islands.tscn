@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bshwlp27ijlmx"]
 
-[ext_resource type="PackedScene" uid="uid://bee114r5u6eq8" path="res://car.tscn" id="2_a8idy"]
+[ext_resource type="PackedScene" uid="uid://cghvtgke8ylu7" path="res://vehicular_car.tscn" id="1_bpmhy"]
 [ext_resource type="PackedScene" uid="uid://bumpe34224r5n" path="res://assets/islands/Island1.glb" id="2_cbnt1"]
 [ext_resource type="PackedScene" uid="uid://224w70qrpxx0" path="res://assets/islands/Island2.glb" id="3_sq2ha"]
 [ext_resource type="PackedScene" uid="uid://b46for2683jdw" path="res://assets/islands/Island3.glb" id="4_sq2ha"]
@@ -9,8 +9,7 @@
 
 [node name="Islands" type="Node3D" unique_id=374355441]
 
-[node name="Car" parent="." unique_id=1374223432 instance=ExtResource("2_a8idy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -199.22412, 75.44083, -183.44409)
+[node name="VehicularCar" parent="." unique_id=1804453601 instance=ExtResource("1_bpmhy")]
 
 [node name="Island1" parent="." unique_id=926539397 instance=ExtResource("2_cbnt1")]
 
