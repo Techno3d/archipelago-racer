@@ -203,8 +203,7 @@ shape = SubResource("ConcavePolygonShape3D_5f5xi")
 
 [node name="VehicularCar" parent="." unique_id=1804453601 instance=ExtResource("2_rpx1u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 166.48634, 134.9818, 66.087654)
-accel = 4.0
-top_speed = 10.0
+top_speed = 15.0
 power_steering_factor = 8.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1506864496]
@@ -500,8 +499,8 @@ next_pt_init = NodePath("../RP_011")
 [node name="RP_013" type="Node3D" parent="RoadManager/Road_001" unique_id=644677845]
 transform = Transform3D(0.35992905, -0.07168421, 0.9302217, 0.22550905, 0.97416484, -0.012185263, -0.9053158, 0.21415927, 0.3667957, 214.76828, -61.889206, 68.68327)
 script = ExtResource("5_1gnqd")
-traffic_dir = Array[int]([2, 2, 1, 1])
-lanes = Array[int]([2, 4, 4, 2])
+traffic_dir = Array[int]([2, 1])
+lanes = Array[int]([5, 5])
 prior_mag = 17.815002
 next_mag = 24.765202
 prior_pt_init = NodePath("../RP_014")

@@ -37,19 +37,30 @@ shape = SubResource("WorldBoundaryShape3D_fj7yv")
 transform = Transform3D(1, 0, 0, 0, -0.44768113, 0.8941933, 0, -0.8941933, -0.44768113, 0, 614.1875, -8.024273)
 
 [node name="VehicularCar" parent="." unique_id=1804453601 instance=ExtResource("2_fj7yv")]
-transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 0.9999998, 0, 0, 0)
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999994, 0, 0, 0, 0.9999998, 0, 0.05, 0)
 disable_mode = 2
 
 [node name="modified_Island1" parent="." unique_id=1965788076 instance=ExtResource("3_tlwt5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.187653, -13.573603, -170.62741)
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=119266202]
-transform = Transform3D(0.9731708, 0.2300837, 0, -0.2300837, 0.9731708, 0, 0, 0, 1, 50.875526, 21.749083, 0)
+transform = Transform3D(0.8027965, 0.59625274, 0, -0.59625274, 0.8027965, 0, 0, 0, 1, 95.59387, 5.886175, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=2116908067]
 transform = Transform3D(0.70710826, -0.70710754, 0, 0.70710754, 0.70710826, 0, 0, 0, 1, -0.0863266, 0.5847473, 10.990051)
 shape = SubResource("BoxShape3D_tlwt5")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2" unique_id=1661888471]
+transform = Transform3D(3.7453182, -0.30213773, 0, 3.7453182, 0.30213773, 0, 0, 0, 6.9584584, -0.13841629, 0.5459728, 12.460872)
+mesh = SubResource("BoxMesh_tlwt5")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="." unique_id=1959412917]
+transform = Transform3D(-3.509135e-08, -2.6063034e-08, -1, -0.59625274, 0.8027965, 0, 0.8027965, 0.59625274, -4.371139e-08, -7.857071, 5.886175, 140.80011)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3" unique_id=317565334]
+transform = Transform3D(0.70710826, -0.70710754, 0, 0.70710754, 0.70710826, 0, 0, 0, 1, -0.0863266, 0.5847473, 10.990051)
+shape = SubResource("BoxShape3D_tlwt5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D3" unique_id=125955597]
 transform = Transform3D(3.7453182, -0.30213773, 0, 3.7453182, 0.30213773, 0, 0, 0, 6.9584584, -0.13841629, 0.5459728, 12.460872)
 mesh = SubResource("BoxMesh_tlwt5")

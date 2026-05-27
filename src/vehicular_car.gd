@@ -16,6 +16,8 @@ var spawn_point: Transform3D
 @export var top_speed: float = 35
 @export var power_steering_factor: float = 2.1
 @export var air_damp: float = 0.05
+@export var mu_k: float = 0.7
+@export var mu_s: float = 0.9
 @onready var car_model: CarModel = $Car
 @onready var wheel_base: Area3D = $base
 @onready var steering_point: Node3D = $SteeringPoint
@@ -53,7 +55,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if not wheel_base.has_overlapping_bodies():
 		# Air controls
 		var up_axis = (global_basis*Vector3.UP).normalized()
-		var air_factor = clampf(up_axis.dot(last_ground_up)-0.7, 0.05, 1)
+		var air_factor = clampf(up_axis.dot(last_ground_up)-0.6, 0.05, 1)
 		var pitch_input = Input.get_axis("pitch_back", "pitch_forward")
 		state.apply_torque((global_basis*Vector3.RIGHT).normalized()*air_factor*pitch_input*mass)
 		state.apply_torque(up_axis*air_factor*-turn_input*mass)
@@ -61,7 +63,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	
 	# Ground controls
 	var forward_dir: Vector3 = (global_transform.basis * Vector3(0,0,1)).normalized()
-	var turn_quat = Quaternion.from_euler(Vector3(0, turn_angle*turn_input, 0) * global_transform.basis).normalized()
+	var turn_quat = Quaternion.from_euler(global_basis * Vector3.UP * turn_angle*turn_input).normalized()
 	# var wheel_dir = forward_dir.rotated(global_transform.basis*Vector3.UP, -turn_angle*turn_input*accel_curve.sample(angular_velocity.length()/top_angular_speed))
 	var wheel_dir = forward_dir * turn_quat
 	var perp_wheel_dir = wheel_dir.rotated(global_basis*Vector3.UP, -PI/2)
@@ -72,16 +74,35 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	var breaking_force = -forward_dir * breaking * accel/2. * mass * accel_curve.sample(clampf(linear_velocity.length()/(top_speed/2.), 0, 1)*-1) * 100
 
 	# cross friction must be higher than in line
-	var fraction_linear_cross_front = (perp_wheel_dir).dot(linear_velocity)
-	var fraction_linear_cross_back = (global_basis*Vector3.RIGHT).dot(linear_velocity)
-	var fraction_linear_cross = (fraction_linear_cross_back+3*fraction_linear_cross_front)/4.
-	state.apply_central_force(perp_wheel_dir*fraction_linear_cross*-1*mass*1.2)
+	# Max static friction is mu_s * N, and N should be mass times the sign of the angle between gravity and up for car
+	var max_static_friction = abs(mass*mu_s*(global_basis*Vector3.DOWN).normalized().dot(get_gravity()*gravity_scale))
+	var global_down = (global_basis*Vector3.DOWN).normalized()
+	var global_right = (global_basis*Vector3.RIGHT).normalized()
+	var up_ramp = get_gravity().cross(global_down).cross(global_down).normalized()
+	# Cross product here is for sin(theta)
+	var tangential_gravity = abs((mass * get_gravity().cross(global_down).length() * -up_ramp).dot(global_right))
+	var fudge_factor = (state.linear_velocity*Vector3(1,0.2,1)).length()/top_speed*max_static_friction*1.0355 + state.angular_velocity.length()/top_angular_speed*max_static_friction*1.04
+	if (tangential_gravity + fudge_factor) < max_static_friction:
+		# Static Friction
+		state.apply_central_force(up_ramp*tangential_gravity)
+	else:
+		# Kinetic Friction
+		print("kinetic")
+		var fraction_linear_cross_front = (perp_wheel_dir).dot(linear_velocity)
+		var fraction_linear_cross_back = (global_basis*Vector3.RIGHT).dot(linear_velocity)
+		state.apply_central_force(perp_wheel_dir*fraction_linear_cross_front*-1*mass*mu_k)
+		state.apply_central_force((global_basis*Vector3.RIGHT)*fraction_linear_cross_back*-1*mass*mu_k)
 
 
-	state.apply_torque((global_basis*steering_point.position*clampf(linear_velocity.length()/(top_speed/3), 0, 1)).cross(wheel_dir*mass*0.6) * sign(linear_velocity.dot(wheel_dir)))
+	# Torque should be r x F, where r is the position offset from CM to force, and F is the force.
+	var steer_dir = (steering_point.global_position - global_position).normalized().cross(wheel_dir)
+	# Not physics based turning force magnitude
+	var steer_torque = steer_dir * mass * 0.6 * clampf(linear_velocity.length()/(top_speed/3), 0, 1) * signf(linear_velocity.dot(wheel_dir))
+	state.apply_torque(steer_torque)
 
-	# I originally split the motor force to do "power steering", where the front wheels rotate their force, but that gets jumpy
-	var turn_quat_lower = Quaternion.from_euler(Vector3(0, turn_input * TAU/180.*power_steering_factor * turn_curve.sample(angular_velocity.length()/top_angular_speed), 0) * global_transform.basis).normalized()
+	# Using the actual turn on the front wheel cars usually ends in weird jumping behavior
+	# Most of the torque should already be calculated above, this is just for extra turn
+	var turn_quat_lower = Quaternion.from_euler(global_basis * Vector3.UP * turn_input * TAU/180.*power_steering_factor * turn_curve.sample(angular_velocity.length()/top_angular_speed)).normalized()
 	state.apply_force(motor_force/4. * turn_quat_lower, global_basis*fl_contact.position)
 	state.apply_force(motor_force/4. * turn_quat_lower, global_basis*(fl_contact.position*Vector3(-1,1,1)))
 	state.apply_force(motor_force/4., global_basis*rl_contact.position)

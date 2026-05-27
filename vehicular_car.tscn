@@ -10,7 +10,7 @@ absorbent = true
 
 [sub_resource type="Curve" id="Curve_wb3y8"]
 _limits = [0.0, 1.0, -1.0, 1.0]
-_data = [Vector2(-1, 0), 0.0, 0.0, 0, 0, Vector2(-0.37454545, 0.36370486), 1.7498116, 1.7498116, 0, 0, Vector2(-0.0036363602, 1), 0.4069326, 0.4069326, 0, 0, Vector2(1, 0), -2.3074443, 0.0, 0, 0]
+_data = [Vector2(-1, 0), 0.0, 0.0, 0, 0, Vector2(-0.28000003, 0.33433735), 1.7498116, 1.7498116, 0, 0, Vector2(-0.0036363602, 1), 0.4069326, 0.4069326, 0, 0, Vector2(1, 0), -2.3074443, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="Curve" id="Curve_u22bx"]
@@ -84,7 +84,7 @@ shape = SubResource("CylinderShape3D_wb3y8")
 transform = Transform3D(0, -1.0000001, 0, 1.0000001, 0, 0, 0, 0, 1, -0.7318568, 0.1676035, -0.43162608)
 shape = SubResource("CylinderShape3D_wb3y8")
 
-[node name="FRWheel2" type="CollisionShape3D" parent="." unique_id=884500889]
+[node name="RLWheel" type="CollisionShape3D" parent="." unique_id=884500889]
 transform = Transform3D(0, -1.0000001, 0, 1.0000001, 0, 0, 0, 0, 1, 0.7226553, 0.168, -0.432)
 shape = SubResource("CylinderShape3D_wb3y8")
 
@@ -92,7 +92,7 @@ shape = SubResource("CylinderShape3D_wb3y8")
 transform = Transform3D(0, -1.0000001, 0, 1.0000001, 0, 0, 0, 0, 1, 0, 0.88702315, -0.71530247)
 
 [node name="CamPivot" type="Node3D" parent="." unique_id=838918402]
-transform = Transform3D(1, 0, 0, 0, 0.93969256, -0.3420201, 0, 0.3420201, 0.93969256, 0, 0.88702315, -0.71530247)
+transform = Transform3D(1, 0, 0, 0, 0.98480767, -0.17364816, 0, 0.17364816, 0.98480767, 0, 0.88702315, -0.71530247)
 
 [node name="Node3D" type="Node3D" parent="CamPivot" unique_id=246638851]
 transform = Transform3D(1, 0, 0, 0, 0.93969274, -0.34202015, 0, 0.34202015, 0.93969274, 0, 0, 0)
