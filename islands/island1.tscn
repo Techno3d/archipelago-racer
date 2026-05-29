@@ -202,9 +202,9 @@ shape = SubResource("ConcavePolygonShape3D_5f5xi")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=867310477]
 
 [node name="VehicularCar" parent="." unique_id=1804453601 instance=ExtResource("2_rpx1u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 166.48634, 134.9818, 66.087654)
-top_speed = 15.0
-power_steering_factor = 8.0
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 166.48634, 134.9818, 66.087654)
+top_speed = 20.0
+power_steering_factor = 6.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1506864496]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -29.6109, 143.645, 0)
@@ -222,8 +222,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38, 0)
 transform = Transform3D(0.99998957, 0, 0.004565592, 0, 1, 0, -0.004565592, 0, 0.99998957, 167.86166, 130.47218, 60.719967)
 script = ExtResource("3_3c1dq")
 material_underside = ExtResource("4_1gnqd")
-density = 8.0
-underside_thickness = 1.0
 collision_mask = 3
 metadata/_custom_type_script = "uid://itxo6qdck5nf"
 

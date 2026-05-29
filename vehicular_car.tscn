@@ -29,6 +29,9 @@ radius = 0.24804688
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wb3y8"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_wb3y8"]
+size = Vector3(0.2, 0.2, 0.2)
+
 [node name="VehicularCar" type="RigidBody3D" unique_id=1804453601]
 collision_layer = 2
 collision_mask = 3
@@ -46,6 +49,7 @@ accel_curve = SubResource("Curve_wb3y8")
 turn_curve = SubResource("Curve_u22bx")
 accel = 5.0
 power_steering_factor = 4.0
+mu_s = 0.8
 
 [node name="Car" parent="." unique_id=836562085 instance=ExtResource("1_guv52")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16610754, 0.21156323)
@@ -103,3 +107,6 @@ shape = SubResource("SphereShape3D_wb3y8")
 spring_length = 3.0
 
 [node name="Camera3D" type="Camera3D" parent="CamPivot/Node3D/SpringArm3D" unique_id=254348556]
+
+[node name="Debug" type="MeshInstance3D" parent="." unique_id=832508772]
+mesh = SubResource("BoxMesh_wb3y8")
