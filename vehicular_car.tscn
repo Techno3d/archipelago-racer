@@ -5,7 +5,6 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wb3y8"]
 friction = 0.0
-bounce = 1.0
 absorbent = true
 
 [sub_resource type="Curve" id="Curve_wb3y8"]
@@ -14,7 +13,7 @@ _data = [Vector2(-1, 0), 0.0, 0.0, 0, 0, Vector2(-0.28000003, 0.33433735), 1.749
 point_count = 4
 
 [sub_resource type="Curve" id="Curve_u22bx"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.19272725, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.7846385), 0.0, 0.0, 0, 0, Vector2(0.19272725, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wb3y8"]
