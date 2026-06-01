@@ -91,7 +91,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	# Torque should be r x F, where r is the position offset from CM to force, and F is the force.
 	var steer_dir = (steering_point.global_position - global_position).normalized().cross(wheel_dir)
 	# Not physics based turning force magnitude
-	var steer_torque = steer_dir * mass * 4 * clampf(linear_velocity.length()/(top_speed/3), 0, 1) * signf(linear_velocity.dot(wheel_dir))
+	var steer_torque = steer_dir * mass * 4 * clampf(linear_velocity.length()/(top_speed/3), 0, 1) * (-1 if breaking > throttle else 1)
 	state.apply_torque(steer_torque)
 
 	# Mass times accel * direction of wheel * where on accel curve. Power of engine/motor is limited, but it takes more power the faster you are to move
