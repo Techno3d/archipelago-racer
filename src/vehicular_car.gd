@@ -23,7 +23,6 @@ var spawn_point: Transform3D
 @onready var steering_point: Node3D = $SteeringPoint
 @onready var cam_pivot: Node3D = $CamPivot
 @onready var cam_point: Marker3D = $CamPoint
-@onready var debug: MeshInstance3D = $Debug
 
 # Car Wheel Contact Points
 @onready var fl_contact: Marker3D = $FLContact
@@ -91,9 +90,8 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 
 	# Torque should be r x F, where r is the position offset from CM to force, and F is the force.
 	var steer_dir = (steering_point.global_position - global_position).normalized().cross(wheel_dir)
-	debug.global_position = global_position + wheel_dir*3 - global_down
 	# Not physics based turning force magnitude
-	var steer_torque = steer_dir * mass * 0.6 * clampf(linear_velocity.length()/(top_speed/3), 0, 1) * signf(linear_velocity.dot(wheel_dir))
+	var steer_torque = steer_dir * mass * 4 * clampf(linear_velocity.length()/(top_speed/3), 0, 1) * signf(linear_velocity.dot(wheel_dir))
 	state.apply_torque(steer_torque)
 
 	# Mass times accel * direction of wheel * where on accel curve. Power of engine/motor is limited, but it takes more power the faster you are to move
@@ -102,7 +100,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	var motor_force = forward_dir * throttle * accel * mass * accel_curve.sample(clampf(linear_velocity.length()/top_speed, 0, 1)) * 100
 	var breaking_force = -forward_dir * breaking * accel/2. * mass * accel_curve.sample(clampf(linear_velocity.length()/(top_speed/2.), 0, 1)*-1) * 100
 
-	var turn_quat_lower = Quaternion.from_euler(Vector3.UP * turn_input * TAU/180.*power_steering_factor * turn_curve.sample(angular_velocity.length()/top_angular_speed)).normalized()
+	var turn_quat_lower = Quaternion.from_euler(Vector3.UP * turn_input * TAU/180.*power_steering_factor * turn_curve.sample(angular_velocity.length()/top_angular_speed * linear_velocity.length()/top_speed)).normalized()
 	var less_wheel_dir = ((global_transform.basis * (Vector3(0,0,1) * turn_quat_lower)).normalized())
 	var motor_force_steer = less_wheel_dir * throttle * accel * mass * accel_curve.sample(clampf(linear_velocity.length()/top_speed, 0, 1)) * 100
 	var breaking_force_steer = -less_wheel_dir * breaking * accel/2. * mass * accel_curve.sample(clampf(linear_velocity.length()/(top_speed/2.), 0, 1)*-1) * 100

@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://clry57nja6uq2"]
+
+[ext_resource type="PackedScene" uid="uid://bohy1uwlk3vcd" path="res://ui.tscn" id="1_ukm0i"]
+[ext_resource type="PackedScene" uid="uid://gy4dtk36qxos" path="res://assets/islands/Island4.glb" id="2_ukm0i"]
+[ext_resource type="PackedScene" uid="uid://bcmepg2y6jawp" path="res://assets/islands/Track4Desert.glb" id="3_4vfo5"]
+[ext_resource type="PackedScene" uid="uid://cghvtgke8ylu7" path="res://vehicular_car.tscn" id="4_bw5o5"]
+[ext_resource type="PackedScene" uid="uid://bw0synsryh8ul" path="res://islands/water.tscn" id="5_g7r8c"]
+[ext_resource type="PackedScene" uid="uid://cjlsytwctm5wl" path="res://time_trials.tscn" id="6_v3qcb"]
+[ext_resource type="PackedScene" uid="uid://cit3atv4q613p" path="res://checkpoint.tscn" id="7_njteb"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gn4co"]
+
+[sub_resource type="Sky" id="Sky_ekbnt"]
+sky_material = SubResource("ProceduralSkyMaterial_gn4co")
+
+[sub_resource type="Environment" id="Environment_3c1dq"]
+background_mode = 2
+sky = SubResource("Sky_ekbnt")
+ambient_light_source = 3
+reflected_light_source = 2
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.005
+
+[node name="Island1" type="Node3D" unique_id=1794474086]
+
+[node name="CanvasLayer" parent="." unique_id=1118733812 instance=ExtResource("1_ukm0i")]
+
+[node name="modified_Island4" parent="." unique_id=639043376 instance=ExtResource("2_ukm0i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.732468, 0)
+
+[node name="modified_Track4Desert" parent="." unique_id=594607990 instance=ExtResource("3_4vfo5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.732468, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=867310477]
+
+[node name="VehicularCar" parent="." unique_id=1804453601 instance=ExtResource("4_bw5o5")]
+transform = Transform3D(0.15476209, 0, 0.98795176, 0, 1, 0, -0.98795176, 0, 0.15476209, -127.99939, 76.226395, 238.66824)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1506864496]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -29.6109, 143.645, 0)
+light_color = Color(0.81960785, 0.60784316, 0.4, 1)
+spot_range = 160.78163
+spot_angle = 66.09375
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1207843941]
+environment = SubResource("Environment_3c1dq")
+
+[node name="WaterMesh" parent="." unique_id=689727303 instance=ExtResource("5_g7r8c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38, 0)
+
+[node name="TimeTrialsStartGate" parent="." unique_id=1039711912 instance=ExtResource("6_v3qcb")]
+transform = Transform3D(18, 0, 0, 0, 18, 0, 0, 0, 18, 158.28912, 130.68839, 24.61567)
+num_checkpoints = 6
+
+[node name="CheckpointGate5" parent="." unique_id=1972916246 instance=ExtResource("7_njteb")]
+transform = Transform3D(17.773108, 0.7512457, -2.748129, -0.045176752, 17.43506, 4.4739876, 2.8486025, -4.410696, 17.217176, 144.7833, 131.84526, -47.35691)
+
+[node name="CheckpointGate" parent="." unique_id=1251319173 instance=ExtResource("7_njteb")]
+transform = Transform3D(13.890641, 0, -11.447711, 0, 18, 0, 11.447711, 0, 13.890641, 197.61081, 100.61615, -201.81648)
+id = 1
+
+[node name="CheckpointGate2" parent="." unique_id=1175528560 instance=ExtResource("7_njteb")]
+transform = Transform3D(0.6799917, 0, 17.987152, 0, 18, 0, -17.987152, 0, 0.6799917, -172.2988, 102.928535, 86.97852)
+id = 3
+
+[node name="CheckpointGate3" parent="." unique_id=1514159628 instance=ExtResource("7_njteb")]
+transform = Transform3D(7.7052197, 0, -16.267437, 0, 17.999996, 0, 16.267437, 0, 7.705219, -42.568348, 86.31921, 242.87115)
+id = 4
+
+[node name="CheckpointGate4" parent="." unique_id=888820424 instance=ExtResource("7_njteb")]
+transform = Transform3D(17.679483, 0.70219964, -3.3079891, -2.5397253, 14.383033, -10.52037, 2.2328618, 10.799782, 14.225999, 170.42307, 100.22042, 234.27309)
+id = 5
+
+[node name="CheckpointGate7" parent="." unique_id=311662623 instance=ExtResource("7_njteb")]
+transform = Transform3D(-17.282822, -0.96354926, 4.9371657, -2.8341568, 16.460945, -6.7085643, -4.1559105, -7.2186456, -15.956803, 65.756386, 127.25294, -244.24469)
+id = 2

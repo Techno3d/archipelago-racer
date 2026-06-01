@@ -200,9 +200,6 @@ shape = SubResource("ConcavePolygonShape3D_5f5xi")
 
 [node name="VehicularCar" parent="." unique_id=1804453601 instance=ExtResource("2_rpx1u")]
 transform = Transform3D(0.15476209, 0, 0.98795176, 0, 1, 0, -0.98795176, 0, 0.15476209, -127.99939, 76.226395, 238.66824)
-accel = 4.0
-top_speed = 20.0
-power_steering_factor = 6.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1506864496]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -29.6109, 143.645, 0)

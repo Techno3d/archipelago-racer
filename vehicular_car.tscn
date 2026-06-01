@@ -13,7 +13,7 @@ _data = [Vector2(-1, 0), 0.0, 0.0, 0, 0, Vector2(-0.28000003, 0.33433735), 1.749
 point_count = 4
 
 [sub_resource type="Curve" id="Curve_u22bx"]
-_data = [Vector2(0, 0.7846385), 0.0, 0.0, 0, 0, Vector2(0.19272725, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.70632523), 0.0, 0.0, 0, 0, Vector2(0.19272725, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wb3y8"]
@@ -27,9 +27,6 @@ height = 0.20019531
 radius = 0.24804688
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wb3y8"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_wb3y8"]
-size = Vector3(0.2, 0.2, 0.2)
 
 [node name="VehicularCar" type="RigidBody3D" unique_id=1804453601]
 collision_layer = 2
@@ -46,7 +43,7 @@ angular_damp = 1.0
 script = ExtResource("1_wb3y8")
 accel_curve = SubResource("Curve_wb3y8")
 turn_curve = SubResource("Curve_u22bx")
-accel = 5.0
+accel = 1.0
 power_steering_factor = 4.0
 mu_s = 0.8
 
@@ -106,6 +103,3 @@ shape = SubResource("SphereShape3D_wb3y8")
 spring_length = 3.0
 
 [node name="Camera3D" type="Camera3D" parent="CamPivot/Node3D/SpringArm3D" unique_id=254348556]
-
-[node name="Debug" type="MeshInstance3D" parent="." unique_id=832508772]
-mesh = SubResource("BoxMesh_wb3y8")
