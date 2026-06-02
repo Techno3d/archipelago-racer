@@ -10,5 +10,5 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func passed(body) -> void:
-	if body is not CharacterBody3D: return
+	if body is not VehicularCar: return
 	Globals.checkpoint_passed.emit(id)

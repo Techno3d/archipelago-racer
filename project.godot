@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Archipelago Racer"
-run/main_scene="uid://dwo4xgfivd76o"
+run/main_scene="uid://c6pyp3tj658pq"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

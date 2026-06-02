@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 	print(current_run_timer)
 
 func passed(body) -> void:
-	if body is not CharacterBody3D: return
+	if body is not VehicularCar: return
 	if not started:
 		started = true
 		return

@@ -8,8 +8,8 @@ func _ready() -> void:
 	for i: int in range(len(buttons)):
 		var button: Button = buttons[i]
 		button.pressed.connect(load_scene.bind(i))
-		
+		# On archipelago connection, enable/disable buttons
 
 
 func load_scene(ind: int):
-	get_tree().change_scene_to_file(islands[0])
+	get_tree().change_scene_to_file(islands[ind])

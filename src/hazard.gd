@@ -11,5 +11,5 @@ func _process(delta: float) -> void:
 	pass
 
 func _body_entered(body:Node3D):
-	if body is PlayerCar:
-		(body as PlayerCar).respawn()
+	if body is VehicularCar:
+		(body as VehicularCar).respawn()

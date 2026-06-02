@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bw0synsryh8ul"]
 
 [ext_resource type="Shader" uid="uid://cv76cnc5ughm4" path="res://islands/water.tres" id="1_r1g6q"]
-[ext_resource type="Script" uid="uid://j7ahkudgogca" path="res://islands/water.gd" id="2_t2w5k"]
+[ext_resource type="Script" uid="uid://chcnyto0lbcqr" path="res://src/hazard.gd" id="2_t2w5k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5f5xi"]
 render_priority = 0
@@ -20,10 +20,10 @@ subdivide_depth = 200
 [node name="MeshInstance3D" type="MeshInstance3D" unique_id=689727303]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -4)
 mesh = SubResource("PlaneMesh_1gnqd")
-script = ExtResource("2_t2w5k")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1547285245]
 collision_mask = 3
+script = ExtResource("2_t2w5k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=590459661]
 shape = SubResource("WorldBoundaryShape3D_u3btu")
