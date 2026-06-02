@@ -21,6 +21,10 @@ Archipelago="*uid://c0ovofocoscyg"
 TerrainRebuildCoordinator="uid://brautlco0ivx3"
 Globals="*uid://07oyqorcsggd"
 
+[debug_draw_3d]
+
+settings/addon_root_folder="res://addons/debug_draw_3d"
+
 [display]
 
 window/size/viewport_width=1280

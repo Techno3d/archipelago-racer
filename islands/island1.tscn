@@ -208,7 +208,7 @@ shape = SubResource("ConcavePolygonShape3D_5f5xi")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=867310477]
 
 [node name="VehicularCar" parent="." unique_id=1804453601 instance=ExtResource("2_rpx1u")]
-transform = Transform3D(0.15476209, 0, 0.98795176, 0, 1, 0, -0.98795176, 0, 0.15476209, -127.99939, 76.226395, 238.66824)
+transform = Transform3D(0.15476209, 0, 0.98795176, 0, 1, 0, -0.98795176, 0, 0.15476209, -127.99939, 76.87666, 238.66824)
 freeze_mode = 1
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1506864496]
@@ -265,7 +265,7 @@ transform = Transform3D(6.053158, 0.18207696, 0.50647837, 0.4738891, 0.22969535,
 curve = SubResource("Curve3D_pepq5")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=352373570]
-transform = Transform3D(-0.9998186, -0.008855796, -0.01367859, 0, 0.83943176, -0.54346514, 0.016294267, -0.54339296, -0.8393203, 0.12053108, 0.7106323, -0.9197159)
+transform = Transform3D(-0.99981827, -0.008855796, -0.01367859, 0, 0.83943176, -0.54346514, 0.016294261, -0.54339296, -0.8393203, 0.12053108, 0.7106323, -0.9197159)
 use_model_front = true
 
 [node name="MeshInstance3D2" parent="." unique_id=1360913354 node_paths=PackedStringArray("path") instance=ExtResource("8_2bk0c")]
