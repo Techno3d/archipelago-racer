@@ -74,6 +74,7 @@ pitch_back={
 
 3d_physics/layer_1="Ground"
 3d_physics/layer_2="Car"
+3d_physics/layer_3="Hazards and Interactables"
 
 [physics]
 

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://da46nk76aln18"]
+
+[ext_resource type="Script" uid="uid://b1d11gs2hpsof" path="res://LaunchPad.gd" id="1_abnn1"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lge1u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7v8mp"]
+size = Vector3(1.9890442, 1.6235352, 1.9987793)
+
+[node name="MeshInstance3D" type="MeshInstance3D" unique_id=1360913354]
+mesh = SubResource("PlaneMesh_lge1u")
+script = ExtResource("1_abnn1")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=753888094]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=953188404]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0002593994, 0.8039551, 0.0028076172)
+shape = SubResource("BoxShape3D_7v8mp")

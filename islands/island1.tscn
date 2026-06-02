@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cit3atv4q613p" path="res://checkpoint.tscn" id="3_ekbnt"]
 [ext_resource type="PackedScene" uid="uid://bw0synsryh8ul" path="res://islands/water.tscn" id="5_3c1dq"]
 [ext_resource type="PackedScene" uid="uid://cjlsytwctm5wl" path="res://time_trials.tscn" id="7_1gnqd"]
+[ext_resource type="PackedScene" uid="uid://da46nk76aln18" path="res://launchpad.tscn" id="8_2bk0c"]
 [ext_resource type="Script" uid="uid://chcnyto0lbcqr" path="res://src/hazard.gd" id="10_rpx1u"]
 [ext_resource type="PackedScene" uid="uid://dwx4slj55vag" path="res://assets/islands/Track1Volcano.glb" id="11_mbdwp"]
 
@@ -183,6 +184,14 @@ volumetric_fog_density = 0.005
 height = 39.1557
 radius = 87.09326
 
+[sub_resource type="Curve3D" id="Curve3D_pepq5"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.12053108, 0.7106323, -0.9197159, 0, 0, 0, 0, 0, 0, -0.48228097, -23.239746, -37.908363, 0, 0, 0, 0, 0, 0, -1.4839869, -88.53897, -87.63419, 0, 0, 0, 0, 0, 0, -3.340593, -255.89679, -107.493706, 0, 0, 0, 0, 0, 0, -3.9979463, -387.88354, -110.74818),
+"tilts": PackedFloat32Array(0, 0, 0, 0, -0.006614125)
+}
+point_count = 5
+up_vector_enabled = false
+
 [node name="Island1" type="Node3D" unique_id=1794474086]
 
 [node name="CanvasLayer" parent="." unique_id=1118733812 instance=ExtResource("1_pepq5")]
@@ -200,6 +209,7 @@ shape = SubResource("ConcavePolygonShape3D_5f5xi")
 
 [node name="VehicularCar" parent="." unique_id=1804453601 instance=ExtResource("2_rpx1u")]
 transform = Transform3D(0.15476209, 0, 0.98795176, 0, 1, 0, -0.98795176, 0, 0.15476209, -127.99939, 76.226395, 238.66824)
+freeze_mode = 1
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1506864496]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -29.6109, 143.645, 0)
@@ -249,3 +259,15 @@ script = ExtResource("10_rpx1u")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1614870416]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.181717, 117.15745, 0)
 shape = SubResource("CylinderShape3D_mbdwp")
+
+[node name="Path3D" type="Path3D" parent="." unique_id=1374613414]
+transform = Transform3D(6.053158, 0.18207696, 0.50647837, 0.4738891, 0.22969535, -0.75742763, -6.331896, 0.19125247, 0.42749545, 49.41031, 192.9071, 64.106674)
+curve = SubResource("Curve3D_pepq5")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=352373570]
+transform = Transform3D(-0.9998186, -0.008855796, -0.01367859, 0, 0.83943176, -0.54346514, 0.016294267, -0.54339296, -0.8393203, 0.12053108, 0.7106323, -0.9197159)
+use_model_front = true
+
+[node name="MeshInstance3D2" parent="." unique_id=1360913354 node_paths=PackedStringArray("path") instance=ExtResource("8_2bk0c")]
+transform = Transform3D(8.856096, 0.75567067, 1.2586384, 3.4795823, 1.0166408, -1.3326966, -12.842306, 0.7965686, 0.506871, 52.20332, 189.62578, 65.663475)
+path = NodePath("../Path3D/PathFollow3D")
