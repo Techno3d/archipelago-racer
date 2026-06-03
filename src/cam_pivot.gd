@@ -2,7 +2,8 @@ extends Node3D
 
 @onready var cam_pivot: Node3D = get_parent()
 @onready var car: VehicularCar = cam_pivot.get_parent()
-@export var max_dist = 3
+@export var is_mouse_movement_enabled := false
+@export var max_dist = 2
 @export var max_angle_change: Vector2 = Vector2(30, 5)
 var original_cam_pivot_polar: Vector3
 
@@ -12,11 +13,8 @@ func _ready() -> void:
 	global_position = cam_pivot.global_position
 
 func _physics_process(delta: float) -> void:
-	# follow_vel += delta*((cam_pivot.global_position - global_position).length() - max_dist)*100
-	# if Input.get_axis("reverse", "accel") < 0 and car.linear_velocity.dot(car.global_basis.z) < 0:
-	# 	global_position = cam_pivot.global_position
-	# else:
-	global_position = global_position.move_toward(cam_pivot.global_position, ((cam_pivot.global_position-global_position).length() - max_dist)*delta*100)
+	var speed_factor := ((car.linear_velocity/car.top_speed).dot(car.global_basis.z) + 1)/2.
+	global_position = global_position.move_toward(cam_pivot.global_position, ((cam_pivot.global_position-global_position).length() - max_dist * speed_factor)*delta*100)
 	look_at(car.global_position)
 
 ## Returns a vector in the form of (r, theta, psi)
@@ -32,7 +30,7 @@ func to_cartesian(polar: Vector3) -> Vector3:
 	return Vector3(r*sin(psi)*cos(theta), r*cos(psi), r*sin(psi)*sin(theta))
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion && is_mouse_movement_enabled:
 		var radian_max = max_angle_change * TAU/180
 		var polar_cam := to_polar(cam_pivot.position)
 		var motion_event := event as InputEventMouseMotion
