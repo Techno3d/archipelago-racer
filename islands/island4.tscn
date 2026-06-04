@@ -22,7 +22,7 @@ glow_enabled = true
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.005
 
-[node name="Island1" type="Node3D" unique_id=1794474086]
+[node name="Desert" type="Node3D" unique_id=1794474086]
 
 [node name="CanvasLayer" parent="." unique_id=1118733812 instance=ExtResource("1_ukm0i")]
 

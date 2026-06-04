@@ -22,11 +22,11 @@ glow_enabled = true
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.005
 
-[node name="Island1" type="Node3D" unique_id=1794474086]
+[node name="Forrest" type="Node3D" unique_id=1794474086]
 
 [node name="CanvasLayer" parent="." unique_id=1118733812 instance=ExtResource("1_v44c5")]
 
-[node name="modified_Island2" parent="." unique_id=1218306826 instance=ExtResource("2_fscba")]
+[node name="Island2" parent="." unique_id=1218306826 instance=ExtResource("2_fscba")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45.466873, 0)
 
 [node name="Track2Forrest" parent="." unique_id=2137446612 instance=ExtResource("3_pyewb")]

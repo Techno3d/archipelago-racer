@@ -20,6 +20,8 @@ var spawn_point: Transform3D
 @export var mu_s: float = 0.9
 @onready var car_model: CarModel = $Car
 @onready var wheel_base: Area3D = $base
+@onready var base2: Area3D = $base2
+@onready var reset_collider: Area3D = $ResetCollider
 @onready var steering_point: Node3D = $SteeringPoint
 @onready var cam_pivot: Node3D = $CamPivot
 
@@ -47,6 +49,11 @@ func _ready() -> void:
 	damp_constant = 2*sqrt(spring_constant*mass)*damp_ratio/9
 	raycasts = [fl_raycast, rl_raycast, fr_raycast, rr_raycast]
 	spawn_point = transform
+	reset_collider.body_entered.connect(func(_body: Node3D):
+		if !wheel_base.has_overlapping_bodies() and !base2.has_overlapping_bodies():
+			var timer: SceneTreeTimer = get_tree().create_timer(3)
+			timer.timeout.connect(check_respawn)
+	)
 	if Archipelago.conn:
 		Archipelago.conn.deathlink.connect(respawn)
 
@@ -66,7 +73,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	car_model.steer = turn_input * turn_angle * TAU/180.
 	# print("%.1f %.1f %.1f %.2f" % [throttle, breaking, turn_input, linear_velocity.length()])
 
-	if not wheel_base.has_overlapping_bodies():
+	if !wheel_base.has_overlapping_bodies() and !base2.has_overlapping_bodies():
 		# Air controls
 		var up_axis = (global_basis*Vector3.UP).normalized()
 		var air_factor = clampf(up_axis.dot(last_ground_up)-0.6, 0.05, 1)
@@ -149,6 +156,12 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 
 func _process(_delta: float) -> void:
 	car_model.speed = linear_velocity.length()
+	if base2.has_overlapping_bodies() and not wheel_base.has_overlapping_bodies():
+		print("offtrack!")
+
+func check_respawn():
+	if !wheel_base.has_overlapping_bodies() and !base2.has_overlapping_bodies():
+		respawn()
 
 func respawn():
 	Globals.goal.reset()

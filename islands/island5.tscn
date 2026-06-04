@@ -35,7 +35,7 @@ size = Vector2(2000, 2000)
 subdivide_width = 200
 subdivide_depth = 200
 
-[node name="Island1" type="Node3D" unique_id=1794474086]
+[node name="Mountain" type="Node3D" unique_id=1794474086]
 
 [node name="CanvasLayer" parent="." unique_id=1118733812 instance=ExtResource("1_fbcae")]
 
