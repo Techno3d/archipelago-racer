@@ -50,7 +50,7 @@ func _ready() -> void:
 	raycasts = [fl_raycast, rl_raycast, fr_raycast, rr_raycast]
 	spawn_point = transform
 	reset_collider.body_entered.connect(func(_body: Node3D):
-		if !wheel_base.has_overlapping_bodies() and !base2.has_overlapping_bodies():
+		if !wheel_base.has_overlapping_bodies() and !base2.has_overlapping_bodies() and reset_collider.has_overlapping_bodies():
 			var timer: SceneTreeTimer = get_tree().create_timer(3)
 			timer.timeout.connect(check_respawn)
 	)
@@ -160,7 +160,7 @@ func _process(_delta: float) -> void:
 		print("offtrack!")
 
 func check_respawn():
-	if !wheel_base.has_overlapping_bodies() and !base2.has_overlapping_bodies():
+	if !wheel_base.has_overlapping_bodies() and !base2.has_overlapping_bodies() and reset_collider.has_overlapping_bodies():
 		respawn()
 
 func respawn():
