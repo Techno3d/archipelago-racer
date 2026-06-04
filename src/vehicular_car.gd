@@ -52,7 +52,7 @@ func _ready() -> void:
 
 func on_ground(_body: Node3D):
 	if wheel_base.has_overlapping_bodies():
-		linear_damp = 0.5
+		linear_damp = 0.3
 		gravity_scale = 3.0
 	else:
 		linear_damp = air_damp

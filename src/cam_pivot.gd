@@ -9,7 +9,6 @@ var original_cam_pivot_polar: Vector3
 
 func _ready() -> void:
 	original_cam_pivot_polar = to_polar(cam_pivot.position)
-	print(original_cam_pivot_polar * Vector3(1, 180/TAU, 180/TAU))
 	global_position = cam_pivot.global_position
 
 func _physics_process(delta: float) -> void:

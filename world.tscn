@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cghvtgke8ylu7" path="res://vehicular_car.tscn" id="2_fj7yv"]
 [ext_resource type="PackedScene" uid="uid://bumpe34224r5n" path="res://assets/islands/Island1.glb" id="3_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://rt6bk813fk3e" path="res://assets/models/roadStraightLong.glb" id="4_aqk2v"]
+[ext_resource type="PackedScene" uid="uid://b0g33rx3vwom4" path="res://boost_pad.tscn" id="5_036b0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tlwt5"]
 render_priority = 0
@@ -69,3 +70,9 @@ mesh = SubResource("BoxMesh_tlwt5")
 
 [node name="modified_roadStraightLong" parent="." unique_id=1567241068 instance=ExtResource("4_aqk2v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73, 0, 54)
+
+[node name="BoostPad" parent="." unique_id=323553854 instance=ExtResource("5_036b0")]
+transform = Transform3D(1.32, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
+
+[node name="BoostPad2" parent="." unique_id=374675166 instance=ExtResource("5_036b0")]
+transform = Transform3D(1.32, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.578697, 213.39691)
