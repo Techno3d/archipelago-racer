@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://da46nk76aln18"]
 
-[ext_resource type="Script" uid="uid://b1d11gs2hpsof" path="res://LaunchPad.gd" id="1_abnn1"]
+[ext_resource type="Script" uid="uid://b1d11gs2hpsof" path="res://src/LaunchPad.gd" id="1_abnn1"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_lge1u"]
 

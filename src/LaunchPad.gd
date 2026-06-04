@@ -27,13 +27,14 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	print(path.progress_ratio)
 	if active:
+		car.global_position = path.global_position
 		path.progress_ratio += speed/100 * delta
 	
 	
-	if path.progress_ratio >= 1:
-		car.reparent(world)
+	if path.progress_ratio >= 1 and active:
 		active = false
 		car.freeze = false
+		car.linear_velocity = Vector3.ZERO
 		
 		
 
@@ -45,5 +46,4 @@ func body_entered(body: Node3D) -> void:
 	car.freeze = true
 	active = true
 	path.progress_ratio = 0
-	car.reparent(path)
-	car.position = Vector3.ZERO
+	car.global_position = global_position

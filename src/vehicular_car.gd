@@ -74,6 +74,9 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		state.apply_torque((global_basis*Vector3.RIGHT).normalized()*air_factor*pitch_input*mass)
 		state.apply_torque(up_axis*air_factor*-turn_input*mass)
 		return
+	
+	# Add downforce if not on ground
+	state.apply_central_force(-global_basis.y * mass)
 
 	# Suspension
 	for raycast in raycasts:
