@@ -14,5 +14,5 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not Globals.goal: return
 	$"VBoxContainer/HBoxContainer/Debug Label".text = debug_text.format(
-		[Globals.goal.last_checkpoint,Globals.goal.num_checkpoints,"%0.2fs" % Globals.goal.current_run_timer,"%0.2fs" % Globals.goal.best_time]
+		[Globals.goal.last_checkpoint+1,Globals.goal.num_checkpoints,"%0.2fs" % Globals.goal.current_run_timer,"%0.2fs" % Globals.goal.best_time]
 	)

@@ -19,7 +19,7 @@ var car: VehicularCar
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	path.loop = false
+w	path.loop = false
 	area_3d.body_entered.connect(body_entered)
 	
 	pass # Replace with function body.
