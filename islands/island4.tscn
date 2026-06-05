@@ -35,13 +35,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.732468, 0)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=867310477]
 
 [node name="VehicularCar" parent="." unique_id=1804453601 instance=ExtResource("4_bw5o5")]
-transform = Transform3D(0.982212, 0, -0.18777566, 0, 1, 0, 0.18777566, 0, 0.982212, 136.58388, 112.852455, 107.39943)
-
-[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1506864496]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -29.6109, 143.645, 0)
-light_color = Color(0.81960785, 0.60784316, 0.4, 1)
-spot_range = 160.78163
-spot_angle = 66.09375
+transform = Transform3D(-0.92096794, 0, 0.38963854, 0, 1, 0, -0.38963854, 0, -0.92096794, 136.58388, 112.852455, 107.39943)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1207843941]
 environment = SubResource("Environment_3c1dq")
@@ -50,28 +44,32 @@ environment = SubResource("Environment_3c1dq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38, 0)
 
 [node name="TimeTrialsStartGate" parent="." unique_id=1039711912 instance=ExtResource("6_v3qcb")]
-transform = Transform3D(18, 0, 0, 0, 18, 0, 0, 0, 18, 158.28912, 130.68839, 24.61567)
+transform = Transform3D(14.673444, -0.09814496, -6.3781238, -0.5177955, 15.926986, -1.4363157, 6.3578277, 1.5236411, 14.603306, 132.83205, 109.91824, 95.22248)
 num_checkpoints = 6
 
 [node name="CheckpointGate5" parent="." unique_id=1972916246 instance=ExtResource("7_njteb")]
-transform = Transform3D(17.773108, 0.7512457, -2.748129, -0.045176752, 17.43506, 4.4739876, 2.8486025, -4.410696, 17.217176, 144.7833, 131.84526, -47.35691)
+transform = Transform3D(7.900389, 0.03847503, -1.2579199, 0.036026884, 7.986069, 0.47053128, 1.2579923, -0.4703374, 7.8864594, 192.12683, 121.039406, -38.57338)
 
 [node name="CheckpointGate" parent="." unique_id=1251319173 instance=ExtResource("7_njteb")]
-transform = Transform3D(13.890641, 0, -11.447711, 0, 18, 0, 11.447711, 0, 13.890641, 197.61081, 100.61615, -201.81648)
-id = 1
+transform = Transform3D(7.56613, 0.36454278, -2.5730858, -0.323087, 7.991397, 0.18215004, 2.5786192, -0.068355024, 7.5727167, 46.368004, 129.89833, -124.46738)
+id = 2
 
 [node name="CheckpointGate2" parent="." unique_id=1175528560 instance=ExtResource("7_njteb")]
-transform = Transform3D(0.6799917, 0, 17.987152, 0, 18, 0, -17.987152, 0, 0.6799917, -172.2988, 102.928535, 86.97852)
+transform = Transform3D(-9.557778, -0.17925452, 5.442125, -0.10033128, 10.997969, 0.18604708, -5.444152, 0.112016514, -9.557649, -206.17552, 55.18068, -107.57248)
+id = 3
+
+[node name="CheckpointGate6" parent="." unique_id=593669503 instance=ExtResource("7_njteb")]
+transform = Transform3D(2.8085046, -0.105199516, 9.596939, -0.40385878, 9.989247, 0.22768752, -9.589015, -0.45152697, 2.8012366, 46.368004, 116.81997, -120.89265)
 id = 3
 
 [node name="CheckpointGate3" parent="." unique_id=1514159628 instance=ExtResource("7_njteb")]
-transform = Transform3D(7.7052197, 0, -16.267437, 0, 17.999996, 0, 16.267437, 0, 7.705219, -42.568348, 86.31921, 242.87115)
+transform = Transform3D(-6.8733115, -2.119686, -9.605442, -1.1982546, 11.811228, -1.7490208, 9.763288, -0.042649984, -6.9768476, -53.583656, 105.348495, 127.29996)
 id = 4
 
 [node name="CheckpointGate4" parent="." unique_id=888820424 instance=ExtResource("7_njteb")]
-transform = Transform3D(17.679483, 0.70219964, -3.3079891, -2.5397253, 14.383033, -10.52037, 2.2328618, 10.799782, 14.225999, 170.42307, 100.22042, 234.27309)
+transform = Transform3D(5.716095, -0.81842434, -5.536826, -0.37569472, 7.8400555, -1.5467342, 5.5843635, 1.3651794, 5.5633783, 87.60474, 100.862946, 199.45166)
 id = 5
 
 [node name="CheckpointGate7" parent="." unique_id=311662623 instance=ExtResource("7_njteb")]
-transform = Transform3D(-17.282822, -0.96354926, 4.9371657, -2.8341568, 16.460945, -6.7085643, -4.1559105, -7.2186456, -15.956803, 65.756386, 127.25294, -244.24469)
-id = 2
+transform = Transform3D(6.36771, 0.34287673, 2.8869896, -0.44705743, 6.9839544, 0.15659799, -2.8727014, -0.32683152, 6.375011, 149.93207, 115.682884, -150.82553)
+id = 1
