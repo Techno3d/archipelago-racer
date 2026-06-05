@@ -11,13 +11,13 @@ shader_parameter/ColorParameter = Color(0.235294, 1, 1, 0.352941)
 [sub_resource type="PlaneMesh" id="PlaneMesh_1gnqd"]
 lightmap_size_hint = Vector2i(5002, 5002)
 material = SubResource("ShaderMaterial_5f5xi")
-size = Vector2(1000, 1000)
+size = Vector2(5000, 5000)
 subdivide_width = 200
 subdivide_depth = 200
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_u3btu"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" unique_id=689727303]
+[node name="Water" type="MeshInstance3D" unique_id=689727303]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -4)
 mesh = SubResource("PlaneMesh_1gnqd")
 

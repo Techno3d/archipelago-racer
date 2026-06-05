@@ -4,23 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://b46for2683jdw" path="res://assets/islands/Island3.glb" id="2_4myww"]
 [ext_resource type="PackedScene" uid="uid://dqupxgeoycchv" path="res://assets/islands/Track3Lake.glb" id="3_avxgg"]
 [ext_resource type="PackedScene" uid="uid://cghvtgke8ylu7" path="res://vehicular_car.tscn" id="4_8c4bo"]
+[ext_resource type="Environment" uid="uid://cijtx21rxjg6n" path="res://islands_env.tres" id="5_4myww"]
 [ext_resource type="PackedScene" uid="uid://bw0synsryh8ul" path="res://islands/water.tscn" id="5_ewk68"]
 [ext_resource type="PackedScene" uid="uid://cjlsytwctm5wl" path="res://time_trials.tscn" id="6_bnihp"]
 [ext_resource type="PackedScene" uid="uid://cit3atv4q613p" path="res://checkpoint.tscn" id="7_ku8ep"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gn4co"]
-
-[sub_resource type="Sky" id="Sky_ekbnt"]
-sky_material = SubResource("ProceduralSkyMaterial_gn4co")
-
-[sub_resource type="Environment" id="Environment_3c1dq"]
-background_mode = 2
-sky = SubResource("Sky_ekbnt")
-ambient_light_source = 3
-reflected_light_source = 2
-glow_enabled = true
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.005
 
 [node name="Lake" type="Node3D" unique_id=1794474086]
 
@@ -44,34 +31,23 @@ spot_range = 160.78163
 spot_angle = 66.09375
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1207843941]
-environment = SubResource("Environment_3c1dq")
+environment = ExtResource("5_4myww")
 
 [node name="WaterMesh" parent="." unique_id=689727303 instance=ExtResource("5_ewk68")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38, 0)
 
 [node name="TimeTrialsStartGate" parent="." unique_id=1039711912 instance=ExtResource("6_bnihp")]
-transform = Transform3D(18, 0, 0, 0, 18, 0, 0, 0, 18, 158.28912, 130.68839, 24.61567)
-num_checkpoints = 6
-
-[node name="CheckpointGate5" parent="." unique_id=1972916246 instance=ExtResource("7_ku8ep")]
-transform = Transform3D(17.773108, 0.7512457, -2.748129, -0.045176752, 17.43506, 4.4739876, 2.8486025, -4.410696, 17.217176, 144.7833, 131.84526, -47.35691)
+transform = Transform3D(2.8951778, 0, 21.80867, 0, 22.000002, 0, -21.80867, 0, 2.8951778, 99.13472, 76.327034, -246.61707)
+num_checkpoints = 4
 
 [node name="CheckpointGate" parent="." unique_id=1251319173 instance=ExtResource("7_ku8ep")]
-transform = Transform3D(13.890641, 0, -11.447711, 0, 18, 0, 11.447711, 0, 13.890641, 197.61081, 100.61615, -201.81648)
+transform = Transform3D(-17.999567, 0, 0.12472153, 0, 18, 0, -0.12472153, 0, -17.999567, -242.34001, 64.49237, 48.411736)
 id = 1
 
-[node name="CheckpointGate2" parent="." unique_id=1175528560 instance=ExtResource("7_ku8ep")]
-transform = Transform3D(0.6799917, 0, 17.987152, 0, 18, 0, -17.987152, 0, 0.6799917, -172.2988, 102.928535, 86.97852)
-id = 3
-
-[node name="CheckpointGate3" parent="." unique_id=1514159628 instance=ExtResource("7_ku8ep")]
-transform = Transform3D(7.7052197, 0, -16.267437, 0, 17.999996, 0, 16.267437, 0, 7.705219, -42.568348, 86.31921, 242.87115)
-id = 4
-
-[node name="CheckpointGate4" parent="." unique_id=888820424 instance=ExtResource("7_ku8ep")]
-transform = Transform3D(17.679483, 0.70219964, -3.3079891, -2.5397253, 14.383033, -10.52037, 2.2328618, 10.799782, 14.225999, 170.42307, 100.22042, 234.27309)
-id = 5
-
-[node name="CheckpointGate7" parent="." unique_id=311662623 instance=ExtResource("7_ku8ep")]
-transform = Transform3D(-17.282822, -0.96354926, 4.9371657, -2.8341568, 16.460945, -6.7085643, -4.1559105, -7.2186456, -15.956803, 65.756386, 127.25294, -244.24469)
+[node name="CheckpointGate2" parent="." unique_id=1972916246 instance=ExtResource("7_ku8ep")]
+transform = Transform3D(-7.750618, 0, -16.24586, 0, 18.000002, 0, 16.24586, 0, -7.750618, -109.31166, 87.66632, 281.2625)
 id = 2
+
+[node name="CheckpointGate3" parent="." unique_id=978121355 instance=ExtResource("7_ku8ep")]
+transform = Transform3D(12.423484, -0.5435823, -13.013903, 1.7549969, 17.89018, 0.9281144, 12.906475, -1.9094315, 12.400687, 216.37334, 91.47085, -57.88325)
+id = 3

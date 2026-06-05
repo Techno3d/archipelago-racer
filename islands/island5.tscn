@@ -4,24 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://drdorh3xpln4x" path="res://assets/islands/Island5.glb" id="2_fbcae"]
 [ext_resource type="PackedScene" uid="uid://cem6phcnwrjed" path="res://assets/islands/Track5Moutnain.glb" id="3_1rerm"]
 [ext_resource type="PackedScene" uid="uid://cghvtgke8ylu7" path="res://vehicular_car.tscn" id="4_sc0b6"]
+[ext_resource type="Environment" uid="uid://cijtx21rxjg6n" path="res://islands_env.tres" id="5_1rerm"]
 [ext_resource type="PackedScene" uid="uid://bw0synsryh8ul" path="res://islands/water.tscn" id="5_3l6xr"]
 [ext_resource type="Shader" uid="uid://cv76cnc5ughm4" path="res://islands/water.tres" id="6_1rerm"]
 [ext_resource type="PackedScene" uid="uid://cjlsytwctm5wl" path="res://time_trials.tscn" id="6_pix5n"]
 [ext_resource type="PackedScene" uid="uid://cit3atv4q613p" path="res://checkpoint.tscn" id="7_idvyu"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gn4co"]
-
-[sub_resource type="Sky" id="Sky_ekbnt"]
-sky_material = SubResource("ProceduralSkyMaterial_gn4co")
-
-[sub_resource type="Environment" id="Environment_3c1dq"]
-background_mode = 2
-sky = SubResource("Sky_ekbnt")
-ambient_light_source = 3
-reflected_light_source = 2
-glow_enabled = true
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.005
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5f5xi"]
 render_priority = 0
@@ -57,7 +44,7 @@ spot_range = 160.78163
 spot_angle = 66.09375
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1207843941]
-environment = SubResource("Environment_3c1dq")
+environment = ExtResource("5_1rerm")
 
 [node name="WaterMesh" parent="." unique_id=689727303 instance=ExtResource("5_3l6xr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38, 0)

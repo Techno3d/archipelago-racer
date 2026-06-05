@@ -115,12 +115,14 @@ script = ExtResource("1_0avnc")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1032454017]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1785918601]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34597835, -0.47314453, 0.075042725)
 shape = SubResource("BoxShape3D_ir4xs")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=649436266]
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=558941641]
 shape = SubResource("ConvexPolygonShape3D_0avnc")
