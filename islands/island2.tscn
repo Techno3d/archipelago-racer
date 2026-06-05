@@ -22,7 +22,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45.466793, 0)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=867310477]
 
 [node name="VehicularCar" parent="." unique_id=1804453601 instance=ExtResource("2_o4mnm")]
-transform = Transform3D(0.47599268, 0, 0.87944937, 0, 1, 0, -0.87944937, 0, 0.47599268, -86.3678, 108.39701, 30.624273)
+transform = Transform3D(0.47599268, 0, 0.87944937, 0, 1, 0, -0.87944937, 0, 0.47599268, -87.89082, 108.39701, 32.624855)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1506864496]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -29.6109, 143.645, 0)
@@ -37,28 +37,25 @@ environment = ExtResource("5_o4mnm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38, 0)
 
 [node name="TimeTrialsStartGate" parent="." unique_id=1039711912 instance=ExtResource("4_pyewb")]
-transform = Transform3D(18, 0, 0, 0, 18, 0, 0, 0, 18, 158.28912, 130.68839, 24.61567)
-num_checkpoints = 6
-
-[node name="CheckpointGate5" parent="." unique_id=1972916246 instance=ExtResource("5_3ekv0")]
-transform = Transform3D(17.773108, 0.7512457, -2.748129, -0.045176752, 17.43506, 4.4739876, 2.8486025, -4.410696, 17.217176, 144.7833, 131.84526, -47.35691)
+transform = Transform3D(-4.873804, 0, -8.15451, 0, 9.5, 0, 8.15451, 0, -4.873804, -74.15294, 108.39701, 36.117527)
+num_checkpoints = 5
 
 [node name="CheckpointGate" parent="." unique_id=1251319173 instance=ExtResource("5_3ekv0")]
-transform = Transform3D(13.890641, 0, -11.447711, 0, 18, 0, 11.447711, 0, 13.890641, 197.61081, 100.61615, -201.81648)
+transform = Transform3D(1.9622185, 0, -5.6700706, 0, 6, 0, 5.6700706, 0, 1.9622185, 36.049744, 110.19278, 51.064137)
 id = 1
 
-[node name="CheckpointGate2" parent="." unique_id=1175528560 instance=ExtResource("5_3ekv0")]
-transform = Transform3D(0.6799917, 0, 17.987152, 0, 18, 0, -17.987152, 0, 0.6799917, -172.2988, 102.928535, 86.97852)
+[node name="CheckpointGate2" parent="." unique_id=1972916246 instance=ExtResource("5_3ekv0")]
+transform = Transform3D(5.998227, 0, -0.14586055, 0, 5.9999995, 0, 0.14586055, 0, 5.998227, 112.76707, 94.52214, -25.935165)
+id = 2
+
+[node name="CheckpointGate3" parent="." unique_id=1148209843 instance=ExtResource("5_3ekv0")]
+transform = Transform3D(-0.26212886, 0, 8.996182, 0, 9, 0, -8.996182, 0, -0.26212886, 20.780579, 109.04779, -150.85075)
 id = 3
 
-[node name="CheckpointGate3" parent="." unique_id=1514159628 instance=ExtResource("5_3ekv0")]
-transform = Transform3D(7.7052197, 0, -16.267437, 0, 17.999996, 0, 16.267437, 0, 7.705219, -42.568348, 86.31921, 242.87115)
+[node name="CheckpointGate4" parent="." unique_id=1334165141 instance=ExtResource("5_3ekv0")]
+transform = Transform3D(-4.3838134, -1.023999, 3.9665618, -1.0059913, 5.900732, 0.41150695, -3.971167, -0.36439264, -4.482974, -237.72214, 47.938488, -100.48319)
 id = 4
 
-[node name="CheckpointGate4" parent="." unique_id=888820424 instance=ExtResource("5_3ekv0")]
-transform = Transform3D(17.679483, 0.70219964, -3.3079891, -2.5397253, 14.383033, -10.52037, 2.2328618, 10.799782, 14.225999, 170.42307, 100.22042, 234.27309)
+[node name="CheckpointGate5" parent="." unique_id=619051969 instance=ExtResource("5_3ekv0")]
+transform = Transform3D(5.5873237, -1.2225713, -1.8130469, 1.1095332, 5.871727, -0.5401329, 1.8843454, 0.16771007, 5.6939554, -162.80205, 95.61602, -59.732018)
 id = 5
-
-[node name="CheckpointGate7" parent="." unique_id=311662623 instance=ExtResource("5_3ekv0")]
-transform = Transform3D(-17.282822, -0.96354926, 4.9371657, -2.8341568, 16.460945, -6.7085643, -4.1559105, -7.2186456, -15.956803, 65.756386, 127.25294, -244.24469)
-id = 2

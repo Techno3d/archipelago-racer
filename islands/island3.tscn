@@ -38,14 +38,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38, 0)
 
 [node name="TimeTrialsStartGate" parent="." unique_id=1039711912 instance=ExtResource("6_bnihp")]
 transform = Transform3D(2.8951778, 0, 21.80867, 0, 22.000002, 0, -21.80867, 0, 2.8951778, 99.13472, 76.327034, -246.61707)
-num_checkpoints = 4
+num_checkpoints = 3
 
 [node name="CheckpointGate" parent="." unique_id=1251319173 instance=ExtResource("7_ku8ep")]
-transform = Transform3D(-17.999567, 0, 0.12472153, 0, 18, 0, -0.12472153, 0, -17.999567, -242.34001, 64.49237, 48.411736)
+transform = Transform3D(-17.999567, 0, 0.12472153, 0, 18, 0, -0.12472153, 0, -17.999567, -242.34001, 62.89644, 48.411736)
 id = 1
 
 [node name="CheckpointGate2" parent="." unique_id=1972916246 instance=ExtResource("7_ku8ep")]
-transform = Transform3D(-7.750618, 0, -16.24586, 0, 18.000002, 0, 16.24586, 0, -7.750618, -109.31166, 87.66632, 281.2625)
+transform = Transform3D(-7.750618, 0, -16.24586, 0, 18.000002, 0, 16.24586, 0, -7.750618, -39.015587, 87.66631, 316.5983)
 id = 2
 
 [node name="CheckpointGate3" parent="." unique_id=978121355 instance=ExtResource("7_ku8ep")]

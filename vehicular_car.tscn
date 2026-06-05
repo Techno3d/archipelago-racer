@@ -30,7 +30,7 @@ size = Vector3(1.1163034, 0.26939392, 0.23518753)
 size = Vector3(1, 0.28127992, 1.918396)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2bg50"]
-size = Vector3(1, 0.13845062, 1)
+size = Vector3(1, 0.46356773, 1.7553711)
 
 [node name="VehicularCar" type="RigidBody3D" unique_id=1804453601]
 collision_layer = 2
@@ -120,10 +120,10 @@ enabled = false
 target_position = Vector3(0, -0.45, 0)
 
 [node name="CamPivot" type="Node3D" parent="." unique_id=838918402]
-transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 1.6668141, -2.4373674)
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 2.1907423, -3.9452584)
 
 [node name="Camera3D" type="Camera3D" parent="CamPivot" unique_id=254348556]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6668141, -2.4373674)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1907423, -3.9452584)
 top_level = true
 current = true
 script = ExtResource("3_u22bx")
@@ -132,5 +132,5 @@ script = ExtResource("3_u22bx")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7854395, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ResetCollider" unique_id=261668505]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.005252838, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15730572, 0.37768555)
 shape = SubResource("BoxShape3D_2bg50")
