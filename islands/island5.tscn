@@ -63,16 +63,16 @@ id = 1
 
 [node name="CheckpointGate2" parent="." unique_id=1175528560 instance=ExtResource("7_idvyu")]
 transform = Transform3D(-16.81411, 0, -6.4253964, 0, 17.999998, 0, 6.4253964, 0, -16.81411, 14.312773, 252.02908, -191.88423)
-id = 3
+id = 2
 
 [node name="CheckpointGate3" parent="." unique_id=1514159628 instance=ExtResource("7_idvyu")]
 transform = Transform3D(17.349957, 0, 4.7936373, 0, 17.999996, 0, -4.793638, 0, 17.349957, -16.183294, 187.68684, -175.8778)
-id = 4
+id = 3
 
 [node name="CheckpointGate4" parent="." unique_id=888820424 instance=ExtResource("7_idvyu")]
 transform = Transform3D(-14.019874, 0, 5.33321, 0, 14.999999, 0, -5.33321, 0, -14.019874, -118.14979, 102.75623, -191.1537)
-id = 5
+id = 4
 
 [node name="CheckpointGate7" parent="." unique_id=311662623 instance=ExtResource("7_idvyu")]
 transform = Transform3D(-11.463341, 0, 3.5484958, 0, 12, 0, -3.5484958, 0, -11.463341, -334.85458, 57.302856, 35.67607)
-id = 2
+id = 5
