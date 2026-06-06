@@ -1,18 +1,18 @@
 extends CanvasLayer
 
-var goal: TimeTrials
+@onready var timer_label: Label = %Timer
+@onready var extra_timer_label: Label = %ExtraTime
+@onready var best_time_label: Label = %BestTime
+@onready var checkpoint_label: Label = %Checkpoint
 
-const debug_text = "Checkpoints: {0}/{1} 
-Current Time: {2} (+ {4})
-Best Time: {3}"
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if not Globals.goal: return
-	$"VBoxContainer/HBoxContainer/Debug Label".text = debug_text.format(
-		[Globals.goal.last_checkpoint+1,Globals.goal.num_checkpoints,"%0.2fs" % Globals.goal.current_run_timer,"%0.2fs" % Globals.goal.best_time, "%0.2fs" % Globals.goal.penalty_timer]
-	)
+func _process(_delta: float) -> void:
+	timer_label.text = "%.2fs" % [Globals.goal.current_run_timer]
+	if Globals.goal.penalty_timer > 0:
+		extra_timer_label.text = "(+%.2fs)" % Globals.goal.penalty_timer
+	else:
+		extra_timer_label.text = ""
+	if Globals.goal.best_time >= 0:
+		best_time_label.text = "Personal Best: %.2fs" % Globals.goal.best_time
+	else:
+		best_time_label.text = ""
+	checkpoint_label.text = "%d / %d" % [Globals.goal.last_checkpoint, Globals.goal.num_checkpoints]

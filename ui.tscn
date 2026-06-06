@@ -1,25 +1,120 @@
 [gd_scene format=3 uid="uid://bohy1uwlk3vcd"]
 
 [ext_resource type="Script" uid="uid://dbndaagoa2xr2" path="res://ui.gd" id="1_v2lfg"]
+[ext_resource type="Script" uid="uid://clwr7wce8h4gk" path="res://speedmeter.gd" id="2_m6e0p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fyqef"]
+bg_color = Color(0.06462501, 0.0605, 0.11, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6e0p"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_27fn8"]
+bg_color = Color(0.17400002, 0.6, 0.19530001, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nltto"]
+font_size = 10
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1118733812]
 script = ExtResource("1_v2lfg")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1114639332]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=373857113]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=605820503]
+[node name="MainContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1114639332]
+layout_mode = 2
+
+[node name="Top" type="HBoxContainer" parent="MarginContainer/MainContainer" unique_id=605820503]
+layout_mode = 2
+
+[node name="TimeStuff" type="VBoxContainer" parent="MarginContainer/MainContainer/Top" unique_id=1649293068]
+layout_mode = 2
+
+[node name="Timer" type="Label" parent="MarginContainer/MainContainer/Top/TimeStuff" unique_id=2107256103]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="BestTime" type="Label" parent="MarginContainer/MainContainer/Top/TimeStuff" unique_id=648857685]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ExtraTime" type="Label" parent="MarginContainer/MainContainer/Top" unique_id=1368636076]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Spacer" type="Control" parent="MarginContainer/MainContainer/Top" unique_id=1402929581]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Checkpoint" type="Label" parent="MarginContainer/MainContainer/Top" unique_id=1158090701]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Spacer" type="Control" parent="MarginContainer/MainContainer" unique_id=1983064708]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Debug Label" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=32410027]
+[node name="Bottom" type="HBoxContainer" parent="MarginContainer/MainContainer" unique_id=171780597]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="VBoxContainer" unique_id=1904783218]
+[node name="Speedmeter" type="Panel" parent="MarginContainer/MainContainer/Bottom" unique_id=1515642016]
+custom_minimum_size = Vector2(100, 25)
 layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 14.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fyqef")
+script = ExtResource("2_m6e0p")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MainContainer/Bottom/Speedmeter" unique_id=1701194009]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Red" type="Panel" parent="MarginContainer/MainContainer/Bottom/Speedmeter/MarginContainer" unique_id=1723048811]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_m6e0p")
+
+[node name="Control" type="Control" parent="MarginContainer/MainContainer/Bottom/Speedmeter/MarginContainer" unique_id=1714315279]
+layout_mode = 2
+
+[node name="Green" type="Panel" parent="MarginContainer/MainContainer/Bottom/Speedmeter/MarginContainer/Control" unique_id=1979440539]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_27fn8")
+
+[node name="SpeedLabel" type="Label" parent="MarginContainer/MainContainer/Bottom/Speedmeter" unique_id=292921941]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "mph"
+label_settings = SubResource("LabelSettings_nltto")
+horizontal_alignment = 1
+vertical_alignment = 1

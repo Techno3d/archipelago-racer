@@ -32,9 +32,9 @@ radius = 0.13085938
 size = Vector3(1, 0.28127992, 1.918396)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2bg50"]
-size = Vector3(1, 0.46356773, 1.7553711)
+size = Vector3(1, 0.6321745, 2.0721436)
 
-[node name="VehicularCar" type="RigidBody3D" unique_id=1804453601]
+[node name="VehicularCar" type="RigidBody3D" unique_id=1804453601 groups=["PlayerCar"]]
 collision_layer = 2
 collision_mask = 11
 mass = 1000.0
@@ -131,9 +131,10 @@ script = ExtResource("3_u22bx")
 
 [node name="ResetCollider" type="Area3D" parent="." unique_id=1954158312]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7854395, 0)
+collision_mask = 9
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ResetCollider" unique_id=261668505]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15730572, 0.37768555)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2416091, 0.3171997)
 shape = SubResource("BoxShape3D_2bg50")
 
 [node name="Downforce" type="RayCast3D" parent="." unique_id=1545216716]

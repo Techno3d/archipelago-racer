@@ -35,6 +35,10 @@ window/stretch/mode="viewport"
 
 enabled=PackedStringArray("res://addons/extra_snaps/plugin.cfg", "res://addons/road-generator/plugin.cfg")
 
+[global_group]
+
+PlayerCar=""
+
 [input]
 
 left={

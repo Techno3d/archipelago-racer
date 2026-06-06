@@ -9,7 +9,7 @@ var penalty_timer: float = 0
 var started: bool = false
 
 @export var num_checkpoints = 0
-var last_checkpoint: int = -1
+var last_checkpoint: int = 0
  
 var best_time: float = -1
 
@@ -35,9 +35,9 @@ func passed(body) -> void:
 	if last_checkpoint < num_checkpoints-2: return
 	
 	if best_time == -1:
-		best_time = current_run_timer
+		best_time = current_run_timer + penalty_timer
 	elif current_run_timer < best_time:
-		best_time = current_run_timer	
+		best_time = current_run_timer + penalty_timer
 		
 	while current_run_timer < next_time:
 		if times.size() == 0:
@@ -49,6 +49,7 @@ func passed(body) -> void:
 	
 func reset() -> void:
 	current_run_timer = 0
-	last_checkpoint = -1
+	penalty_timer = 0
+	last_checkpoint = 0
 	started = false
 	

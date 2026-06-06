@@ -100,6 +100,8 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 			# var damped_spring_force = (offset*spring_constant - damp_constant*(state.get_velocity_at_local_position(raycast.position).dot(spring_up)))*raycast.get_collision_normal()
 			var damped_spring_force = (offset*spring_constant - damp_constant*(point_vel.dot(spring_up)))*raycast.get_collision_normal()
 			state.apply_force(damped_spring_force, contact - global_position)
+
+	var speed = (state.linear_velocity * global_basis.z).length()
 	
 	# Ground controls
 	var forward_dir: Vector3 = (global_transform.basis * Vector3(0,0,1)).normalized()
@@ -130,19 +132,19 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	# Torque should be r x F, where r is the position offset from CM to force, and F is the force.
 	var steer_dir = (steering_point.global_position - global_position).normalized().cross(wheel_dir)
 	# Not physics based turning force magnitude
-	var steer_torque = steer_dir * mass * 2 * turn_curve.sample(linear_velocity.length()/top_speed) * sign(linear_velocity.dot(global_basis.z))
+	var steer_torque = steer_dir * mass * 2 * turn_curve.sample(speed/top_speed) * sign(linear_velocity.dot(global_basis.z))
 	state.apply_torque(steer_torque)
 
 	# Mass times accel * direction of wheel * where on accel curve. Power of engine/motor is limited, but it takes more power the faster you are to move
 	# as `P = F * v` I think. This also serves to clamp the speed
 	# Factor of 100 is there to make it work, idk why it doesn't without it
-	var motor_force = forward_dir * throttle * accel * mass * accel_curve.sample(clampf(state.linear_velocity.length()/top_speed, 0, 1)) * 100
-	var breaking_force = -forward_dir * breaking * accel/2. * mass * accel_curve.sample(clampf(state.linear_velocity.length()/(top_speed/2.), 0, 1)*-1) * 100
+	var motor_force = forward_dir * throttle * accel * mass * accel_curve.sample(clampf(speed/top_speed, 0, 1)) * 100
+	var breaking_force = -forward_dir * breaking * accel/2. * mass * accel_curve.sample(clampf(speed/(top_speed/2.), 0, 1)*-1) * 100
 
-	var turn_quat_lower = Quaternion.from_euler(Vector3.UP * turn_input * TAU/180.*power_steering_factor * turn_curve.sample(state.angular_velocity.length()/top_angular_speed * state.linear_velocity.length()/top_speed)).normalized()
+	var turn_quat_lower = Quaternion.from_euler(Vector3.UP * turn_input * TAU/180.*power_steering_factor * turn_curve.sample(state.angular_velocity.length()/top_angular_speed * speed/top_speed)).normalized()
 	var less_wheel_dir = ((global_transform.basis * (Vector3(0,0,1) * turn_quat_lower)).normalized())
-	var motor_force_steer = less_wheel_dir * throttle * accel * mass * accel_curve.sample(clampf(state.linear_velocity.length()/top_speed, 0, 1)) * 100
-	var breaking_force_steer = -less_wheel_dir * breaking * accel/2. * mass * accel_curve.sample(clampf(state.linear_velocity.length()/(top_speed/2.), 0, 1)*-1) * 100
+	var motor_force_steer = less_wheel_dir * throttle * accel * mass * accel_curve.sample(clampf(speed/top_speed, 0, 1)) * 100
+	var breaking_force_steer = -less_wheel_dir * breaking * accel/2. * mass * accel_curve.sample(clampf(speed/(top_speed/2.), 0, 1)*-1) * 100
 
 	# Using the actual turn on the front wheel cars usually ends in weird jumping behavior
 	# Most of the torque should already be calculated above, this is just for extra turn
@@ -157,7 +159,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 
 func _process(delta: float) -> void:
 	car_model.speed = linear_velocity.length()
-	if base2.has_overlapping_bodies() and not wheel_base.has_overlapping_bodies():
+	if base2.has_overlapping_bodies() and not wheel_base.has_overlapping_bodies() and Globals.goal.started:
 		print("offtrack!")
 		Globals.goal.penalty_timer += delta
 
