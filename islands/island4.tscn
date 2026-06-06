@@ -5,22 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://bcmepg2y6jawp" path="res://assets/islands/Track4Desert.glb" id="3_4vfo5"]
 [ext_resource type="PackedScene" uid="uid://cghvtgke8ylu7" path="res://vehicular_car.tscn" id="4_bw5o5"]
 [ext_resource type="PackedScene" uid="uid://bw0synsryh8ul" path="res://islands/water.tscn" id="5_g7r8c"]
+[ext_resource type="Environment" uid="uid://cijtx21rxjg6n" path="res://islands_env.tres" id="5_ukm0i"]
 [ext_resource type="PackedScene" uid="uid://cjlsytwctm5wl" path="res://time_trials.tscn" id="6_v3qcb"]
 [ext_resource type="PackedScene" uid="uid://cit3atv4q613p" path="res://checkpoint.tscn" id="7_njteb"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gn4co"]
-
-[sub_resource type="Sky" id="Sky_ekbnt"]
-sky_material = SubResource("ProceduralSkyMaterial_gn4co")
-
-[sub_resource type="Environment" id="Environment_3c1dq"]
-background_mode = 2
-sky = SubResource("Sky_ekbnt")
-ambient_light_source = 3
-reflected_light_source = 2
-glow_enabled = true
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.005
 
 [node name="Desert" type="Node3D" unique_id=1794474086]
 
@@ -38,7 +25,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.732468, 0)
 transform = Transform3D(-0.92096794, 0, 0.38963854, 0, 1, 0, -0.38963854, 0, -0.92096794, 136.58388, 112.852455, 107.39943)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1207843941]
-environment = SubResource("Environment_3c1dq")
+environment = ExtResource("5_ukm0i")
 
 [node name="WaterMesh" parent="." unique_id=689727303 instance=ExtResource("5_g7r8c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38, 0)
@@ -51,7 +38,7 @@ num_checkpoints = 6
 transform = Transform3D(7.900389, 0.03847503, -1.2579199, 0.036026884, 7.986069, 0.47053128, 1.2579923, -0.4703374, 7.8864594, 192.12683, 121.039406, -38.57338)
 
 [node name="CheckpointGate" parent="." unique_id=1251319173 instance=ExtResource("7_njteb")]
-transform = Transform3D(7.56613, 0.36454278, -2.5730858, -0.323087, 7.991397, 0.18215004, 2.5786192, -0.068355024, 7.5727167, 46.368004, 129.89833, -124.46738)
+transform = Transform3D(-7.56613, -0.36454278, 2.5730863, -0.323087, 7.991397, 0.18215004, -2.5786197, 0.06835499, -7.572716, 55.517735, 129.49615, -126.42557)
 id = 2
 
 [node name="CheckpointGate2" parent="." unique_id=1175528560 instance=ExtResource("7_njteb")]

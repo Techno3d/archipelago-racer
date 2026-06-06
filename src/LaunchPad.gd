@@ -19,7 +19,7 @@ var car: VehicularCar
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-w	path.loop = false
+	path.loop = false
 	area_3d.body_entered.connect(body_entered)
 	
 	pass # Replace with function body.
@@ -34,7 +34,7 @@ func _physics_process(delta: float) -> void:
 	if path.progress_ratio >= 1 and active:
 		active = false
 		car.freeze = false
-		car.linear_velocity = Vector3.ZERO
+		car.linear_velocity = -car.global_basis.y * 3
 		
 		
 

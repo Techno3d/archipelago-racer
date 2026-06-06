@@ -12,7 +12,7 @@ var spawn_point: Transform3D
 
 @export var accel_curve: Curve
 @export var turn_curve: Curve
-@export var accel = 10.0
+@export var accel = 0.5
 @export var top_speed: float = 35
 @export var power_steering_factor: float = 2.1
 @export var air_damp: float = 0.05
@@ -24,6 +24,7 @@ var spawn_point: Transform3D
 @onready var reset_collider: Area3D = $ResetCollider
 @onready var steering_point: Node3D = $SteeringPoint
 @onready var cam_pivot: Node3D = $CamPivot
+@onready var downforce_cast: RayCast3D = $Downforce
 
 # Suspension
 @export var spring_constant = 80000
@@ -73,6 +74,9 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	car_model.steer = turn_input * turn_angle * TAU/180.
 	# print("%.1f %.1f %.1f %.2f" % [throttle, breaking, turn_input, linear_velocity.length()])
 
+	if downforce_cast.is_colliding():
+		state.apply_central_force(-global_basis.y * mass * 5)
+
 	if !wheel_base.has_overlapping_bodies() and !base2.has_overlapping_bodies():
 		# Air controls
 		var up_axis = (global_basis*Vector3.UP).normalized()
@@ -81,9 +85,6 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		state.apply_torque((global_basis*Vector3.RIGHT).normalized()*air_factor*pitch_input*mass)
 		state.apply_torque(up_axis*air_factor*-turn_input*mass)
 		return
-	
-	# Add downforce if not on ground
-	state.apply_central_force(-global_basis.y * mass)
 
 	# Suspension
 	for raycast in raycasts:
@@ -122,14 +123,14 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	# Kinetic Friction
 	var fraction_linear_cross_front = perp_wheel_dir.dot(state.linear_velocity)
 	var fraction_linear_cross_back = global_basis.x.dot(state.linear_velocity)
-	state.apply_central_force(perp_wheel_dir*fraction_linear_cross_front*-1*mass*mu_k)
-	state.apply_central_force(global_basis.x*fraction_linear_cross_back*-1*mass*mu_k)
+	state.apply_central_force(perp_wheel_dir*fraction_linear_cross_front*-1*mass*mu_k * 1.2)
+	state.apply_central_force(global_basis.x*fraction_linear_cross_back*-1*mass*mu_k * 1.5)
 
 
 	# Torque should be r x F, where r is the position offset from CM to force, and F is the force.
 	var steer_dir = (steering_point.global_position - global_position).normalized().cross(wheel_dir)
 	# Not physics based turning force magnitude
-	var steer_torque = steer_dir * mass * 2 * clampf(state.linear_velocity.length()/(top_speed/2), 0, 1) * (-1 if breaking > throttle else 1)
+	var steer_torque = steer_dir * mass * 2 * turn_curve.sample(linear_velocity.length()/top_speed) * sign(linear_velocity.dot(global_basis.z))
 	state.apply_torque(steer_torque)
 
 	# Mass times accel * direction of wheel * where on accel curve. Power of engine/motor is limited, but it takes more power the faster you are to move
@@ -154,10 +155,11 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	state.apply_force(breaking_force/4., global_basis*rl_contact.position)
 	state.apply_force(breaking_force/4., global_basis*rr_contact.position)
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	car_model.speed = linear_velocity.length()
 	if base2.has_overlapping_bodies() and not wheel_base.has_overlapping_bodies():
 		print("offtrack!")
+		Globals.goal.penalty_timer += delta
 
 func check_respawn():
 	if !wheel_base.has_overlapping_bodies() and !base2.has_overlapping_bodies() and reset_collider.has_overlapping_bodies():

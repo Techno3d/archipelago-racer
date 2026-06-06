@@ -4,6 +4,7 @@ class_name TimeTrials
 @export var times: Array[float] = [60]
 var next_time: float = 900
 var current_run_timer: float = 0
+var penalty_timer: float = 0
 
 var started: bool = false
 

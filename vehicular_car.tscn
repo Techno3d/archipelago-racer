@@ -14,17 +14,19 @@ _data = [Vector2(-1, 0), 0.0, 0.0, 0, 0, Vector2(-0.28000003, 0.33433735), 1.749
 point_count = 6
 
 [sub_resource type="Curve" id="Curve_u22bx"]
-_data = [Vector2(0, 0.6671686), 0.0, 0.0, 0, 0, Vector2(0.25454545, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.79442763), 0.0, 0.0, 0, 0, Vector2(0.49818182, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wb3y8"]
-size = Vector3(0.5215149, 2.1228027, 0.3804474)
+size = Vector3(0.5215149, 1.9949951, 0.3669815)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_nwii0"]
-size = Vector3(1.6859169, 0.26939392, 0.23518753)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_u22bx"]
+height = 1.6337891
+radius = 0.13085938
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_jl8dw"]
-size = Vector3(1.1163034, 0.26939392, 0.23518753)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nwii0"]
+height = 0.9944763
+radius = 0.13085938
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u22bx"]
 size = Vector3(1, 0.28127992, 1.918396)
@@ -49,22 +51,21 @@ angular_damp = 1.0
 script = ExtResource("1_wb3y8")
 accel_curve = SubResource("Curve_wb3y8")
 turn_curve = SubResource("Curve_u22bx")
-accel = 1.0
 
 [node name="Car" parent="." unique_id=836562085 instance=ExtResource("1_guv52")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16610754, 0.21156323)
 
 [node name="BodyCollider" type="CollisionShape3D" parent="." unique_id=291636889]
-transform = Transform3D(1, 0, 0, 0, 0.004031723, 0.9999919, 0, -0.9999919, 0.004031723, -0.0075531006, 0.28173506, 0.33887222)
+transform = Transform3D(1, 0, 0, 0, 0.004031723, 0.9999919, 0, -0.9999919, 0.004031723, -0.0075531006, 0.28872558, 0.27499607)
 shape = SubResource("BoxShape3D_wb3y8")
 
 [node name="BackWheelCollider" type="CollisionShape3D" parent="." unique_id=1063686484]
-transform = Transform3D(1, 0, 0, 0, 0.004031723, 0.9999919, 0, -0.9999919, 0.004031723, -0.015668869, 0.16904052, -0.43059212)
-shape = SubResource("BoxShape3D_nwii0")
+transform = Transform3D(-4.371139e-08, -0.9999919, 0.004031723, 0, 0.004031723, 0.9999919, -1, 4.3711033e-08, -1.7623221e-10, -0.013227493, 0.17284825, -0.4254582)
+shape = SubResource("CylinderShape3D_u22bx")
 
 [node name="FrontWheelCollider" type="CollisionShape3D" parent="." unique_id=1043809299]
-transform = Transform3D(1, 0, 0, 0, 0.004031723, 0.9999919, 0, -0.9999919, 0.004031723, -0.020017147, 0.17550151, 1.1724131)
-shape = SubResource("BoxShape3D_jl8dw")
+transform = Transform3D(-4.371139e-08, 0.9999919, -0.004031723, 0, 0.004031723, 0.9999919, 1, 4.3711033e-08, -1.7623221e-10, -0.010114273, 0.16758242, 1.1755967)
+shape = SubResource("CylinderShape3D_nwii0")
 
 [node name="base" type="Area3D" parent="." unique_id=2054673149]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.039242923, 0.21156323)
@@ -134,3 +135,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7854395, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ResetCollider" unique_id=261668505]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15730572, 0.37768555)
 shape = SubResource("BoxShape3D_2bg50")
+
+[node name="Downforce" type="RayCast3D" parent="." unique_id=1545216716]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.18964428)
+target_position = Vector3(0, -1.5, 0)
