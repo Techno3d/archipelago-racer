@@ -4,6 +4,18 @@ extends CanvasLayer
 @onready var extra_timer_label: Label = %ExtraTime
 @onready var best_time_label: Label = %BestTime
 @onready var checkpoint_label: Label = %Checkpoint
+@onready var restart_label: Label = $MarginContainer/MainContainer/Bottom/Restart
+var car: VehicularCar
+
+func _ready() -> void:
+	restart_label.hide()
+	car = get_tree().get_first_node_in_group("PlayerCar")
+	if car != null:
+		car.restart_hint.connect(func():
+			restart_label.show()
+			await get_tree().create_timer(4).timeout
+			restart_label.hide()
+		)
 
 func _process(_delta: float) -> void:
 	timer_label.text = "%.2fs" % [Globals.goal.current_run_timer]

@@ -15,6 +15,9 @@ bg_color = Color(0.17400002, 0.6, 0.19530001, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_nltto"]
 font_size = 10
 
+[sub_resource type="LabelSettings" id="LabelSettings_m6e0p"]
+font_size = 20
+
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1118733812]
 script = ExtResource("1_v2lfg")
 
@@ -118,3 +121,10 @@ text = "mph"
 label_settings = SubResource("LabelSettings_nltto")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Restart" type="Label" parent="MarginContainer/MainContainer/Bottom" unique_id=997525248]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Press 'r' to reset to last checkpoint"
+label_settings = SubResource("LabelSettings_m6e0p")
+horizontal_alignment = 1

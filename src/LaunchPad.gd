@@ -25,7 +25,6 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func _physics_process(delta: float) -> void:
-	print(path.progress_ratio)
 	if active:
 		car.global_position = path.global_position
 		path.progress_ratio += speed/100 * delta

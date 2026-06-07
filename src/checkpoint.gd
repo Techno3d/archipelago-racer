@@ -1,3 +1,4 @@
+class_name Checkpoint
 extends MeshInstance3D
 
 @export var id: int

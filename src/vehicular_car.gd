@@ -12,7 +12,7 @@ var spawn_point: Transform3D
 
 @export var accel_curve: Curve
 @export var turn_curve: Curve
-@export var accel = 0.5
+@export var accel = 0.25
 @export var top_speed: float = 35
 @export var power_steering_factor: float = 2.1
 @export var air_damp: float = 0.05
@@ -25,6 +25,7 @@ var spawn_point: Transform3D
 @onready var steering_point: Node3D = $SteeringPoint
 @onready var cam_pivot: Node3D = $CamPivot
 @onready var downforce_cast: RayCast3D = $Downforce
+@onready var restart_timer: Timer = $Timer
 
 # Suspension
 @export var spring_constant = 80000
@@ -43,6 +44,8 @@ var raycasts: Array[RayCast3D]
 @onready var fr_contact: Marker3D = $FRContact
 @onready var rr_contact: Marker3D = $RRContact
 
+signal restart_hint()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	wheel_base.body_entered.connect(on_ground)
@@ -55,11 +58,12 @@ func _ready() -> void:
 			var timer: SceneTreeTimer = get_tree().create_timer(3)
 			timer.timeout.connect(check_respawn)
 	)
+	restart_timer.timeout.connect(func(): restart_hint.emit())
 	if Archipelago.conn:
 		Archipelago.conn.deathlink.connect(respawn)
 
 func on_ground(_body: Node3D):
-	if wheel_base.has_overlapping_bodies():
+	if wheel_base.has_overlapping_bodies() or base2.has_overlapping_bodies():
 		linear_damp = 0.3
 		gravity_scale = 3.0
 	else:
@@ -72,7 +76,6 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	var breaking = Input.get_action_strength("reverse")
 	var turn_input = Input.get_axis("left", "right")
 	car_model.steer = turn_input * turn_angle * TAU/180.
-	# print("%.1f %.1f %.1f %.2f" % [throttle, breaking, turn_input, linear_velocity.length()])
 
 	if downforce_cast.is_colliding():
 		state.apply_central_force(-global_basis.y * mass * 5)
@@ -160,8 +163,26 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 func _process(delta: float) -> void:
 	car_model.speed = linear_velocity.length()
 	if base2.has_overlapping_bodies() and not wheel_base.has_overlapping_bodies() and Globals.goal.started:
-		print("offtrack!")
 		Globals.goal.penalty_timer += delta
+		if restart_timer.is_stopped():
+			restart_timer.paused = false
+			restart_timer.start(3)
+	else:
+		if !restart_timer.is_stopped():
+			restart_timer.stop()
+	if Input.is_action_just_released("reset") and Globals.goal.started:
+		freeze = true
+		var last := Globals.goal.last_checkpoint
+		linear_velocity = Vector3.ZERO
+		for child in get_parent().get_children():
+			if last == 0:
+				if child is TimeTrials:
+					global_position = (child as Node3D).global_position + (child as Node3D).global_basis.x * 0.5 + (child as Node3D).global_basis.y * 0.3
+					rotation = (child as Node3D).rotation + Vector3.UP * PI
+			elif child is Checkpoint and (child as Checkpoint).id == last:
+				global_position = (child as Node3D).global_position + (child as Node3D).global_basis.x * 0.5 + (child as Node3D).global_basis.y * 0.3
+				rotation = (child as Node3D).rotation + Vector3.UP * PI
+		freeze = false
 
 func check_respawn():
 	if !wheel_base.has_overlapping_bodies() and !base2.has_overlapping_bodies() and reset_collider.has_overlapping_bodies():

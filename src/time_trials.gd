@@ -25,7 +25,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if started:
 		current_run_timer += delta	
-	print(current_run_timer)
 
 func passed(body) -> void:
 	if body is not VehicularCar: return
