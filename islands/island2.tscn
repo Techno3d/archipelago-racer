@@ -38,6 +38,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38, 0)
 
 [node name="TimeTrialsStartGate" parent="." unique_id=1039711912 instance=ExtResource("4_pyewb")]
 transform = Transform3D(-4.873804, 0, -8.15451, 0, 9.5, 0, 8.15451, 0, -4.873804, -74.15294, 108.39701, 36.117527)
+times = Array[float]([110.0, 90.0, 72.0, 60.0, 55.0])
 island_index = 4
 num_checkpoints = 5
 

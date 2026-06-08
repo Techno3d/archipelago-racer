@@ -52,6 +52,7 @@ mesh = SubResource("PlaneMesh_q3nut")
 
 [node name="TimeTrialsStartGate" parent="." unique_id=1039711912 instance=ExtResource("6_pix5n")]
 transform = Transform3D(-14.998366, -0.23284043, -13.228563, -0.15675598, 19.998629, -0.17427485, 13.229683, -0.027009048, -14.999161, -222.88335, 100.5698, 211.99104)
+times = Array[float]([330.0, 270.0, 215.0, 180.0, 165.0])
 island_index = 1
 num_checkpoints = 6
 
