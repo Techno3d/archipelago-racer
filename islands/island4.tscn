@@ -32,6 +32,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38, 0)
 
 [node name="TimeTrialsStartGate" parent="." unique_id=1039711912 instance=ExtResource("6_v3qcb")]
 transform = Transform3D(14.673444, -0.09814496, -6.3781238, -0.5177955, 15.926986, -1.4363157, 6.3578277, 1.5236411, 14.603306, 132.83205, 109.91824, 95.22248)
+island_index = 2
 num_checkpoints = 6
 
 [node name="CheckpointGate1" parent="." unique_id=1972916246 instance=ExtResource("7_njteb")]

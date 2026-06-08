@@ -1,5 +1,6 @@
 extends Area3D
 
+@export_multiline() var death_reason: String
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,4 +13,5 @@ func _process(_delta: float) -> void:
 
 func _body_entered(body:Node3D):
 	if body is VehicularCar:
+		Archipelago.conn.send_deathlink(death_reason)
 		(body as VehicularCar).respawn()
