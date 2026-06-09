@@ -11,8 +11,6 @@
 
 [node name="Lake" type="Node3D" unique_id=1794474086]
 
-[node name="CanvasLayer" parent="." unique_id=1118733812 instance=ExtResource("1_4myww")]
-
 [node name="modified_Island3" parent="." unique_id=1684643926 instance=ExtResource("2_4myww")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.235733, 0)
 
@@ -38,6 +36,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38, 0)
 
 [node name="TimeTrialsStartGate" parent="." unique_id=1039711912 instance=ExtResource("6_bnihp")]
 transform = Transform3D(2.8951778, 0, 21.80867, 0, 22.000002, 0, -21.80867, 0, 2.8951778, 99.13472, 76.327034, -246.61707)
+times = Array[float]([145.0, 115.0, 95.0, 80.0, 70.0])
+island_index = 3
 num_checkpoints = 3
 
 [node name="CheckpointGate" parent="." unique_id=1251319173 instance=ExtResource("7_ku8ep")]
@@ -51,3 +51,5 @@ id = 2
 [node name="CheckpointGate3" parent="." unique_id=978121355 instance=ExtResource("7_ku8ep")]
 transform = Transform3D(12.423484, -0.5435823, -13.013903, 1.7549969, 17.89018, 0.9281144, 12.906475, -1.9094315, 12.400687, 216.37334, 91.47085, -57.88325)
 id = 3
+
+[node name="CanvasLayer" parent="." unique_id=1118733812 instance=ExtResource("1_4myww")]

@@ -123,7 +123,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	var perp_wheel_dir = wheel_dir.rotated(global_basis*Vector3.UP, -PI/2)
 
 	# cross friction must be higher than in line
-	# Max static friction is mu_s * N, and N should be mass times the sign of the angle between gravity and up for car
+	# Max static friction is mu_s * N, and N should be mass times tPlayerhe sign of the angle between gravity and up for car
 	var max_static_friction = abs(mass*mu_s*(global_basis*Vector3.DOWN).normalized().dot(get_gravity()*gravity_scale))
 	var global_down = (global_basis*Vector3.DOWN).normalized()
 	var global_right = (global_basis*Vector3.RIGHT).normalized()
@@ -195,6 +195,8 @@ func _process(delta: float) -> void:
 
 func check_respawn():
 	if !wheel_base.has_overlapping_bodies() and !base2.has_overlapping_bodies() and reset_collider.has_overlapping_bodies():
+		if Archipelago.conn:
+			Archipelago.conn.send_deathlink("did a turtle cosplay.")
 		respawn()
 
 func respawn():

@@ -7,6 +7,9 @@ extends CanvasLayer
 @onready var restart_label: Label = $MarginContainer/MainContainer/Bottom/Restart
 @onready var pause_container: MarginContainer = $MarginContainer/PauseContainer
 var car: VehicularCar
+@onready var current_time_medal: TextureRect = $MarginContainer/MainContainer/Top/TimeStuff/VBoxContainer/Control/TextureRect
+@onready var best_time_medal: TextureRect = $MarginContainer/MainContainer/Top/TimeStuff/VBoxContainer2/Control/TextureRect
+@export var medal_imgs: Array[Texture]
 
 func _ready() -> void:
 	restart_label.hide()
@@ -30,12 +33,26 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _process(_delta: float) -> void:
 	timer_label.text = "%.2fs" % [Globals.goal.current_run_timer]
+	current_time_medal.texture = medal_imgs[set_medal_image(Globals.goal.current_run_timer)]
 	if Globals.goal.penalty_timer > 0:
 		extra_timer_label.text = "(+%.2fs)" % Globals.goal.penalty_timer
 	else:
 		extra_timer_label.text = ""
 	if Globals.goal.best_time >= 0:
 		best_time_label.text = "Personal Best: %.2fs" % Globals.goal.best_time
+		best_time_medal.texture = medal_imgs[set_medal_image(Globals.goal.best_time)]
 	else:
 		best_time_label.text = ""
 	checkpoint_label.text = "%d / %d" % [Globals.goal.last_checkpoint, Globals.goal.num_checkpoints]
+
+
+func set_medal_image(time: float) -> int:
+	
+	var medal_index := -1
+	for i in Globals.goal.ref_times.size():
+		if time <= Globals.goal.ref_times[i]:
+			medal_index = i  
+	if time == 0.00 or time > Globals.goal.ref_times[0]:
+		medal_index =5
+	current_time_medal.texture = medal_imgs[medal_index] if medal_index >= 0 else null
+	return medal_index

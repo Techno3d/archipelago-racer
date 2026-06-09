@@ -112,6 +112,8 @@ points = PackedVector3Array(0.9999334, 0.5100156, -0.009984344, 1.0799394, 0.669
 transform = Transform3D(18, 0, 0, 0, 18, 0, 0, 0, 18, 0, 0, 0)
 mesh = SubResource("ArrayMesh_anoqo")
 script = ExtResource("1_0avnc")
+times = null
+num_checkpoints = null
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1032454017]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
