@@ -37,13 +37,13 @@ func _input(event: InputEvent) -> void:
 		polar_cam.y += motion_event.screen_relative.x / 100
 		polar_cam.y = clampf(polar_cam.y, original_cam_pivot_polar.y-radian_max.x, original_cam_pivot_polar.y+radian_max.x)
 		polar_cam.z += motion_event.screen_relative.y / 100
-		polar_cam.z = clampf(polar_cam.z, original_cam_pivot_polar.z-radian_max.y, original_cam_pivot_polar.z+radian_max.y+10*TAU/180.)
+		polar_cam.z = clampf(polar_cam.z, original_cam_pivot_polar.z-radian_max.y-10*TAU/180., original_cam_pivot_polar.z+radian_max.y)
 		var new_cam_pos = to_cartesian(polar_cam)
 		cam_pivot.position = new_cam_pos
 
 func _process(delta: float) -> void:
 	var polar_cam := to_polar(cam_pivot.position)
-	polar_cam.y = move_toward(polar_cam.y, original_cam_pivot_polar.y, delta/2)
-	polar_cam.z = move_toward(polar_cam.z, original_cam_pivot_polar.z, delta/4)
+	polar_cam.y = move_toward(polar_cam.y, original_cam_pivot_polar.y, delta)
+	polar_cam.z = move_toward(polar_cam.z, original_cam_pivot_polar.z, delta)
 	var new_cam_pos = to_cartesian(polar_cam)
 	cam_pivot.position = new_cam_pos
