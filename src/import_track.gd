@@ -16,7 +16,6 @@ func iterate(node):
 			(node as MeshInstance3D).create_trimesh_collision()
 		if node is StaticBody3D:
 			(node as StaticBody3D).collision_mask = (1 << 1)
-		print_rich("Post-import: [b]%s[/b] -> [b]%s[/b]" % [node.name, "modified_" + node.name])
 		node.name = "modified_" + node.name
 		for child in node.get_children():
 			iterate(child)

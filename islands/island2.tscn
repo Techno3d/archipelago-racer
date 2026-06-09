@@ -57,7 +57,7 @@ transform = Transform3D(-4.3838134, -1.023999, 3.9665618, -1.0059913, 5.900732, 
 id = 4
 
 [node name="CheckpointGate5" parent="." unique_id=619051969 instance=ExtResource("5_3ekv0")]
-transform = Transform3D(5.5873237, -1.2225713, -1.8130469, 1.1095332, 5.871727, -0.5401329, 1.8843454, 0.16771007, 5.6939554, -162.80205, 95.61602, -59.732018)
+transform = Transform3D(4.8136277, -1.219392, -3.3678, 1.1095332, 5.8717265, -0.5401329, 3.4055734, -0.18944804, 4.936212, -162.44887, 95.61602, -59.393375)
 id = 5
 
 [node name="CanvasLayer" parent="." unique_id=1118733812 instance=ExtResource("1_v44c5")]

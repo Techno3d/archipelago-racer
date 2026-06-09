@@ -119,8 +119,8 @@ transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 2.1907423,
 [node name="Camera3D" type="Camera3D" parent="CamPivot" unique_id=254348556]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1907423, -3.9452584)
 top_level = true
-current = true
 script = ExtResource("3_u22bx")
+is_mouse_movement_enabled = true
 
 [node name="ResetCollider" type="Area3D" parent="." unique_id=1954158312]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7854395, 0)

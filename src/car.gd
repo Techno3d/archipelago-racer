@@ -24,7 +24,6 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	#print("SPEED: ", SPEED, " | velocity: ", velocity)
 	car_model.speed = SPEED
 
 	

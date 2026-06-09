@@ -26,6 +26,9 @@ font_size = 20
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nltto"]
 bg_color = Color(0.35, 0.17360002, 0.1295, 0.4392157)
 
+[sub_resource type="LabelSettings" id="LabelSettings_y4yjw"]
+font_size = 36
+
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1118733812]
 process_mode = 3
 script = ExtResource("1_v2lfg")
@@ -185,3 +188,43 @@ theme_override_constants/margin_bottom = 100
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_nltto")
+
+[node name="PauseMenu" type="VBoxContainer" parent="MarginContainer/PauseContainer/Panel" unique_id=1680833496]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_right = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Spacer2" type="Control" parent="MarginContainer/PauseContainer/Panel/PauseMenu" unique_id=102138372]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PauseContainer/Panel/PauseMenu" unique_id=359052134]
+layout_mode = 2
+text = "Paused"
+label_settings = SubResource("LabelSettings_y4yjw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="MarginContainer/PauseContainer/Panel/PauseMenu" unique_id=1503741177]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="MainMenu" type="Button" parent="MarginContainer/PauseContainer/Panel/PauseMenu" unique_id=206161079]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+text = "Island Select"
+
+[node name="Quit" type="Button" parent="MarginContainer/PauseContainer/Panel/PauseMenu" unique_id=864845953]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+text = "Quit
+"

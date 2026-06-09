@@ -12,4 +12,4 @@ var car_stats: Array[CarStats] = [
     preload("res://car_stats/StarterStats.tres"),
 ]
 ## Index into previous array (maybe not the best solution?)
-var current_stat = 1
+var current_stat = 0

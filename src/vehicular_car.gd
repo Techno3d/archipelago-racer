@@ -53,7 +53,6 @@ func set_stats(stats: CarStats):
 	top_speed = stats.top_speed
 	power_steering_factor = stats.power_steering_factor
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	wheel_base.body_entered.connect(on_ground)
@@ -70,6 +69,7 @@ func _ready() -> void:
 	set_stats(Globals.car_stats[Globals.current_stat])
 	if Archipelago.conn:
 		Archipelago.conn.deathlink.connect(respawn)
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func on_ground(_body: Node3D):
 	if wheel_base.has_overlapping_bodies() or base2.has_overlapping_bodies():

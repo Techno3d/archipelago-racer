@@ -6,9 +6,12 @@ extends CanvasLayer
 @onready var checkpoint_label: Label = %Checkpoint
 @onready var restart_label: Label = $MarginContainer/MainContainer/Bottom/Restart
 @onready var pause_container: MarginContainer = $MarginContainer/PauseContainer
+@onready var main_menu: Button = %MainMenu
+@onready var quit: Button = %Quit
 var car: VehicularCar
 @onready var current_time_medal: TextureRect = $MarginContainer/MainContainer/Top/TimeStuff/VBoxContainer/Control/TextureRect
 @onready var best_time_medal: TextureRect = $MarginContainer/MainContainer/Top/TimeStuff/VBoxContainer2/Control/TextureRect
+var main_menu_scene: PackedScene = preload("res://menu.tscn")
 @export var medal_imgs: Array[Texture]
 
 func _ready() -> void:
@@ -21,14 +24,24 @@ func _ready() -> void:
 			await get_tree().create_timer(4).timeout
 			restart_label.hide()
 		)
+	main_menu.pressed.connect(func(): 
+		get_tree().paused = false
+		get_tree().change_scene_to_packed(main_menu_scene)
+	)
+	quit.pressed.connect(func():
+		get_tree().quit()
+	)
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("pause"):
 		if !get_tree().paused:
 			get_tree().paused = true
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 			pause_container.show()
 		else:
 			get_tree().paused = false
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			pause_container.hide()
 
 func _process(_delta: float) -> void:

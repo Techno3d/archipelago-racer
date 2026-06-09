@@ -21,6 +21,7 @@ const PASS_ID_TO_BUTTON_INDEX: Dictionary[int,int] = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	print("a")
 	for i: int in range(len(buttons)):
 		print("c")
