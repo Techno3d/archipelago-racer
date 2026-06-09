@@ -25,8 +25,6 @@ up_vector_enabled = false
 
 [node name="Island1" type="Node3D" unique_id=1794474086]
 
-[node name="CanvasLayer" parent="." unique_id=1118733812 instance=ExtResource("1_pepq5")]
-
 [node name="Track1Volcano" parent="." unique_id=1089039329 instance=ExtResource("11_mbdwp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.40023804, 322.80994)
 
@@ -86,9 +84,11 @@ transform = Transform3D(6.053158, 0.18207696, 0.50647837, 0.4738891, 0.22969535,
 curve = SubResource("Curve3D_pepq5")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=352373570]
-transform = Transform3D(-0.9998147, -0.008855796, -0.01367859, 0, 0.83943176, -0.54346514, 0.016294204, -0.54339296, -0.8393203, 0.12053108, 0.7106323, -0.9197159)
+transform = Transform3D(-0.9998144, -0.008855796, -0.01367859, 0, 0.83943176, -0.54346514, 0.016294198, -0.54339296, -0.8393203, 0.12053108, 0.7106323, -0.9197159)
 use_model_front = true
 
 [node name="Launchpad" parent="." unique_id=1360913354 node_paths=PackedStringArray("path") instance=ExtResource("8_2bk0c")]
 transform = Transform3D(8.856096, 0.75567067, 1.2586384, 3.4795823, 1.0166408, -1.3326966, -12.842306, 0.7965686, 0.506871, 52.20332, 189.62578, 65.663475)
 path = NodePath("../Path3D/PathFollow3D")
+
+[node name="CanvasLayer" parent="." unique_id=1118733812 instance=ExtResource("1_pepq5")]

@@ -24,8 +24,6 @@ subdivide_depth = 200
 
 [node name="Mountain" type="Node3D" unique_id=1794474086]
 
-[node name="CanvasLayer" parent="." unique_id=1118733812 instance=ExtResource("1_fbcae")]
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=867310477]
 
 [node name="modified_Island5" parent="." unique_id=92811223 instance=ExtResource("2_fbcae")]
@@ -79,3 +77,5 @@ id = 5
 [node name="CheckpointGate6" parent="." unique_id=311662623 instance=ExtResource("7_idvyu")]
 transform = Transform3D(-11.463341, 0, 3.5484958, 0, 12, 0, -3.5484958, 0, -11.463341, -334.85458, 57.302856, 35.67607)
 id = 6
+
+[node name="CanvasLayer" parent="." unique_id=1118733812 instance=ExtResource("1_fbcae")]

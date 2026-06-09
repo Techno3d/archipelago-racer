@@ -2,13 +2,14 @@ extends MeshInstance3D
 class_name TimeTrials
 
 @export var times: Array[float] = [60]
-@onready var next_time = times.pop_front()
+
 var current_run_timer: float = 0
 var penalty_timer: float = 0
 
 @export var island_index: int = 0
 const medals = [1,2,3,4,5]
-
+var ref_times
+@onready var next_time: float
 var started: bool = false
 
 @export var num_checkpoints = 0
@@ -18,12 +19,14 @@ var best_time: float = -1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	ref_times = times.duplicate()
 	$Area3D.body_entered.connect(passed)
 	Globals.checkpoint_passed.connect(func(id: int): 
 		if id - last_checkpoint <= 2:
 			last_checkpoint = id
 		)
 	Globals.goal = self
+	next_time = times.pop_front()
 
 func _process(delta: float) -> void:
 	if started:
