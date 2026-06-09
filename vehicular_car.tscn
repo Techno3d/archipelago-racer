@@ -2,20 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://c2dsu1hklobt5" path="res://assets/models/Car.glb" id="1_guv52"]
 [ext_resource type="Script" uid="uid://cbjqe74j8esp4" path="res://src/vehicular_car.gd" id="1_wb3y8"]
+[ext_resource type="Curve" uid="uid://diijd83prquup" path="res://car_stats/main_accel.tres" id="2_jl8dw"]
+[ext_resource type="Curve" uid="uid://c85i0nvfvjauf" path="res://car_stats/main_turn.tres" id="3_jl8dw"]
 [ext_resource type="Script" uid="uid://bxp7tk3no0w3d" path="res://src/cam_pivot.gd" id="3_u22bx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wb3y8"]
 friction = 0.0
 absorbent = true
-
-[sub_resource type="Curve" id="Curve_wb3y8"]
-_limits = [0.0, 1.0, -1.0, 1.0]
-_data = [Vector2(-1, 0), 0.0, 0.0, 0, 0, Vector2(-0.28000003, 0.33433735), 1.7498116, 1.7498116, 0, 0, Vector2(0.0109090805, 0.87274086), 0.4069326, 0.4069326, 0, 0, Vector2(0.3236363, 1), 0.0, 0.0, 0, 0, Vector2(0.61454535, 0.8433734), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.3074443, 0.0, 0, 0]
-point_count = 6
-
-[sub_resource type="Curve" id="Curve_u22bx"]
-_data = [Vector2(0, 0.79442763), 0.0, 0.0, 0, 0, Vector2(0.49818182, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wb3y8"]
 size = Vector3(0.5215149, 1.9949951, 0.3669815)
@@ -49,8 +42,8 @@ linear_damp = 0.3
 angular_damp_mode = 1
 angular_damp = 1.0
 script = ExtResource("1_wb3y8")
-accel_curve = SubResource("Curve_wb3y8")
-turn_curve = SubResource("Curve_u22bx")
+accel_curve = ExtResource("2_jl8dw")
+turn_curve = ExtResource("3_jl8dw")
 
 [node name="Car" parent="." unique_id=836562085 instance=ExtResource("1_guv52")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16610754, 0.21156323)

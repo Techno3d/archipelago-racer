@@ -46,6 +46,14 @@ var raycasts: Array[RayCast3D]
 
 signal restart_hint()
 
+func set_stats(stats: CarStats):
+	accel_curve = stats.accel_curve
+	turn_curve = stats.turn_curve
+	accel = stats.accel
+	top_speed = stats.top_speed
+	power_steering_factor = stats.power_steering_factor
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	wheel_base.body_entered.connect(on_ground)
@@ -59,6 +67,7 @@ func _ready() -> void:
 			timer.timeout.connect(check_respawn)
 	)
 	restart_timer.timeout.connect(func(): restart_hint.emit())
+	set_stats(Globals.car_stats[Globals.current_stat])
 	if Archipelago.conn:
 		Archipelago.conn.deathlink.connect(respawn)
 

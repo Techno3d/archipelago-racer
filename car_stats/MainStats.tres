@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CarStats" format=3 uid="uid://ddf6xu4q6gh8n"]
+
+[ext_resource type="Curve" uid="uid://diijd83prquup" path="res://car_stats/main_accel.tres" id="1_7h2xf"]
+[ext_resource type="Script" uid="uid://bbqdihep5qwys" path="res://src/car_stats.gd" id="1_mdwdn"]
+[ext_resource type="Curve" uid="uid://c85i0nvfvjauf" path="res://car_stats/main_turn.tres" id="3_13ave"]
+
+[resource]
+script = ExtResource("1_mdwdn")
+name = "Main"
+accel_curve = ExtResource("1_7h2xf")
+turn_curve = ExtResource("3_13ave")
+metadata/_custom_type_script = "uid://bbqdihep5qwys"

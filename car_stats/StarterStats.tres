@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CarStats" format=3 uid="uid://doxxxrwfry6mj"]
+
+[ext_resource type="Curve" uid="uid://bdgiafbnce65l" path="res://car_stats/starter_accel.tres" id="1_c0hav"]
+[ext_resource type="Script" uid="uid://bbqdihep5qwys" path="res://src/car_stats.gd" id="1_qe7sl"]
+[ext_resource type="Curve" uid="uid://dqov8ggh4a4pt" path="res://car_stats/starter_turn.tres" id="3_2blbe"]
+
+[resource]
+script = ExtResource("1_qe7sl")
+name = "Starter"
+accel_curve = ExtResource("1_c0hav")
+turn_curve = ExtResource("3_2blbe")
+accel = 0.2
+top_speed = 30.0
+power_steering_factor = 0.8
+metadata/_custom_type_script = "uid://bbqdihep5qwys"
