@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("2_7vbm2")
-name = "Starter"
+name = "Mid"
 accel_curve = ExtResource("1_6in55")
 turn_curve = ExtResource("3_7vbm2")
 top_speed = 30.0

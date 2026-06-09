@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CarStats" format=3 uid="uid://dx7kybvmxuksr"]
+
+[ext_resource type="Curve" uid="uid://dy3mx0qo0ii1y" path="res://car_stats/insane_accel.tres" id="1_26tdr"]
+[ext_resource type="Script" uid="uid://bbqdihep5qwys" path="res://src/car_stats.gd" id="2_w2x31"]
+[ext_resource type="Curve" uid="uid://bm20t1nuh5w6m" path="res://car_stats/insane_turn.tres" id="3_w2x31"]
+
+[resource]
+script = ExtResource("2_w2x31")
+name = "Insane"
+accel_curve = ExtResource("1_26tdr")
+turn_curve = ExtResource("3_w2x31")
+accel = 0.3
+power_steering_factor = 2.4
+metadata/_custom_type_script = "uid://bbqdihep5qwys"

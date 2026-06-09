@@ -62,6 +62,11 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "0.00s"
 
+[node name="ExtraTime" type="Label" parent="MarginContainer/MainContainer/Top/TimeStuff/VBoxContainer" unique_id=1368636076]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+
 [node name="Control" type="Control" parent="MarginContainer/MainContainer/Top/TimeStuff/VBoxContainer" unique_id=1506484952]
 layout_mode = 2
 
@@ -96,11 +101,6 @@ layout_mode = 1
 offset_right = 79.0
 offset_bottom = 139.0
 scale = Vector2(0.33, 0.33)
-
-[node name="ExtraTime" type="Label" parent="MarginContainer/MainContainer/Top" unique_id=1368636076]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 0
 
 [node name="Spacer" type="Control" parent="MarginContainer/MainContainer/Top" unique_id=1402929581]
 layout_mode = 2
