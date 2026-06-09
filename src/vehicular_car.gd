@@ -186,7 +186,8 @@ func _process(delta: float) -> void:
 
 func check_respawn():
 	if !wheel_base.has_overlapping_bodies() and !base2.has_overlapping_bodies() and reset_collider.has_overlapping_bodies():
-		Archipelago.conn.send_deathlink("did a turtle cosplay.")
+		if Archipelago.conn:
+			Archipelago.conn.send_deathlink("did a turtle cosplay.")
 		respawn()
 
 func respawn():
