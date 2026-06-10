@@ -1,14 +1,24 @@
 [gd_scene format=3 uid="uid://b0g33rx3vwom4"]
 
 [ext_resource type="Script" uid="uid://chcy8n0gv2j2e" path="res://src/boost_pad.gd" id="1_71cp0"]
+[ext_resource type="Shader" uid="uid://t3m1npwc5q7d" path="res://boost_pad.gdshader" id="1_562vw"]
+[ext_resource type="Texture2D" uid="uid://cn3pgibb6y5ro" path="res://assets/BoostPadTexture.png" id="2_3fg2d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3fg2d"]
+render_priority = 0
+shader = ExtResource("1_562vw")
+shader_parameter/activated = false
+shader_parameter/texture_img = ExtResource("2_3fg2d")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_aqk2v"]
+material = SubResource("ShaderMaterial_3fg2d")
+size = Vector2(4, 4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_71cp0"]
-size = Vector3(1.9950256, 0.16040039, 1.9976807)
+size = Vector3(3.893837, 0.16040039, 4.01001)
 
 [node name="BoostPad" type="MeshInstance3D" unique_id=323553854]
-transform = Transform3D(1.32, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1.6188964, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("PlaneMesh_aqk2v")
 script = ExtResource("1_71cp0")
 
@@ -17,5 +27,5 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1572923184]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0014801093, 0.061157227, -0.00018310547)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.042964924, 0.061157227, -0.001953125)
 shape = SubResource("BoxShape3D_71cp0")

@@ -8,6 +8,7 @@
 [ext_resource type="Environment" uid="uid://cijtx21rxjg6n" path="res://islands_env.tres" id="5_ukm0i"]
 [ext_resource type="PackedScene" uid="uid://cjlsytwctm5wl" path="res://time_trials.tscn" id="6_v3qcb"]
 [ext_resource type="PackedScene" uid="uid://cit3atv4q613p" path="res://checkpoint.tscn" id="7_njteb"]
+[ext_resource type="PackedScene" uid="uid://b0g33rx3vwom4" path="res://boost_pad.tscn" id="9_4vfo5"]
 
 [node name="Desert" type="Node3D" unique_id=1794474086]
 
@@ -59,3 +60,9 @@ transform = Transform3D(5.716095, -0.81842434, -5.536826, -0.37569472, 7.8400555
 id = 6
 
 [node name="CanvasLayer" parent="." unique_id=1118733812 instance=ExtResource("1_ukm0i")]
+
+[node name="BoostPad" parent="." unique_id=323553854 instance=ExtResource("9_4vfo5")]
+transform = Transform3D(1.1825889, -0.21768504, -0.6472996, 0.34411672, 0.97322977, -0.08741332, 1.0506641, -0.073737085, 0.757207, -136.05388, 64.16153, -195.09398)
+
+[node name="BoostPad2" parent="." unique_id=1717194288 instance=ExtResource("9_4vfo5")]
+transform = Transform3D(-1.5415801, 0, 0.3053464, 0, 1, 0, -0.49432418, 0, -0.95224136, 110.600105, 103.49322, 173.82953)

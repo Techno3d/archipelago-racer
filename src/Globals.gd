@@ -15,3 +15,4 @@ var car_stats: Array[CarStats] = [
 ]
 ## Index into previous array (maybe not the best solution?)
 var current_stat = 1
+var is_boost_pads_activated = false

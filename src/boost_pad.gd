@@ -1,13 +1,17 @@
 extends MeshInstance3D
 
 @onready var collider: Area3D = $Area3D
-@export var boost_mult: float = 40
-@export var boost_time: float = 1
+@export var boost_mult: float = 100
 
 func _ready() -> void:
-	collider.body_entered.connect(boost_car)
+	(material_override as ShaderMaterial).set_shader_parameter("activated", Globals.is_boost_pads_activated)
 
-func boost_car(body: Node3D):
-	if body is not VehicularCar: return
-	var car := body as VehicularCar
-	car.apply_central_impulse(car.mass * boost_mult * boost_time * global_basis.z)
+func _physics_process(_delta: float) -> void:
+	if Globals.is_boost_pads_activated and collider.has_overlapping_bodies():
+		for body in collider.get_overlapping_bodies():
+			if body is VehicularCar:
+				var car := body as VehicularCar
+				car.apply_central_force(car.mass * boost_mult * global_basis.z)
+				car.top_speed += 5
+				get_tree().create_timer(2).timeout.connect(func(): car.top_speed -= 5)
+

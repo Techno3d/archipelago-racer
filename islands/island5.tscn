@@ -9,6 +9,7 @@
 [ext_resource type="Shader" uid="uid://cv76cnc5ughm4" path="res://islands/water.tres" id="6_1rerm"]
 [ext_resource type="PackedScene" uid="uid://cjlsytwctm5wl" path="res://time_trials.tscn" id="6_pix5n"]
 [ext_resource type="PackedScene" uid="uid://cit3atv4q613p" path="res://checkpoint.tscn" id="7_idvyu"]
+[ext_resource type="PackedScene" uid="uid://b0g33rx3vwom4" path="res://boost_pad.tscn" id="10_q3nut"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5f5xi"]
 render_priority = 0
@@ -79,3 +80,12 @@ transform = Transform3D(-11.463341, 0, 3.5484958, 0, 12, 0, -3.5484958, 0, -11.4
 id = 6
 
 [node name="CanvasLayer" parent="." unique_id=1118733812 instance=ExtResource("1_fbcae")]
+
+[node name="BoostPad" parent="." unique_id=323553854 instance=ExtResource("10_q3nut")]
+transform = Transform3D(1.0779302, 0, 0.7460922, 0, 1, 0, -1.2078459, 0, 0.66584265, -184.69817, 99.689514, 466.22186)
+
+[node name="BoostPad2" parent="." unique_id=1551938209 instance=ExtResource("10_q3nut")]
+transform = Transform3D(-1.1978425, 0, 0.6727026, 0, 1, 0, -1.0890359, 0, -0.739913, 206.21732, 65.69297, 769.75665)
+
+[node name="BoostPad3" parent="." unique_id=96639137 instance=ExtResource("10_q3nut")]
+transform = Transform3D(1.0958544, 0, 0.7360617, 0, 1, 0, -1.1916076, 0, 0.6769145, -238.8195, 100.22896, -379.30484)

@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cjlsytwctm5wl" path="res://time_trials.tscn" id="4_pyewb"]
 [ext_resource type="PackedScene" uid="uid://cit3atv4q613p" path="res://checkpoint.tscn" id="5_3ekv0"]
 [ext_resource type="Environment" uid="uid://cijtx21rxjg6n" path="res://islands_env.tres" id="5_o4mnm"]
+[ext_resource type="PackedScene" uid="uid://b0g33rx3vwom4" path="res://boost_pad.tscn" id="9_fscba"]
 
 [node name="Forrest" type="Node3D" unique_id=1794474086]
 
@@ -61,3 +62,12 @@ transform = Transform3D(4.8136277, -1.219392, -3.3678, 1.1095332, 5.8717265, -0.
 id = 5
 
 [node name="CanvasLayer" parent="." unique_id=1118733812 instance=ExtResource("1_v44c5")]
+
+[node name="BoostPad" parent="." unique_id=323553854 instance=ExtResource("9_fscba")]
+transform = Transform3D(0.85649407, 0, 0.8485841, 0, 1, 0, -1.3737698, 0, 0.5290605, -139, 104.279305, 0)
+
+[node name="BoostPad2" parent="." unique_id=1468683039 instance=ExtResource("9_fscba")]
+transform = Transform3D(-0.37808862, 0, 0.9723455, 0, 1, 0, -1.5741266, 0, -0.23354715, 8.981268, 110.6806, 65.39388)
+
+[node name="BoostPad3" parent="." unique_id=1560992415 instance=ExtResource("9_fscba")]
+transform = Transform3D(-1.4863774, 0, -0.39625067, 0, 1, 0, 0.6414888, 0, -0.9181424, 90.99189, 108.66879, -107.87588)
