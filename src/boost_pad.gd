@@ -14,4 +14,3 @@ func _physics_process(_delta: float) -> void:
 				car.apply_central_force(car.mass * boost_mult * global_basis.z)
 				car.top_speed += 5
 				get_tree().create_timer(2).timeout.connect(func(): car.top_speed -= 5)
-
