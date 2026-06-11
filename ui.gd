@@ -46,7 +46,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _process(_delta: float) -> void:
 	timer_label.text = "%.2fs" % [Globals.goal.current_run_timer]
-	current_time_medal.texture = medal_imgs[set_medal_image(Globals.goal.current_run_timer)]
+	current_time_medal.texture = medal_imgs[set_medal_image(Globals.goal.current_run_timer + Globals.goal.penalty_timer)]
 	if Globals.goal.penalty_timer > 0:
 		extra_timer_label.text = "(+%.2fs)" % Globals.goal.penalty_timer
 	else:
