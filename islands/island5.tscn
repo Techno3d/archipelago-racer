@@ -82,11 +82,11 @@ id = 6
 [node name="CanvasLayer" parent="." unique_id=1118733812 instance=ExtResource("1_fbcae")]
 
 [node name="BoostPad" parent="." unique_id=323553854 instance=ExtResource("10_q3nut")]
-transform = Transform3D(1.0779302, 0, 0.7460922, 0, 1, 0, -1.2078459, 0, 0.66584265, -184.69817, 99.689514, 466.22186)
+transform = Transform3D(1.0779302, 0, 0.7460922, 0, 1, 0, -1.2078459, 0, 0.66584265, -182.68025, 99.689514, 464.5459)
 island = "mountain"
 
 [node name="BoostPad2" parent="." unique_id=1551938209 instance=ExtResource("10_q3nut")]
-transform = Transform3D(-1.1978425, 0, 0.6727026, 0, 1, 0, -1.0890359, 0, -0.739913, 206.21732, 65.69297, 769.75665)
+transform = Transform3D(-1.1937284, 0.08280823, 0.6703922, 0.16179153, 0.9949091, -0.012968767, -1.0815089, 0.057435796, -0.74189365, 206.21732, 65.34268, 769.75665)
 island = "mountain"
 
 [node name="BoostPad3" parent="." unique_id=96639137 instance=ExtResource("10_q3nut")]

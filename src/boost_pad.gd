@@ -5,7 +5,7 @@ extends MeshInstance3D
 @export var island: String = ""
 
 func _ready() -> void:
-	(material_override as ShaderMaterial).set_shader_parameter("activated", Globals.are_pads_activated.get(island.to_lower()))
+	(mesh.surface_get_material(0) as ShaderMaterial).set_shader_parameter("activated", Globals.are_pads_activated.get(island.to_lower()))
 
 func _physics_process(_delta: float) -> void:
 	if Globals.are_pads_activated.get(island.to_lower()) and collider.has_overlapping_bodies():

@@ -4,11 +4,6 @@
 [ext_resource type="Shader" uid="uid://t3m1npwc5q7d" path="res://boost_pad.gdshader" id="1_562vw"]
 [ext_resource type="Texture2D" uid="uid://cn3pgibb6y5ro" path="res://assets/BoostPadTexture.png" id="2_3fg2d"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_x3hlx"]
-render_priority = 0
-shader = ExtResource("1_562vw")
-shader_parameter/activated = false
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3fg2d"]
 render_priority = 0
 shader = ExtResource("1_562vw")
@@ -24,7 +19,6 @@ size = Vector3(3.893837, 0.16040039, 4.01001)
 
 [node name="BoostPad" type="MeshInstance3D" unique_id=323553854]
 transform = Transform3D(1.6188964, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-material_override = SubResource("ShaderMaterial_x3hlx")
 mesh = SubResource("PlaneMesh_aqk2v")
 script = ExtResource("1_71cp0")
 
