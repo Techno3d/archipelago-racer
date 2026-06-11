@@ -85,7 +85,7 @@ transform = Transform3D(6.053158, 0.18207696, 0.50647837, 0.4738891, 0.22969535,
 curve = SubResource("Curve3D_pepq5")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=352373570]
-transform = Transform3D(-0.9998137, -0.008855796, -0.01367859, 0, 0.83943176, -0.54346514, 0.016294187, -0.54339296, -0.8393203, 0.12053108, 0.7106323, -0.9197159)
+transform = Transform3D(-0.9998135, -0.008855796, -0.01367859, 0, 0.83943176, -0.54346514, 0.016294183, -0.54339296, -0.8393203, 0.12053108, 0.7106323, -0.9197159)
 use_model_front = true
 
 [node name="Launchpad" parent="." unique_id=1360913354 node_paths=PackedStringArray("path") instance=ExtResource("8_2bk0c")]
@@ -96,7 +96,8 @@ path = NodePath("../Path3D/PathFollow3D")
 
 [node name="BoostPad" parent="." unique_id=323553854 instance=ExtResource("11_y0p88")]
 transform = Transform3D(0.40259635, 0, 0.95235324, 0, 1, 0, -1.2571063, 0, 0.30499724, -202.86955, 76.46982, 212.96527)
-island = "Volcano"
+island = "volcano"
 
 [node name="BoostPad2" parent="." unique_id=1159885327 instance=ExtResource("11_y0p88")]
 transform = Transform3D(0.78509206, 0, -0.8038984, 0, 1, 0, 1.0611459, 0, 0.5947667, -88.06577, 129.58992, -211.72223)
+island = "volcano"
