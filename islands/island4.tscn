@@ -63,6 +63,8 @@ id = 6
 
 [node name="BoostPad" parent="." unique_id=323553854 instance=ExtResource("9_4vfo5")]
 transform = Transform3D(1.1825889, -0.21768504, -0.6472996, 0.34411672, 0.97322977, -0.08741332, 1.0506641, -0.073737085, 0.757207, -136.05388, 64.16153, -195.09398)
+island = "desert"
 
 [node name="BoostPad2" parent="." unique_id=1717194288 instance=ExtResource("9_4vfo5")]
 transform = Transform3D(-1.5415801, 0, 0.3053464, 0, 1, 0, -0.49432418, 0, -0.95224136, 110.600105, 103.49322, 173.82953)
+island = "desert"

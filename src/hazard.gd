@@ -13,6 +13,7 @@ func _process(_delta: float) -> void:
 
 func _body_entered(body:Node3D):
 	if body is VehicularCar:
-		if Archipelago.conn:
+		if Archipelago.conn and Archipelago.is_deathlink():
+			print(death_reason)
 			Archipelago.conn.send_deathlink(death_reason)
 		(body as VehicularCar).respawn()

@@ -83,9 +83,12 @@ id = 6
 
 [node name="BoostPad" parent="." unique_id=323553854 instance=ExtResource("10_q3nut")]
 transform = Transform3D(1.0779302, 0, 0.7460922, 0, 1, 0, -1.2078459, 0, 0.66584265, -184.69817, 99.689514, 466.22186)
+island = "mountain"
 
 [node name="BoostPad2" parent="." unique_id=1551938209 instance=ExtResource("10_q3nut")]
 transform = Transform3D(-1.1978425, 0, 0.6727026, 0, 1, 0, -1.0890359, 0, -0.739913, 206.21732, 65.69297, 769.75665)
+island = "mountain"
 
 [node name="BoostPad3" parent="." unique_id=96639137 instance=ExtResource("10_q3nut")]
 transform = Transform3D(1.0958544, 0, 0.7360617, 0, 1, 0, -1.1916076, 0, 0.6769145, -238.8195, 100.22896, -379.30484)
+island = "mountain"

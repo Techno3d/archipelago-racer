@@ -10,6 +10,7 @@ var active: bool = false
 var world: Node
 var car: VehicularCar
 
+@export var island: String
 
 # Path to follow. Should be a child of a Path3D node
 @export var path: PathFollow3D
@@ -21,8 +22,7 @@ var car: VehicularCar
 func _ready() -> void:
 	path.loop = false
 	area_3d.body_entered.connect(body_entered)
-	
-	pass # Replace with function body.
+
 
 func _physics_process(delta: float) -> void:
 	if active:
@@ -39,6 +39,7 @@ func _physics_process(delta: float) -> void:
 
 
 func body_entered(body: Node3D) -> void:
+	if not Globals.are_pads_activated.has(island.to_lower()): return
 	if body is not VehicularCar: return
 	world = body.get_parent()
 	car = body
