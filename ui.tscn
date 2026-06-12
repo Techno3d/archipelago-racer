@@ -228,3 +228,39 @@ custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 text = "Quit
 "
+
+[node name="HudMedalAnim" type="Control" parent="." unique_id=456540781]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="HudMedalAnim" unique_id=169179336]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 54.0
+offset_top = 5.0
+offset_right = -1147.0
+offset_bottom = -576.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("4_waa4j")
+
+[node name="FinalDestination" type="Control" parent="HudMedalAnim" unique_id=633486547]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 246.0
+offset_top = 109.0
+offset_right = 286.0
+offset_bottom = 149.0
+rotation = 0.82768947
+mouse_filter = 2

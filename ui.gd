@@ -10,7 +10,11 @@ extends CanvasLayer
 @onready var quit: Button = %Quit
 var car: VehicularCar
 @onready var current_time_medal: TextureRect = $MarginContainer/MainContainer/Top/TimeStuff/VBoxContainer/Control/TextureRect
+@onready var medal_anim_texture: TextureRect = $HudMedalAnim/TextureRect
+@onready var final_dest: Control = $HudMedalAnim/FinalDestination
 @onready var best_time_medal: TextureRect = $MarginContainer/MainContainer/Top/TimeStuff/VBoxContainer2/Control/TextureRect
+var last_medal_idx: int = 5
+var dir_medal_anim: Vector2
 var main_menu_scene: PackedScene = preload("res://menu.tscn")
 @export var medal_imgs: Array[Texture]
 
@@ -31,6 +35,9 @@ func _ready() -> void:
 	quit.pressed.connect(func():
 		get_tree().quit()
 	)
+	medal_anim_texture.hide()
+	medal_anim_texture.global_position = current_time_medal.global_position
+	dir_medal_anim = final_dest.position - medal_anim_texture.position
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -46,7 +53,29 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _process(_delta: float) -> void:
 	timer_label.text = "%.2fs" % [Globals.goal.current_run_timer]
-	current_time_medal.texture = medal_imgs[set_medal_image(Globals.goal.current_run_timer + Globals.goal.penalty_timer)]
+	var medal_img_idx := set_medal_image(Globals.goal.current_run_timer + Globals.goal.penalty_timer)
+	if last_medal_idx != medal_img_idx:
+		medal_anim_texture.global_position = current_time_medal.global_position
+		medal_anim_texture.texture = medal_imgs[last_medal_idx]
+		medal_anim_texture.show()
+		last_medal_idx = medal_img_idx
+		var tween := create_tween()
+		tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+		tween.set_parallel(true)
+		tween.set_trans(Tween.TRANS_BACK)
+		tween.set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(medal_anim_texture, "position:y", medal_anim_texture.position.y + dir_medal_anim.y, 0.8)
+		tween.set_trans(Tween.TRANS_CUBIC)
+		tween.set_ease(Tween.EASE_OUT)
+		tween.tween_property(medal_anim_texture, "position:x", medal_anim_texture.position.x + dir_medal_anim.x, 0.8)
+		tween.tween_property(medal_anim_texture, "rotation", final_dest.rotation, 0.8)
+		tween.tween_property(medal_anim_texture, "modulate:a", 0, 0.8)
+		tween.finished.connect(func(): 
+			medal_anim_texture.hide()
+			medal_anim_texture.modulate.a = 1
+		)
+
+	current_time_medal.texture = medal_imgs[medal_img_idx]
 	if Globals.goal.penalty_timer > 0:
 		extra_timer_label.text = "(+%.2fs)" % Globals.goal.penalty_timer
 	else:
@@ -60,7 +89,6 @@ func _process(_delta: float) -> void:
 
 
 func set_medal_image(time: float) -> int:
-	
 	var medal_index := -1
 	for i in Globals.goal.ref_times.size():
 		if time <= Globals.goal.ref_times[i]:
