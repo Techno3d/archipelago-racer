@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Archipelago Racer"
+config/name="Time Attack Islands"
 run/main_scene="uid://c6pyp3tj658pq"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
