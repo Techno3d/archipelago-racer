@@ -5,6 +5,8 @@
 [ext_resource type="Curve" uid="uid://diijd83prquup" path="res://car_stats/main_accel.tres" id="2_jl8dw"]
 [ext_resource type="Curve" uid="uid://c85i0nvfvjauf" path="res://car_stats/main_turn.tres" id="3_jl8dw"]
 [ext_resource type="Script" uid="uid://bxp7tk3no0w3d" path="res://src/cam_pivot.gd" id="3_u22bx"]
+[ext_resource type="AudioStream" uid="uid://b5snaa7y8yyuq" path="res://assets/sfx_music/archipelago-racer-engine.wav" id="6_2bg50"]
+[ext_resource type="Script" uid="uid://rhp681vphk82" path="res://src/car_audio_base_line.gd" id="7_2h0he"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wb3y8"]
 friction = 0.0
@@ -136,3 +138,10 @@ target_position = Vector3(0, -1.5, 0)
 
 [node name="Timer" type="Timer" parent="." unique_id=1080665263]
 wait_time = 3.0
+
+[node name="BaseLineAudio" type="AudioStreamPlayer3D" parent="." unique_id=1227142742]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24729994, -0.25038213)
+stream = ExtResource("6_2bg50")
+volume_db = -8.0
+autoplay = true
+script = ExtResource("7_2h0he")

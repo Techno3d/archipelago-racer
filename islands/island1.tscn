@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://3h4rkhc5hjl2"]
 
+[ext_resource type="Script" uid="uid://cu57sra84pbiq" path="res://islands/island.gd" id="1_i1i66"]
 [ext_resource type="PackedScene" uid="uid://bohy1uwlk3vcd" path="res://ui.tscn" id="1_pepq5"]
 [ext_resource type="PackedScene" uid="uid://cghvtgke8ylu7" path="res://vehicular_car.tscn" id="2_rpx1u"]
 [ext_resource type="PackedScene" uid="uid://cit3atv4q613p" path="res://checkpoint.tscn" id="3_ekbnt"]
@@ -11,6 +12,7 @@
 [ext_resource type="Script" uid="uid://chcnyto0lbcqr" path="res://src/hazard.gd" id="10_rpx1u"]
 [ext_resource type="PackedScene" uid="uid://dwx4slj55vag" path="res://assets/islands/Track1Volcano.glb" id="11_mbdwp"]
 [ext_resource type="PackedScene" uid="uid://b0g33rx3vwom4" path="res://boost_pad.tscn" id="11_y0p88"]
+[ext_resource type="AudioStream" uid="uid://b8xl8pt24m166" path="res://assets/sfx_music/archipelago_racer.wav" id="12_y0p88"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_mbdwp"]
 height = 39.1557
@@ -25,6 +27,7 @@ point_count = 5
 up_vector_enabled = false
 
 [node name="Island1" type="Node3D" unique_id=1794474086]
+script = ExtResource("1_i1i66")
 
 [node name="Track1Volcano" parent="." unique_id=1089039329 instance=ExtResource("11_mbdwp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.40023804, 322.80994)
@@ -85,7 +88,7 @@ transform = Transform3D(6.053158, 0.18207696, 0.50647837, 0.4738891, 0.22969535,
 curve = SubResource("Curve3D_pepq5")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=352373570]
-transform = Transform3D(-0.9998135, -0.008855796, -0.01367859, 0, 0.83943176, -0.54346514, 0.016294183, -0.54339296, -0.8393203, 0.12053108, 0.7106323, -0.9197159)
+transform = Transform3D(-0.9998122, -0.008855796, -0.01367859, 0, 0.83943176, -0.54346514, 0.016294163, -0.54339296, -0.8393203, 0.12053108, 0.7106323, -0.9197159)
 use_model_front = true
 
 [node name="Launchpad" parent="." unique_id=1360913354 node_paths=PackedStringArray("path") instance=ExtResource("8_2bk0c")]
@@ -101,3 +104,6 @@ island = "volcano"
 [node name="BoostPad2" parent="." unique_id=1159885327 instance=ExtResource("11_y0p88")]
 transform = Transform3D(0.78509206, 0, -0.8038984, 0, 1, 0, 1.0611459, 0, 0.5947667, -88.06577, 129.58992, -211.72223)
 island = "volcano"
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1515320091]
+stream = ExtResource("12_y0p88")

@@ -18,11 +18,20 @@ var car: VehicularCar
 # Speed to launch in percent of path per second.
 @export var speed: float = 50
 
+# Block when not active
+@onready var static_body: StaticBody3D = $StaticBody3D
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	path.loop = false
 	area_3d.body_entered.connect(body_entered)
 
+	if active:
+		static_body.process_mode = Node.PROCESS_MODE_DISABLED
+		static_body.hide()
+	else:
+		static_body.process_mode = Node.PROCESS_MODE_ALWAYS
+		static_body.show()
 
 func _physics_process(delta: float) -> void:
 	if active:

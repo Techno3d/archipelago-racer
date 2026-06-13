@@ -13,6 +13,7 @@ var car: VehicularCar
 @onready var medal_anim_texture: TextureRect = $HudMedalAnim/TextureRect
 @onready var final_dest: Control = $HudMedalAnim/FinalDestination
 @onready var best_time_medal: TextureRect = $MarginContainer/MainContainer/Top/TimeStuff/VBoxContainer2/Control/TextureRect
+@onready var new_pb: NewRecord = $MarginContainer/NewRecord
 var last_medal_idx: int = 5
 var dir_medal_anim: Vector2
 var main_menu_scene: PackedScene = preload("res://menu.tscn")
@@ -38,6 +39,10 @@ func _ready() -> void:
 	medal_anim_texture.hide()
 	medal_anim_texture.global_position = current_time_medal.global_position
 	dir_medal_anim = final_dest.position - medal_anim_texture.position
+	Globals.goal.new_personal_best.connect(new_pb.celebrate_record)
+	Globals.goal.new_personal_best.connect(func(time: float):
+		Globals.medal_img[Globals.goal.island_index] = set_medal_image(time)
+	)
 
 
 func _unhandled_input(event: InputEvent) -> void:

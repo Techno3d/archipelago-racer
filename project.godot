@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Archipelago="*uid://c0ovofocoscyg"
 TerrainRebuildCoordinator="uid://brautlco0ivx3"
 Globals="*uid://07oyqorcsggd"
+RandomOcean="*uid://dabh47lqcspcy"
 
 [debug_draw_3d]
 

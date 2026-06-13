@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://clry57nja6uq2"]
 
+[ext_resource type="Script" uid="uid://cu57sra84pbiq" path="res://islands/island.gd" id="1_bw5o5"]
 [ext_resource type="PackedScene" uid="uid://bohy1uwlk3vcd" path="res://ui.tscn" id="1_ukm0i"]
 [ext_resource type="PackedScene" uid="uid://gy4dtk36qxos" path="res://assets/islands/Island4.glb" id="2_ukm0i"]
 [ext_resource type="PackedScene" uid="uid://bcmepg2y6jawp" path="res://assets/islands/Track4Desert.glb" id="3_4vfo5"]
@@ -9,8 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://cjlsytwctm5wl" path="res://time_trials.tscn" id="6_v3qcb"]
 [ext_resource type="PackedScene" uid="uid://cit3atv4q613p" path="res://checkpoint.tscn" id="7_njteb"]
 [ext_resource type="PackedScene" uid="uid://b0g33rx3vwom4" path="res://boost_pad.tscn" id="9_4vfo5"]
+[ext_resource type="AudioStream" uid="uid://b8xl8pt24m166" path="res://assets/sfx_music/archipelago_racer.wav" id="10_qu70m"]
 
 [node name="Desert" type="Node3D" unique_id=1794474086]
+script = ExtResource("1_bw5o5")
 
 [node name="modified_Island4" parent="." unique_id=639043376 instance=ExtResource("2_ukm0i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.732468, 0)
@@ -68,3 +71,6 @@ island = "desert"
 [node name="BoostPad2" parent="." unique_id=1717194288 instance=ExtResource("9_4vfo5")]
 transform = Transform3D(-1.5415801, 0, 0.3053464, 0, 1, 0, -0.49432418, 0, -0.95224136, 110.600105, 103.49322, 173.82953)
 island = "desert"
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1292587862]
+stream = ExtResource("10_qu70m")

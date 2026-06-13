@@ -17,6 +17,8 @@ var last_checkpoint: int = 0
  
 var best_time: float = -1
 
+signal new_personal_best(time: float)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	ref_times = times.duplicate()
@@ -39,10 +41,10 @@ func passed(body) -> void:
 		return
 	if last_checkpoint < num_checkpoints-2: return
 	
-	if best_time == -1:
+	if best_time == -1 or current_run_timer < best_time:
 		best_time = current_run_timer + penalty_timer
-	elif current_run_timer < best_time:
-		best_time = current_run_timer + penalty_timer
+		Globals.best_times[island_index] = best_time
+		new_personal_best.emit(best_time)
 		
 	var locs: Array[int] = []
 	while current_run_timer < next_time:

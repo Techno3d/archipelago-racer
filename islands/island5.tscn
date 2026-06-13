@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dhdoiap7n2u31"]
 
+[ext_resource type="Script" uid="uid://cu57sra84pbiq" path="res://islands/island.gd" id="1_3l6xr"]
 [ext_resource type="PackedScene" uid="uid://bohy1uwlk3vcd" path="res://ui.tscn" id="1_fbcae"]
 [ext_resource type="PackedScene" uid="uid://drdorh3xpln4x" path="res://assets/islands/Island5.glb" id="2_fbcae"]
 [ext_resource type="PackedScene" uid="uid://cem6phcnwrjed" path="res://assets/islands/Track5Moutnain.glb" id="3_1rerm"]
@@ -10,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cjlsytwctm5wl" path="res://time_trials.tscn" id="6_pix5n"]
 [ext_resource type="PackedScene" uid="uid://cit3atv4q613p" path="res://checkpoint.tscn" id="7_idvyu"]
 [ext_resource type="PackedScene" uid="uid://b0g33rx3vwom4" path="res://boost_pad.tscn" id="10_q3nut"]
+[ext_resource type="AudioStream" uid="uid://b8xl8pt24m166" path="res://assets/sfx_music/archipelago_racer.wav" id="11_sc0b6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5f5xi"]
 render_priority = 0
@@ -24,6 +26,7 @@ subdivide_width = 200
 subdivide_depth = 200
 
 [node name="Mountain" type="Node3D" unique_id=1794474086]
+script = ExtResource("1_3l6xr")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=867310477]
 
@@ -92,3 +95,6 @@ island = "mountain"
 [node name="BoostPad3" parent="." unique_id=96639137 instance=ExtResource("10_q3nut")]
 transform = Transform3D(1.0958544, 0, 0.7360617, 0, 1, 0, -1.1916076, 0, 0.6769145, -238.8195, 100.22896, -379.30484)
 island = "mountain"
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1080201875]
+stream = ExtResource("11_sc0b6")

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dolnpsjngsl0j"]
 
 [ext_resource type="PackedScene" uid="uid://bohy1uwlk3vcd" path="res://ui.tscn" id="1_4myww"]
+[ext_resource type="Script" uid="uid://cu57sra84pbiq" path="res://islands/island.gd" id="1_8c4bo"]
 [ext_resource type="PackedScene" uid="uid://b46for2683jdw" path="res://assets/islands/Island3.glb" id="2_4myww"]
 [ext_resource type="PackedScene" uid="uid://dqupxgeoycchv" path="res://assets/islands/Track3Lake.glb" id="3_avxgg"]
 [ext_resource type="PackedScene" uid="uid://cghvtgke8ylu7" path="res://vehicular_car.tscn" id="4_8c4bo"]
@@ -9,8 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://cjlsytwctm5wl" path="res://time_trials.tscn" id="6_bnihp"]
 [ext_resource type="PackedScene" uid="uid://cit3atv4q613p" path="res://checkpoint.tscn" id="7_ku8ep"]
 [ext_resource type="PackedScene" uid="uid://b0g33rx3vwom4" path="res://boost_pad.tscn" id="9_avxgg"]
+[ext_resource type="AudioStream" uid="uid://b8xl8pt24m166" path="res://assets/sfx_music/archipelago_racer.wav" id="10_a2mrf"]
 
 [node name="Lake" type="Node3D" unique_id=1794474086]
+script = ExtResource("1_8c4bo")
 
 [node name="modified_Island3" parent="." unique_id=1684643926 instance=ExtResource("2_4myww")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.235733, 0)
@@ -66,3 +69,6 @@ island = "lake"
 [node name="BoostPad3" parent="." unique_id=839224255 instance=ExtResource("9_avxgg")]
 transform = Transform3D(-0.19855581, 0, 0.9924501, 0, 1, 0, -1.6066738, 0, -0.12264887, 11.070733, 96.687614, -9.213089)
 island = "lake"
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=583402131]
+stream = ExtResource("10_a2mrf")

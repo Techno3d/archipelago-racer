@@ -1,8 +1,15 @@
 [gd_scene format=3 uid="uid://c6pyp3tj658pq"]
 
+[ext_resource type="Theme" uid="uid://myu1mg4ko252" path="res://assets/archi_theme.tres" id="1_4hy44"]
 [ext_resource type="Script" uid="uid://6wljcqhmrfq2" path="res://menu.gd" id="1_mae5d"]
 [ext_resource type="Script" uid="uid://cyc8jkqjagswj" path="res://godot_ap/ui/connect_box.gd" id="1_ouk20"]
 [ext_resource type="Script" uid="uid://cety6nqnci3n6" path="res://godot_ap/ui/updown_lineedit.gd" id="2_mae5d"]
+[ext_resource type="Texture2D" uid="uid://sttgtsqem3ct" path="res://assets/bronze.svg" id="3_iqepy"]
+[ext_resource type="Texture2D" uid="uid://31oi5qb1nywm" path="res://assets/silver.svg" id="4_h1wq0"]
+[ext_resource type="Texture2D" uid="uid://nsc7vb4himp3" path="res://assets/gold.svg" id="5_dwrpx"]
+[ext_resource type="AudioStream" uid="uid://cg1ush84vs2g3" path="res://assets/sfx_music/IslandRacerMenu.mp3" id="5_ytr4m"]
+[ext_resource type="Texture2D" uid="uid://c7gexiet6hpik" path="res://assets/platinum.svg" id="6_g7jxm"]
+[ext_resource type="Texture2D" uid="uid://c57mrhkobjyfa" path="res://assets/diamond.svg" id="7_jspdm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ouk20"]
 font_size = 70
@@ -23,9 +30,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_4hy44")
 script = ExtResource("1_mae5d")
 islands = Array[String](["res://islands/island1.tscn", "res://islands/island2.tscn", "res://islands/island3.tscn", "res://islands/island4.tscn", "res://islands/island5.tscn"])
 buttons = [NodePath("VBoxContainer/HFlowContainer/Volcano"), NodePath("VBoxContainer/HFlowContainer/Forest"), NodePath("VBoxContainer/HFlowContainer/Lake"), NodePath("VBoxContainer/HFlowContainer/Desert"), NodePath("VBoxContainer/HFlowContainer/Mountain")]
+medal_imgs = Array[Texture]([ExtResource("3_iqepy"), ExtResource("4_h1wq0"), ExtResource("5_dwrpx"), ExtResource("6_g7jxm"), ExtResource("7_jspdm"), null])
+
+[node name="BG" type="TextureRect" parent="." unique_id=1645065525]
+layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2066324999]
 layout_mode = 2
@@ -51,25 +63,89 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Volcano Island"
 
+[node name="Medal" type="TextureRect" parent="VBoxContainer/HFlowContainer/Volcano" unique_id=1213602097]
+custom_minimum_size = Vector2(25, 40)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+stretch_mode = 5
+
 [node name="Forest" type="Button" parent="VBoxContainer/HFlowContainer" unique_id=983735328]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Forest Island"
+
+[node name="Medal" type="TextureRect" parent="VBoxContainer/HFlowContainer/Forest" unique_id=1359268957]
+custom_minimum_size = Vector2(25, 40)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+expand_mode = 2
+stretch_mode = 5
 
 [node name="Lake" type="Button" parent="VBoxContainer/HFlowContainer" unique_id=421421485]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Lake Island"
 
+[node name="Medal" type="TextureRect" parent="VBoxContainer/HFlowContainer/Lake" unique_id=296064000]
+custom_minimum_size = Vector2(25, 40)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+expand_mode = 2
+stretch_mode = 5
+
 [node name="Desert" type="Button" parent="VBoxContainer/HFlowContainer" unique_id=957888900]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Desert Island"
 
+[node name="Medal" type="TextureRect" parent="VBoxContainer/HFlowContainer/Desert" unique_id=1560606667]
+custom_minimum_size = Vector2(25, 40)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+expand_mode = 2
+stretch_mode = 5
+
 [node name="Mountain" type="Button" parent="VBoxContainer/HFlowContainer" unique_id=1344331700]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Mountain Island"
+
+[node name="Medal" type="TextureRect" parent="VBoxContainer/HFlowContainer/Mountain" unique_id=1060150302]
+custom_minimum_size = Vector2(25, 40)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+expand_mode = 2
+stretch_mode = 5
 
 [node name="Control" type="Control" parent="VBoxContainer" unique_id=1817069337]
 layout_mode = 2
@@ -185,6 +261,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 disabled = true
 text = "Disconnect"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1625275915]
+process_mode = 3
+stream = ExtResource("5_ytr4m")
+volume_db = -8.0
+autoplay = true
 
 [connection signal="text_submitted" from="VBoxContainer/Box/Margins/VBox/Content/IP_Box" to="VBoxContainer/Box/Margins/VBox/Content" method="try_connection" unbinds=1]
 [connection signal="text_submitted" from="VBoxContainer/Box/Margins/VBox/Content/Port_Box" to="VBoxContainer/Box/Margins/VBox/Content" method="try_connection" unbinds=1]

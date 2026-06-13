@@ -44,6 +44,8 @@ func _apply_item(item: NetworkItem):
 		are_pads_activated[BOOST_PAD_ITEMS[name]] = true
 
 var goal: TimeTrials
+var best_times: Array[float] = [-1,-1,-1,-1,-1]
+var medal_img: Array[float] = [5,5,5,5,5]
 var car_stats: Array[CarStats] = [
 	preload("res://car_stats/StarterStats.tres"),
 	preload("res://car_stats/MidStats.tres"),
