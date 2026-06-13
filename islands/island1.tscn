@@ -56,7 +56,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38, 0)
 
 [node name="TimeTrialsStartGate" parent="." unique_id=1039711912 instance=ExtResource("7_1gnqd")]
 transform = Transform3D(-3.8400729, 0, -17.585615, 0, 18, 0, 17.585615, 0, -3.8400729, -83.128204, 79.679504, 244.42734)
-times = Array[float]([110.0, 90.0, 72.0, 60.0, 55.0])
+times = Array[float]([110.0, 90.0, 67.0, 60.0, 55.0])
 num_checkpoints = 4
 
 [node name="CheckpointGate1" parent="." unique_id=1251319173 instance=ExtResource("3_ekbnt")]
@@ -88,7 +88,7 @@ transform = Transform3D(6.053158, 0.18207696, 0.50647837, 0.4738891, 0.22969535,
 curve = SubResource("Curve3D_pepq5")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=352373570]
-transform = Transform3D(-0.9998122, -0.008855796, -0.01367859, 0, 0.83943176, -0.54346514, 0.016294163, -0.54339296, -0.8393203, 0.12053108, 0.7106323, -0.9197159)
+transform = Transform3D(-0.99981195, -0.008855796, -0.01367859, 0, 0.83943176, -0.54346514, 0.016294159, -0.54339296, -0.8393203, 0.12053108, 0.7106323, -0.9197159)
 use_model_front = true
 
 [node name="Launchpad" parent="." unique_id=1360913354 node_paths=PackedStringArray("path") instance=ExtResource("8_2bk0c")]

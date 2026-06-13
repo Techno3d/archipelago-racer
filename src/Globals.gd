@@ -4,19 +4,40 @@ signal checkpoint_passed(id: int)
 
 signal set_max_checkpoints(num: int)
 
+signal send_notification(to_show: String)
+var medal_tier = 2
+var medals_required = 3
 func _ready():
 	if Archipelago.conn:
 		_wire_ap(Archipelago.conn, {})
 	Archipelago.connected.connect(_wire_ap)
 
+func check_and_send_goal() -> bool:
+	var count := 0
+	for island_idx in range(5):
+		var loc_id :int = island_idx * 5 + medal_tier
+		if Archipelago.location_checked(loc_id):
+			count += 1
+		
+
+	if count >= medals_required:
+		Archipelago.set_client_status(Archipelago.ClientStatus.CLIENT_GOAL)
+		return true
+	return false
+
 func _wire_ap(conn: ConnectionInfo, json: Dictionary):
 	current_stat = 0
 	print(json)
-	var death_link = 1.0 == json.get("slot_data").get("death_link")
+	var slot_data = json.get("slot_data")
+	var death_link = 1.0 == slot_data.get("death_link")
+	medal_tier =  int(slot_data.get("medal_tier_required"))
+	medals_required = int(slot_data.get("islands_to_goal"))
+	check_and_send_goal()
 	Archipelago.set_deathlink(death_link) 
 	conn.obtained_item.connect(_on_item_received)
 	conn.refresh_items.connect(_on_items_refreshed)
 	_on_items_refreshed(conn.received_items)
+	
 	
 
 const BOOST_PAD_ITEMS := {
@@ -27,6 +48,8 @@ const BOOST_PAD_ITEMS := {
 	"Launch and Boost Pads - Mountain": "mountain",
 }
 func _on_item_received(item: NetworkItem):
+	var text =  Archipelago.conn.get_player_name(item.src_player_id)+ " sent you " + item.get_name()  
+	send_notification.emit(text)
 	_apply_item(item)
 
 func _on_items_refreshed(items: Array[NetworkItem]):

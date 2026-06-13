@@ -29,7 +29,6 @@ func to_cartesian(polar: Vector3) -> Vector3:
 	return Vector3(r*sin(psi)*cos(theta), r*cos(psi), r*sin(psi)*sin(theta))
 
 func _input(event: InputEvent) -> void:
-	print(is_mouse_movement_enabled)
 	if event is InputEventMouseMotion && is_mouse_movement_enabled:
 		var radian_max := max_angle_change * TAU/180
 		var polar_cam := to_polar(cam_pivot.position)

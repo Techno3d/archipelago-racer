@@ -55,6 +55,8 @@ func passed(body) -> void:
 		else: 
 			next_time = times.pop_front()
 	Archipelago.collect_locations(locs)
+	if Archipelago.conn:
+		Globals.check_and_send_goal()
 	reset()
 	started = true
 	

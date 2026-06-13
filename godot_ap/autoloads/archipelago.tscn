@@ -12,7 +12,7 @@ minor = 5
 
 [node name="AP" type="Node" unique_id=1488888129]
 script = ExtResource("1_41ph8")
-AP_GAME_NAME = "Time Attack Islandsw"
+AP_GAME_NAME = "Time Attack Islands"
 AP_CLIENT_VERSION = SubResource("Resource_pmgvy")
 AP_VERSION = SubResource("Resource_m1v20")
 AP_PRINT_ITEMS_ON_CONNECT = true

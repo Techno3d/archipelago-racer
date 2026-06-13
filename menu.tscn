@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://c57mrhkobjyfa" path="res://assets/diamond.svg" id="7_jspdm"]
 
 [sub_resource type="SystemFont" id="SystemFont_mae5d"]
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_ouk20"]
 font = SubResource("SystemFont_mae5d")

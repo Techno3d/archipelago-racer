@@ -23,17 +23,13 @@ const PASS_ID_TO_BUTTON_INDEX: Dictionary[int,int] = {
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	print("a")
 	for i: int in range(len(buttons)):
-		print("c")
 		var button: Button = buttons[i]
 		button.pressed.connect(load_scene.bind(i))
 		# On archipelago connection, enable/disable buttons
 	if Archipelago.conn:
-		print("b")
 		archi_setup()
 	Archipelago.connected.connect(func(conn: ConnectionInfo, json: Dictionary): 
-		print("3")
 		archi_setup()
 		)
 	for i in range(0,buttons.size()):
@@ -43,7 +39,6 @@ func load_scene(ind: int):
 	get_tree().change_scene_to_file(islands[ind])
 
 func archi_setup():
-	print("d")
 	if not Archipelago.conn:
 		return
 	for button: Button in buttons:

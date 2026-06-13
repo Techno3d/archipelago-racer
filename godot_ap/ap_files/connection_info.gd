@@ -212,6 +212,7 @@ func send_bounce(data: Dictionary, target_games: Array[String], target_slots: Ar
 ## Requires `DeathLink` being enabled (see 'Archipelago.set_deathlink()')
 ## Only players in the same DeathLink group will be killed.
 func send_deathlink(cause: String = ""):
+	print("sending deathlink")
 	if not Archipelago.is_deathlink():
 		AP.log("Tried to send DeathLink while DeathLink is not enabled!")
 		return

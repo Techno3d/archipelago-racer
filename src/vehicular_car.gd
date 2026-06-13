@@ -68,7 +68,7 @@ func _ready() -> void:
 	restart_timer.timeout.connect(func(): restart_hint.emit())
 	set_stats(Globals.car_stats[Globals.current_stat])
 	if Archipelago.conn and Archipelago.is_deathlink():
-		Archipelago.conn.deathlink.connect(respawn)
+		Archipelago.conn.deathlink.connect(deathlink_wrapper)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func on_ground(_body: Node3D):
@@ -198,6 +198,12 @@ func check_respawn():
 		if Archipelago.conn and Archipelago.is_deathlink():
 			Archipelago.conn.send_deathlink("did a turtle cosplay.")
 		respawn()
+
+func deathlink_wrapper(source: String, cause: String, json: Dictionary):
+	var text = source + " " + cause
+	Globals.send_notification.emit(text)
+	respawn()
+	
 
 func respawn():
 	Globals.goal.reset()

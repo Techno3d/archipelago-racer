@@ -10,6 +10,7 @@
 [ext_resource type="Theme" uid="uid://myu1mg4ko252" path="res://assets/archi_theme.tres" id="7_waa4j"]
 [ext_resource type="Script" uid="uid://bk76r02j5cxsj" path="res://src/new_record.gd" id="8_irxef"]
 [ext_resource type="FontFile" uid="uid://erdgllynwqkw" path="res://examples_dd3d/Roboto-Bold.ttf" id="8_ok7cu"]
+[ext_resource type="Script" uid="uid://bq4ppt1nsoh8o" path="res://notification.gd" id="11_e2l4f"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_irxef"]
 font = ExtResource("8_ok7cu")
@@ -41,6 +42,35 @@ bg_color = Color(0.50302655, 0.22319642, 0.20930201, 0.8980392)
 
 [sub_resource type="LabelSettings" id="LabelSettings_y4yjw"]
 font_size = 36
+
+[sub_resource type="Animation" id="Animation_e2l4f"]
+resource_name = "show_notification"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1281, 678), Vector2(970, 678)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gs482"]
+_data = {
+&"show_notification": SubResource("Animation_e2l4f")
+}
+
+[sub_resource type="SystemFont" id="SystemFont_e2l4f"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_n5rqp"]
+font = SubResource("SystemFont_e2l4f")
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1118733812]
 process_mode = 3
@@ -298,3 +328,25 @@ offset_right = 286.0
 offset_bottom = 149.0
 rotation = 0.82768947
 mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2021805454]
+root_node = NodePath("../Panel")
+libraries/ = SubResource("AnimationLibrary_gs482")
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=1102117945]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -42.0
+offset_right = 309.00024
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("11_e2l4f")
+
+[node name="Label" type="Label" parent="Panel" unique_id=1042870093]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_n5rqp")

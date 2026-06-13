@@ -500,7 +500,7 @@ func _handle_command(json: Dictionary) -> void: # Handle an incoming packet from
 		"Connected":
 			conn.player_id = json["slot"]
 			conn.team_id = json["team"]
-			#conn.slot_data = json["slot_data"]
+			conn.slot_data = json["slot_data"]
 			for plyr in json["players"]:
 				conn.players.append(NetworkPlayer.from(plyr))
 			var slot_info = json["slot_info"]
@@ -604,6 +604,7 @@ func _handle_command(json: Dictionary) -> void: # Handle an incoming packet from
 					return # Skip deaths from self
 				var source: String = json["data"].get("source", "")
 				var cause: String = json["data"].get("cause", "")
+				print("recieved deathlink")
 				conn.deathlink.emit(source, cause, json)
 			if tags.has("TrapLink"):
 				var tstamp: float = json["data"].get("time", 0.0)
