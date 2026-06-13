@@ -67,7 +67,7 @@ func _ready() -> void:
 	)
 	restart_timer.timeout.connect(func(): restart_hint.emit())
 	set_stats(Globals.car_stats[Globals.current_stat])
-	if Archipelago.conn:
+	if Archipelago.conn and Archipelago.is_deathlink():
 		Archipelago.conn.deathlink.connect(respawn)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
@@ -195,7 +195,7 @@ func _process(delta: float) -> void:
 
 func check_respawn():
 	if !wheel_base.has_overlapping_bodies() and !base2.has_overlapping_bodies() and reset_collider.has_overlapping_bodies():
-		if Archipelago.conn:
+		if Archipelago.conn and Archipelago.is_deathlink():
 			Archipelago.conn.send_deathlink("did a turtle cosplay.")
 		respawn()
 

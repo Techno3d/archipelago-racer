@@ -11,7 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://c7gexiet6hpik" path="res://assets/platinum.svg" id="6_g7jxm"]
 [ext_resource type="Texture2D" uid="uid://c57mrhkobjyfa" path="res://assets/diamond.svg" id="7_jspdm"]
 
+[sub_resource type="SystemFont" id="SystemFont_mae5d"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_ouk20"]
+font = SubResource("SystemFont_mae5d")
 font_size = 70
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4hy44"]
@@ -45,7 +48,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="VBoxContainer" unique_id=676801447]
 layout_mode = 2
 size_flags_vertical = 6
-text = "Island Racer"
+text = "Time Attack Racer"
 label_settings = SubResource("LabelSettings_ouk20")
 horizontal_alignment = 1
 vertical_alignment = 1
