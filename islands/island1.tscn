@@ -88,11 +88,12 @@ transform = Transform3D(6.053158, 0.18207696, 0.50647837, 0.4738891, 0.22969535,
 curve = SubResource("Curve3D_pepq5")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=352373570]
-transform = Transform3D(-0.99981195, -0.008855796, -0.01367859, 0, 0.83943176, -0.54346514, 0.016294159, -0.54339296, -0.8393203, 0.12053108, 0.7106323, -0.9197159)
+transform = Transform3D(-0.9998117, -0.008855796, -0.01367859, 0, 0.83943176, -0.54346514, 0.016294155, -0.54339296, -0.8393203, 0.12053108, 0.7106323, -0.9197159)
 use_model_front = true
 
 [node name="Launchpad" parent="." unique_id=1360913354 node_paths=PackedStringArray("path") instance=ExtResource("8_2bk0c")]
 transform = Transform3D(5.936046, 0.97914183, 1.9899219, 2.1350446, 1.5460839, -1.9778899, -7.89517, 1.1542735, 0.9612693, 52.20332, 190.61992, 65.663475)
+island = "volcano"
 path = NodePath("../Path3D/PathFollow3D")
 
 [node name="CanvasLayer" parent="." unique_id=1118733812 instance=ExtResource("1_pepq5")]

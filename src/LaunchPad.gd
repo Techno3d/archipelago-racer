@@ -25,7 +25,10 @@ var car: VehicularCar
 func _ready() -> void:
 	path.loop = false
 	area_3d.body_entered.connect(body_entered)
-
+	if Globals.are_pads_activated.get(island.to_lower()): 
+		$StaticBody3D.queue_free()
+		
+	
 	if active:
 		static_body.process_mode = Node.PROCESS_MODE_DISABLED
 		static_body.hide()
@@ -43,12 +46,13 @@ func _physics_process(delta: float) -> void:
 		active = false
 		car.freeze = false
 		car.linear_velocity = -car.global_basis.y * 3
-		
+
+	
 		
 
 
 func body_entered(body: Node3D) -> void:
-	if not Globals.are_pads_activated.has(island.to_lower()): return
+	if not Globals.are_pads_activated.get(island.to_lower()): return
 	if body is not VehicularCar: return
 	world = body.get_parent()
 	car = body
